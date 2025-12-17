@@ -1,0 +1,48 @@
+import React from 'react';
+import { APIProvider, Map } from '@vis.gl/react-google-maps';
+
+import ControlPanel from './control-panel';
+import {MovingMarker} from './moving-marker';
+import {MarkerWithInfowindow} from './marker-with-infowindow';
+
+import {
+  AdvancedMarker,
+  InfoWindow,
+  Marker,
+  Pin
+} from '@vis.gl/react-google-maps';
+
+const API_KEY =
+  globalThis.GOOGLE_MAPS_API_KEY ?? ("");
+
+export const SoundMap = () => {
+  return (
+    <APIProvider
+      solutionChannel='GMP_devsite_samples_v3_rgmbasicmap'
+      apiKey={API_KEY}>
+    <Map
+      mapId={''}
+      defaultZoom={10}
+      defaultCenter={{ lat: 49.28, lng: -123.12 }}
+      gestureHandling={'greedy'}
+      disableDefaultUI>
+      {/* simple marker */}
+      <AdvancedMarker
+          position={{lat: 49.28, lng: -123.12}}
+          clickable={true}
+          onClick={() => alert('marker was clicked!')}
+          title={'AdvancedMarker with customized pin.'}>
+           <Pin
+            background={'#22ccff'}
+            borderColor={'#1e89a1'}
+            glyphColor={'#0f677a'}></Pin>
+      </AdvancedMarker>
+
+      {/* simple stateful infowindow */}
+      <MarkerWithInfowindow>
+      </MarkerWithInfowindow>
+
+    </Map>
+    </APIProvider>
+  );
+};
