@@ -19,7 +19,7 @@ export const MarkerWithInfowindow = () => {
       <AdvancedMarker
         ref={markerRef}
         onClick={() => toggle()}
-        position={{lat: 49.40, lng: -123.52}}
+        position={{lat: 49.274, lng: -123.12}}
         title={'AdvancedMarker that opens an Infowindow when clicked.'}>
         <Pin
             background={'#22ccff'}

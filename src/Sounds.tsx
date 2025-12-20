@@ -3,7 +3,7 @@ import sounds from './Sounds.json';
 export type Sound = {
   key: string;
   fileno: number;
-  decade: number;
+  decade: string;
   description: string;
   position: google.maps.LatLngLiteral;
   category: string;
@@ -48,5 +48,44 @@ export function getCategories(sounds?: Sound[]): CategoryData[] {
     };
   });
 }
+
+export function getThemes(sounds?: Sound[]): CategoryData[] {
+  if (!sounds) return [];
+
+  const countByTheme: {[t: string]: number} = {};
+  for (const s of sounds) {
+    if(!countByTheme[s.theme]) countByTheme[s.theme] = 0;
+    countByTheme[s.theme]++;
+  }
+
+  return Object.entries(countByTheme).map(([key, value]) => {
+    const label = key.replace(/ _/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    return {
+      key: key,
+      label,
+      count: value
+    };
+  });
+}
+
+export function getDecades(sounds?: Sound[]): CategoryData[] {
+  if (!sounds) return [];
+
+  const countByDecade: {[d: number]: number} = {};
+  for (const s of sounds) {
+    if(!countByDecade[s.decade]) countByDecade[s.decade] = 0;
+    countByDecade[s.decade]++;
+  }
+
+  return Object.entries(countByDecade).map(([key, value]) => {
+    const label = key
+    return {
+      key: key,
+      label,
+      count: value
+    };
+  });
+}
+
 
 export default sounds as Sound[];
