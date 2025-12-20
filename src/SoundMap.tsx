@@ -13,6 +13,7 @@ import {
   Marker,
   Pin
 } from '@vis.gl/react-google-maps';
+import { ClusteredSoundMarkers } from './clustered-sound-markers';
 
 const API_KEY =
   globalThis.GOOGLE_MAPS_API_KEY ?? ("");
@@ -69,8 +70,10 @@ export const SoundMap = () => {
       defaultCenter={{ lat: 49.28, lng: -123.12 }}
       gestureHandling={'greedy'}
       disableDefaultUI>
-      {/* simple marker */}
-      <AdvancedMarker
+
+      {categoryFilteredSounds && <ClusteredSoundMarkers sounds={categoryFilteredSounds} />}
+
+      {/* <AdvancedMarker
           position={{lat: 49.28, lng: -123.0}}
           clickable={true}
           onClick={() => alert('marker was clicked!')}
@@ -81,9 +84,8 @@ export const SoundMap = () => {
             glyphColor={'#0f677a'}></Pin>
       </AdvancedMarker>
 
-      {/* simple stateful infowindow */}
       <MarkerWithInfowindow>
-      </MarkerWithInfowindow>
+      </MarkerWithInfowindow> */}
 
     </Map>
 
