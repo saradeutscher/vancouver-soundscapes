@@ -1,12 +1,13 @@
 #root {
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
 }
 
 body {
   margin: 0;
+  width: 100%;
   font-family: sans-serif;
 }
 
@@ -71,17 +72,30 @@ body {
   background-color: #005f6b;
 }
 
-.underlying-component {
-  padding: 20px;
-  background-color: #f0f0f0;
-  margin-top: 20px;
-  border-radius: 8px;
+.control-panel {
+  font-size: 14px;
+  line-height: 18px;
+  width: 284px;
+  background: #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+  margin: 24px;
+  padding: 12px 24px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  outline: none;
+  cursor: auto;
+  box-sizing: border-box;
 }
 
-.card {
-  padding: 2em;
+.control-panel h3 {
+  font-size: 1.2em;
+  font-weight: 500;
+  margin: 8px 0;
 }
 
-.read-the-docs {
-  color: #888;
+.control-panel h4 {
+  font-weight: 500;
+  margin: 8px 0;
 }
+

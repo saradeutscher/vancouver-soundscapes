@@ -1,28 +1,42 @@
-import * as React from 'react';
+import React, {useCallback} from 'react';
 
-function ControlPanel() {
-  return (
-    <div className="control-panel">
-      <h3>Markers and InfoWindows</h3>
-      <p>
-        This example shows the different ways to add markers and infowindows to
-        the map.
-      </p>
-      <div className="links">
-        <a
-          href="https://codesandbox.io/s/github/visgl/react-google-maps/tree/main/examples/markers-and-infowindows"
-          target="_new">
-          Try on CodeSandbox ↗
-        </a>
+import { CategoryData } from './Sounds';
 
-        <a
-          href="https://github.com/visgl/react-google-maps/tree/main/examples/markers-and-infowindows"
-          target="_new">
-          View Code ↗
-        </a>
-      </div>
-    </div>
-  );
+type ControlPanelProps = {
+  categories: Array<CategoryData>;
+  onCategoryChange: (value: string | null) => void;
 }
 
-export default React.memo(ControlPanel);
+export const ControlPanel = ({
+  categories,
+  onCategoryChange
+}: ControlPanelProps) => {
+  const handleCategoryChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      onCategoryChange(e.target.value || null);
+    },
+    [onCategoryChange]
+  );
+
+  return (
+    <div className="control-panel marker-clustering-control-panel">
+      <h3>Filter the Map by Category</h3>
+        <p>
+          Use the select element to filter the sounds shown on the map by
+          sound category.
+        </p>
+        <p>
+          <label> Filter Sounds:</label>{' '}
+          <select onChange={handleCategoryChange}>
+            <option value={''}>All sounds</option>
+
+            {categories.map(category => (
+              <option key={category.key} value={category.key}>
+                {category.label} ({category.count})
+              </option>
+            ))}
+          </select>
+        </p>
+    </div>
+  );
+};

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { APIProvider, Map } from '@vis.gl/react-google-maps';
 
-import ControlPanel from './control-panel';
+import {ControlPanel} from './control-panel';
 import {MovingMarker} from './moving-marker';
 import {MarkerWithInfowindow} from './marker-with-infowindow';
+
+import{getCategories, loadSoundDataset, Sound} from './Sounds';
+//import {ClusteredSoundMarkers} from './clustered-sound-markers';
 
 import {
   AdvancedMarker,
@@ -16,6 +19,25 @@ const API_KEY =
   globalThis.GOOGLE_MAPS_API_KEY ?? ("");
 
 export const SoundMap = () => {
+  const [sounds, setSounds] = useState<Sound[]>();
+  const [selectCategory, setSelectedCategory] = useState<string | null>(null);
+
+  // load data asynchronously
+  useEffect(() => {
+    loadSoundDataset().then(data => setSounds(data));
+  }, []);
+
+  // get category information for the filter-dropdown
+  const categories = useMemo(() => getCategories(sounds), [sounds]);
+  const filteredSounds = useMemo(() => {
+    if(!sounds) return null;
+
+    return sounds.filter(
+      s => !selectCategory || s.category == selectCategory
+    );
+  }, [sounds, selectCategory])
+
+
   return (
     <APIProvider
       solutionChannel='GMP_devsite_samples_v3_rgmbasicmap'
@@ -43,6 +65,12 @@ export const SoundMap = () => {
       </MarkerWithInfowindow>
 
     </Map>
+
+    <ControlPanel
+      categories={categories}
+      onCategoryChange={setSelectedCategory}
+    />
+
     </APIProvider>
   );
 };
