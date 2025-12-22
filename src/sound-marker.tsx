@@ -4,6 +4,11 @@ import {AdvancedMarker, Pin} from '@vis.gl/react-google-maps';
 
 import {Sound} from './Sounds';
 
+export type Geometry = {
+  coordinates: string;
+  type: string;
+};
+
 export type SoundMarkerProps = {
   sound: Sound;
   onClick: (sound: Sound) => void;
@@ -23,8 +28,10 @@ export const SoundMarker = (props: SoundMarkerProps) => {
     [setMarkerRef, sound.key]
   );
 
+  const point = getLatLng(sound.geometry);
+
   return (
-    <AdvancedMarker position={sound.position} ref={ref} onClick={handleClick}>
+    <AdvancedMarker position={point} ref={ref} onClick={handleClick}>
       <Pin
         background={'#22ccff'}
         borderColor={'#1e89a1'}
@@ -32,3 +39,15 @@ export const SoundMarker = (props: SoundMarkerProps) => {
     </AdvancedMarker>
   )
 }
+
+function getLatLng(geometry: Geometry): {
+  lat: number;
+  lng: number;
+} {
+  const coords = JSON.parse(geometry.coordinates) as [number, number];
+
+  const [lng, lat] = coords;
+
+  return { lat, lng };
+}
+

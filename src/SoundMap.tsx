@@ -5,7 +5,7 @@ import {ControlPanel} from './control-panel';
 import {MarkerWithInfowindow} from './marker-with-infowindow';
 
 import{getCategories, getThemes, getDecades, loadSoundDataset, Sound} from './Sounds';
-//import {ClusteredSoundMarkers} from './clustered-sound-markers';
+import {ClusteredSoundMarkers} from './clustered-sound-markers';
 
 import {
   AdvancedMarker,
@@ -13,7 +13,6 @@ import {
   Marker,
   Pin
 } from '@vis.gl/react-google-maps';
-import { ClusteredSoundMarkers } from './clustered-sound-markers';
 
 const API_KEY =
   globalThis.GOOGLE_MAPS_API_KEY ?? ("");
@@ -22,42 +21,41 @@ export const SoundMap = () => {
   const [sounds, setSounds] = useState<Sound[]>();
   const [selectCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectTheme, setSelectedTheme] = useState<string | null>(null);
-  const [selectDecade, setSelectedDecade] = useState<string | null>(null);
+  const [selectDecade, setSelectedDecade] = useState<number | null>(null);
 
   // load data asynchronously
   useEffect(() => {
     loadSoundDataset().then(data => setSounds(data));
   }, []);
 
-  // get category information for the filter-dropdown
-  const categories = useMemo(() => getCategories(sounds), [sounds]);
-  const categoryFilteredSounds = useMemo(() => {
-    if(!sounds) return null;
+  // combined filtered sounds
+  const combinedFilteredSounds = useMemo(() => {
+    if (!sounds) return null;
 
     return sounds.filter(
-      s => !selectCategory || s.category == selectCategory
-    );
-  }, [sounds, selectCategory])
+      s => (!selectDecade || s.properties.decade == selectDecade) &&
+           (!selectTheme || s.properties.theme == selectTheme) &&
+           (!selectCategory || s.properties.category == selectCategory)
+     );
+  }, [sounds, selectDecade, selectCategory, selectTheme])
+
+  // get category information for the filter-dropdown
+  const categories = useMemo(() => {
+    if (!combinedFilteredSounds) return [];
+    return getCategories(combinedFilteredSounds);
+  }, [combinedFilteredSounds]);
 
   // get theme information for the filter-dropdown
-  const themes = useMemo(() => getThemes(sounds), [sounds]);
-  const themeFilteredSounds = useMemo(() => {
-    if(!sounds) return null;
-
-    return sounds.filter(
-      s => !selectTheme || s.theme == selectTheme
-    );
-  }, [sounds, selectTheme])
+  const themes = useMemo(() => {
+    if (!combinedFilteredSounds) return [];
+    return getThemes(combinedFilteredSounds);
+  }, [combinedFilteredSounds]);
 
   // get decade information for the filter-dropdown
-  const decades = useMemo(() => getDecades(sounds), [sounds]);
-  const decadeFilteredSounds = useMemo(() => {
-    if(!sounds) return null;
-
-    return sounds.filter(
-      s => !selectDecade || s.decade == selectDecade
-    );
-  }, [sounds, selectDecade])
+  const decades = useMemo(() => {
+    if (!combinedFilteredSounds) return [];
+    return getDecades(combinedFilteredSounds);
+  }, [combinedFilteredSounds]);
 
 
   return (
@@ -71,7 +69,7 @@ export const SoundMap = () => {
       gestureHandling={'greedy'}
       disableDefaultUI>
 
-      {categoryFilteredSounds && <ClusteredSoundMarkers sounds={categoryFilteredSounds} />}
+      {combinedFilteredSounds && <ClusteredSoundMarkers sounds={combinedFilteredSounds} />}
 
       {/* <AdvancedMarker
           position={{lat: 49.28, lng: -123.0}}

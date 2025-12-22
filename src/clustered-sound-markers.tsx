@@ -81,8 +81,9 @@ export const ClusteredSoundMarkers = ({sounds}: ClusteredSoundMarkersProps) => {
         <InfoWindow
           anchor={markers[selectedSoundKey]}
           onCloseClick={handleInfoWindowClose}>
-          {selectedSound?.decade}
-          {selectedSound?.description}
+          {selectedSound?.properties.name} <br></br>
+          {selectedSound?.properties.description} <br></br>
+          <audio controls src={"https://object-arbutus.cloud.computecanada.ca/soundscapes-public/" + selectedSound?.properties.soundfile}> </audio>
         </InfoWindow>
       )}
     </>

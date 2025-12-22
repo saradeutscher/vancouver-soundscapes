@@ -8,7 +8,7 @@ type ControlPanelProps = {
   decades: Array<CategoryData>;
   onCategoryChange: (value: string | null) => void;
   onThemeChange: (value: string | null) => void;
-  onDecadeChange: (value: string | null) => void;
+  onDecadeChange: (value: number | null) => void;
 }
 
 export const ControlPanel = ({
@@ -35,7 +35,7 @@ export const ControlPanel = ({
 
   const handleDecadeChange = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
-      onDecadeChange(e.target.value || null);
+      onDecadeChange(Number(e.target.value) || null);
     },
     [onDecadeChange]
   );

@@ -1,35 +1,257 @@
 [
   {
-    "fileno": 1.2,
-    "decade": "1970",
-    "description": "Columbia/Hastings, really mostly light traffic, no talking very quiet chatting at one point",
-    "position": {
-      "lat": 49.40,
-      "lng": -123.52
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.134193, 49.301734]",
+      "type": "Point"
     },
-    "category": "ambience",
-    "theme": "cityscape"
+    "properties": {
+      "name": "Stanley Park Railway",
+      "decade": 1970,
+      "description": "March 25, 1973 (Sunday)",
+      "soundfile": "Van82B3.wav",
+      "category": "effects; ambience",
+      "theme": "nature; cityscape; transport; tourism",
+      "images": "",
+      "notes": "children's train passing at first, then great quiet, again HPF, music from wireless, crows, quiet voices, dog barking, seaplane audible v. close by"
+    }
   },
   {
-    "fileno": 1.2,
-    "decade": "1970",
-    "description": "Columbia/Hastings, really mostly light traffic, no talking very quiet chatting at one point",
-    "position": {
-      "lat": 49.40,
-      "lng": -123.53
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.069491, 49.268993]",
+      "type": "Point"
     },
-    "category": "test",
-    "theme": "cityscape"
+    "properties": {
+      "name": "Soundwalk: Commercial Drive, Gallo d'Oro, 2nd Ave and surroundings",
+      "decade": 1970,
+      "description": "May 17, 1973 (Thursday)",
+      "soundfile": "Van87C6.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": "exact route uncertain, includes former Gallo d'Oro restaurant (pin location) and immediate surroundings"
+    }
   },
   {
-    "fileno": 1.3,
-    "decade": "1970",
-    "description": "Columbia/Hastings, really mostly light traffic, no talking very quiet chatting at one point",
-    "position": {
-      "lat": 49.43,
-      "lng": -123.2
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.118377, 49.298049]",
+      "type": "Point"
     },
-    "category": "ambience",
-    "theme": "cityscape"
+    "properties": {
+      "name": "Nine O'Clock Gun",
+      "decade": 1970,
+      "description": "July 12, 1973 (Thursday), 8:52 p.m.",
+      "soundfile": "Van116C4.wav",
+      "category": "effects; ambience",
+      "theme": "nature; people; cityscape",
+      "images": "",
+      "notes": "nine o'clock gun and harbour ambience"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.099690, 49.283470]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Main & Powell",
+      "decade": 1970,
+      "description": "July 31, 1973 (Tuesday)",
+      "soundfile": "Van118A1.wav",
+      "category": "effects; ambience",
+      "theme": "cityscape",
+      "images": "",
+      "notes": "main & alexander? sirens, light traffic, talking; accident?"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.099865, 49.280453]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Main & Pender",
+      "decade": 1970,
+      "description": "September 20, 1972 (Wednesday)",
+      "soundfile": "Van5A1.wav",
+      "category": "ambience",
+      "theme": "cityscape",
+      "images": "",
+      "notes": "Main & Pender, regular but faint traffic, very faint voices"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.139186, 49.297518]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Lost Lagoon",
+      "decade": 1970,
+      "description": "March 19, 1973 (Monday)",
+      "soundfile": "Van62A2.wav",
+      "category": "ambience",
+      "theme": "nature; cityscape",
+      "images": "",
+      "notes": "Lost Lagoon (north, by the fountain); birds crying, motorboat passing, wind, almost no traffic audible"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[123.155612, 49.268295]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Kitsilano street festival, music bands",
+      "decade": 1970,
+      "description": "Februrary 3, 1973 (Saturday)",
+      "soundfile": "WSP MP3s/Van22C4.mp3",
+      "category": "events; scenes",
+      "theme": "festivals; events; cityscape",
+      "images": "",
+      "notes": "Kits 4th Ave festival"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.156642, 49.268316]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Kitsilano street festival, Hare Krishna chant",
+      "decade": 1970,
+      "description": "Februrary 3, 1973 (Saturday)",
+      "soundfile": "WSP MP3s/Van22B2.mp3",
+      "category": "events; scenes",
+      "theme": "festivals; events; cityscape",
+      "images": "",
+      "notes": "Kits 4th Ave festival, Hare Krishna"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.152087, 49.276485]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Kitsilano Beach (north)",
+      "decade": 1970,
+      "description": "March 21, 1973 (Wednesday)",
+      "soundfile": "Van71C4.wav",
+      "category": "ambience",
+      "theme": "nature; cityscape",
+      "images": "",
+      "notes": "very quiet ambience, Kits Beach parking lot, almost no traffic"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.102179, 49.281246]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Hastings & Columbia",
+      "decade": 1970,
+      "description": "September 13, 1972 (Wednesday)",
+      "soundfile": "Van1A3.wav",
+      "category": "ambience",
+      "theme": "cityscape",
+      "images": "",
+      "notes": "Columbia/Hastings, really mostly light traffic, no talking very quiet chatting at one point"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.133910, 49.271042]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Granville Island industrial area (drivearound)",
+      "decade": 1970,
+      "description": "February 15, 1973 (Thursday)",
+      "soundfile": "Van32B6.wav",
+      "category": "ambience",
+      "theme": "industrial",
+      "images": "",
+      "notes": "passing through an industrial area, low rumble, machinery, etc."
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.108936, 49.284393]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Gastown street musicians",
+      "decade": 1970,
+      "description": "June 3, 1973 (Sunday)",
+      "soundfile": "Van100C6.wav",
+      "category": "ambience; events; scenes; soundwalk",
+      "theme": "cityscape; people; culture",
+      "images": "",
+      "notes": "somewhere in Gastown (mapped as Water/Cambie but uncertain); stree ambinece, steps, talking, then various buskers up close"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.099505, 49.285746]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Foot of Main (CN pier)",
+      "decade": 1970,
+      "description": "March 12, 1973 (Monday), 8:57 p.m.",
+      "soundfile": "Van55A1.wav",
+      "category": "effects; ambience",
+      "theme": "industrial; cityscape",
+      "images": "",
+      "notes": "CN station at foot of Main St, very rich, a soundmark, contant light rain, whistles, bells, train sounds, rumbles, 9 o'clock gun at 3:35"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.139958, 49.272803]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Fishermen's Wharf",
+      "decade": 1970,
+      "description": "June 5, 1973 (Thursday)",
+      "soundfile": "Van94D7.wav",
+      "category": "ambience",
+      "theme": "transport; industrial",
+      "images": "",
+      "notes": "train sound and police whistle, denser ambience"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.109542, 49.289572]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Canada Place (west prow)",
+      "decade": 1970,
+      "description": "September 13, 1972 (Wednesday)",
+      "soundfile": "Van2A1.wav",
+      "category": "ambience",
+      "theme": "transport; cityscape",
+      "images": "",
+      "notes": "Canada Place, one of the prows (side unknown); idling steamer, waves splashing, seagulls, sea plane passing very close by, later voices of people"
+    }
   }
 ]
