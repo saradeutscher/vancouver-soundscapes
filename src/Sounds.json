@@ -1902,5 +1902,192 @@
       "images": "",
       "notes": ""
     }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.135342,49.272525]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Granville Island Public Market (soundwalk)",
+      "decade": 2020,
+      "description": "August 13, 2024 (Tuesday), 4:10 p.m.",
+      "soundfile": "31 20240813 4_10pm Granville Island Public Market.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 13-08-2024, 16 53 18.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.070426,49.273456]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Grandview Park: Orange Shirt Day Celebrations",
+      "decade": 2020,
+      "description": "September 30, 2024 (Monday), 1:00 p.m.",
+      "soundfile": "18.wav; 19.wav; 20.wav; 21.wav; 22.wav",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 30-09-2024, 12 58 28.jpg; WSP JPEGs/Photo 30-09-2024, 13 38 00.jpg",
+      "notes": "Sound files descriptions: Jarred Gennaile; Jarred Gennaile, Josiah Amaya, crowd; Anjeanette Dawson; Kazezsemaka, aka Myra Pierre; Strawberry Spirit Singers"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.108857,49.284435]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Gastown Steam Clock",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 2:25 p.m.",
+      "soundfile": "20240719 2_25pm Gastown Steamclock.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 19-07-2024, 14 25 43.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.100672,49.285123]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Foot of Main (CRAB Park)",
+      "decade": 2020,
+      "description": "July 25, 2024 (Thursday), 8:57 p.m.",
+      "soundfile": "20240725 8_57pm Crab Park foot of Main.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 25-07-2024, 21 15 45.jpg; WSP JPEGs/Photo 25-07-2024, 21 15 48.jpg; WSP JPEGs/Photo 25-07-2024, 21 18 14.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.139637,49.271776]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Fishermen's Wharf",
+      "decade": 2020,
+      "description": "July 25, 2024 (Thursday), 4:23 p.m.",
+      "soundfile": "20240725 4_23 pm Falls Creek Wharf office btw bridges.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 25-07-2024, 16 29 19.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.103348,49.2795]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Dr. Sun Yat-Sen Park",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 3:50 p.m.",
+      "soundfile": "20240719 3_50pm Sun Yat Sen Garden.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 19-07-2024, 15 50 41.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.110476,49.289467]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Canada Place (west prow)",
+      "decade": 2020,
+      "description": "September 5, 2024 (Thursday), 7:50 p.m.",
+      "soundfile": "20240905 7_50pm Canada Place northern tip downstairs.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 05-09-2024, 19 57 44.jpg; WSP JPEGs/Photo 05-09-2024, 19 46 49.jpg; WSP JPEGs/Photo 05-09-2024, 20 08 25.jpg; WSP JPEGs/Photo 05-09-2024, 19 35 44.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.139596,49.275221]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Burrard Civic Marina",
+      "decade": 2020,
+      "description": "July 25, 2024 (Thursday), 3:30 p.m.",
+      "soundfile": "20240725 3_30pm Burrard Civic Marina bench by office.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 25-07-2024, 15 39 52.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.1168,49.300684]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Brockton Point",
+      "decade": 2020,
+      "description": "July 25, 2024 (Friday), 11:55 a.m.",
+      "soundfile": "20240726 11_55am Brockton Point Lighthouse OCanada Horn.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 26-07-2024, 12 01 09.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.138118,49.302807]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Beaver Lake - dawn chorus",
+      "decade": 2020,
+      "description": "October 10, 2024 (Thursday), 7:30 a.m.",
+      "soundfile": "20241010 7_30am Beaver Lake dawn.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 10-10-2024, 07 38 17.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.13785,49.30288]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Beaver Lake",
+      "decade": 2020,
+      "description": "July 26, 2024 (Friday), 12:27 p.m.",
+      "soundfile": "20240726 12_27pm Beaver Lake SE.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 26-07-2024, 12 28 10.jpg",
+      "notes": ""
+    }
   }
 ]
