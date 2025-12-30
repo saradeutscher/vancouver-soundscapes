@@ -99,3 +99,25 @@ body {
   margin: 8px 0;
 }
 
+.filter-options{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+
+select {
+  max-width: 75%;
+  min-width: 75%;
+}
+
+.sound-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 0px;
+  width: 300px;
+  height: 100%;
+  align-items: center;
+}

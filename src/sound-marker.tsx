@@ -28,15 +28,22 @@ export const SoundMarker = (props: SoundMarkerProps) => {
     [setMarkerRef, sound.key]
   );
 
-  const point = getLatLng(sound.geometry);
+  // clunky filtering for now since I haven't dealt with soundwalks
+  const point = (sound.geometry.type == "Point") ? getLatLng(sound.geometry) : null;
+
+  // blue marker for points, purple markers for soundwalks
+  const markerColor: string[] = (sound.geometry.type == "Point") ? ['#22ccff', '#1e89a1', '#0f677a'] : ['#C422FF', '#340047', '#560075'];
 
   return (
-    <AdvancedMarker position={point} ref={ref} onClick={handleClick}>
-      <Pin
-        background={'#22ccff'}
-        borderColor={'#1e89a1'}
-        glyphColor={'#0f677a'}/>
-    </AdvancedMarker>
+    <>
+    {(sound.geometry.type == "Point") &&
+    (<AdvancedMarker position={point} ref={ref} onClick={handleClick}>
+    <Pin
+      background={markerColor[0]}
+      borderColor={markerColor[1]}
+      glyphColor={markerColor[2]}/>
+    </AdvancedMarker>)}
+    </>
   )
 }
 

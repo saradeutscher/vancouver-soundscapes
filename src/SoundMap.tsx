@@ -1,21 +1,13 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { APIProvider, Map } from '@vis.gl/react-google-maps';
-
+import { APIProvider, Map} from '@vis.gl/react-google-maps';
 import {ControlPanel} from './control-panel';
-import {MarkerWithInfowindow} from './marker-with-infowindow';
 
 import{getCategories, getThemes, getDecades, loadSoundDataset, Sound} from './Sounds';
 import {ClusteredSoundMarkers} from './clustered-sound-markers';
-
-import {
-  AdvancedMarker,
-  InfoWindow,
-  Marker,
-  Pin
-} from '@vis.gl/react-google-maps';
+import {Polyline} from './polyline';
 
 const API_KEY =
-  globalThis.GOOGLE_MAPS_API_KEY ?? ("");
+  globalThis.GOOGLE_MAPS_API_KEY ?? ("AIzaSyAd7LcZOYNuhS91Yf4uKqjCkXTWG-ggU-A");
 
 export const SoundMap = () => {
   const [sounds, setSounds] = useState<Sound[]>();
@@ -57,33 +49,33 @@ export const SoundMap = () => {
     return getDecades(combinedFilteredSounds);
   }, [combinedFilteredSounds]);
 
+  const flightPlanCoordinates = [
+    { lat: 37.772, lng: -122.214 },
+    { lat: 21.291, lng: -157.821 },
+    { lat: -18.142, lng: 178.431 },
+    { lat: -27.467, lng: 153.027 },
+  ]
 
   return (
     <APIProvider
       solutionChannel='GMP_devsite_samples_v3_rgmbasicmap'
       apiKey={API_KEY}>
     <Map
-      mapId={''}
-      defaultZoom={11}
+      mapId={'54137f32133013761e8f2a9d'}
+      defaultZoom={12}
       defaultCenter={{ lat: 49.28, lng: -123.12 }}
       gestureHandling={'greedy'}
       disableDefaultUI>
 
       {combinedFilteredSounds && <ClusteredSoundMarkers sounds={combinedFilteredSounds} />}
-
-      {/* <AdvancedMarker
-          position={{lat: 49.28, lng: -123.0}}
-          clickable={true}
-          onClick={() => alert('marker was clicked!')}
-          title={'AdvancedMarker with customized pin.'}>
-           <Pin
-            background={'#22ccff'}
-            borderColor={'#1e89a1'}
-            glyphColor={'#0f677a'}></Pin>
-      </AdvancedMarker>
-
-      <MarkerWithInfowindow>
-      </MarkerWithInfowindow> */}
+      <Polyline
+          path={flightPlanCoordinates}
+          options={{
+            strokeColor: "#FF0000",
+            strokeOpacity: 1,
+            strokeWeight: 3,
+          }}
+        />
 
     </Map>
 

@@ -46,8 +46,19 @@ export const ControlPanel = ({
         <p>
           Use the controls below to filter the sounds shown on the map.
         </p>
-        <p>
-          <label> Filter by Category:</label>{' '}
+        <p className="filter-options">
+        <label> Filter by Decade:</label>{' '}
+          <select onChange={handleDecadeChange}>
+            <option value={''}>All sounds</option>
+
+            {decades.map(decade => (
+              <option key={decade.key} value={decade.key}>
+                {decade.label} ({decade.count})
+              </option>
+            ))}
+          </select>
+
+          <label> Filter by Class:</label>{' '}
           <select onChange={handleCategoryChange}>
             <option value={''}>All sounds</option>
 
@@ -65,17 +76,6 @@ export const ControlPanel = ({
             {themes.map(theme => (
               <option key={theme.key} value={theme.key}>
                 {theme.label} ({theme.count})
-              </option>
-            ))}
-          </select>
-
-          <label> Filter by Year:</label>{' '}
-          <select onChange={handleDecadeChange}>
-            <option value={''}>All sounds</option>
-
-            {decades.map(decade => (
-              <option key={decade.key} value={decade.key}>
-                {decade.label} ({decade.count})
               </option>
             ))}
           </select>

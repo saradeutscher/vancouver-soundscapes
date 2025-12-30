@@ -1,24 +1,5 @@
 import sounds from './Sounds.json';
 
-
-// {
-//   "type": "Feature",
-//   "geometry": {
-//     "coordinates": "[-123.134193, 49.301734]",
-//     "type": "Point"
-//   },
-//   "properties": {
-//     "name": "Stanley Park Railway",
-//     "decade": 1970,
-//     "description": "March 25, 1973 (Sunday)",
-//     "soundfile": "Van82B3.wav",
-//     "category": "effects; ambience",
-//     "theme": "nature; cityscape; transport; tourism",
-//     "images": "",
-//     "notes": "children's train passing at first, then great quiet, again HPF, music from wireless, crows, quiet voices, dog barking, seaplane audible v. close by"
-//   }
-// }
-
 export type Sound = {
   key: string;
   type: string;
@@ -37,21 +18,6 @@ export type Sound = {
     notes: string;
   };
 };
-
-// old format:
-  // {
-  //   "name": "Test2",
-  //   "type": "point",
-  //   "decade": "1970",
-  //   "description": "Columbia/Hastings, really mostly light traffic, no talking very quiet chatting at one point",
-  //   "soundfile": "n/a",
-  //   "position": {
-  //     "lat": 49.43,
-  //     "lng": -123.2
-  //   },
-  //   "category": "ambience",
-  //   "theme": "test2"
-  // }
 
 export type CategoryData = {
   key: string;

@@ -19,6 +19,23 @@
   {
     "type": "Feature",
     "geometry": {
+      "coordinates": "[[-123.067067,49.268614],[-123.065905,49.268605],[-123.065919,49.267035],[-123.069534,49.267055],[-123.069498,49.268767],[-123.067893,49.268753]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: East Van rectangle (2nd, Victoria, 4th, Commercial)",
+      "decade": 1970,
+      "description": "April 30, 1973 (Monday), 5 p.m.",
+      "soundfile": "Van86B3.wav",
+      "category": "soundwalk",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
       "coordinates": "[-123.069491, 49.268993]",
       "type": "Point"
     },
@@ -104,7 +121,7 @@
   {
     "type": "Feature",
     "geometry": {
-      "coordinates": "[123.155612, 49.268295]",
+      "coordinates": "[-123.155612, 49.268295]",
       "type": "Point"
     },
     "properties": {
@@ -252,6 +269,1638 @@
       "theme": "transport; cityscape",
       "images": "",
       "notes": "Canada Place, one of the prows (side unknown); idling steamer, waves splashing, seagulls, sea plane passing very close by, later voices of people"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.139551, 49.274275]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "By Kitsilano Tresle Bridge (now Burrard Street Bridge)",
+      "decade": 1970,
+      "description": "June 5, 1973 (Tuesday)",
+      "soundfile": "Van33A2.wav",
+      "category": "ambience",
+      "theme": "transport; industrial",
+      "images": "",
+      "notes": "somewhere around Senakw/under Burrard Bridge; no bells, just regular train rumble, train honks at one point"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.139733, 49.275487]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Burrard Civic Marina",
+      "decade": 1970,
+      "description": "March 21, 1973 (Wednesday)",
+      "soundfile": "Van71D6.wav",
+      "category": "ambience",
+      "theme": "nature; cityscape; transport",
+      "images": "",
+      "notes": "Burrard Marina; quiet ambience, low rumble, tinkling noise, water splashing, distant traffic"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.116899, 49.300752]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Brockton Point",
+      "decade": 1970,
+      "description": "February 8, 1973 (Thursday)",
+      "soundfile": "Van24B3.wav",
+      "category": "ambience",
+      "theme": "nature; cityscape; transport; tourism",
+      "images": "",
+      "notes": "hum, birds crying, a bunch of seaplanes passing very close one after another, waves splashing, some pleasant chain rattle, very subtle voices, distant music"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.137582, 49.302999]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Beaver Lake",
+      "decade": 1970,
+      "description": "February 8, 1973 (Thursday)",
+      "soundfile": "Van82B2.wav",
+      "category": "ambience",
+      "theme": "nature; cityscape",
+      "images": "",
+      "notes": "hum of traffic, ducks quaking, footsteps, sprase distatn voices"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.144419, 49.278026]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Vanier Park",
+      "decade": 1990,
+      "description": "September 8, 1993 (Wednesday), 6:06 p.m.",
+      "soundfile": "VDat5.13.wav",
+      "category": "effects; ambience",
+      "theme": "nature; cityscape",
+      "images": "",
+      "notes": "Vanier Pond, kites, dogs, buzzing"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.139545,49.274563]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Under Burrard Street Bridge",
+      "decade": 1990,
+      "description": "September 12, 1993 (Sunday), 12:12 p.m.",
+      "soundfile": "WSP MP3s/VDat6.15.mp3",
+      "category": "ambience",
+      "theme": "transport",
+      "images": "",
+      "notes": "under Burrard Bridge, Kits side, masts tinkling, distant traffic, regular thumps of traffic over bridge connectors"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.104382,49.283444],[-123.108919,49.284262]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Water (south), Carrall to Cambie",
+      "decade": 1990,
+      "description": "April 26, 1995 (Wednesday), 1:45 p.m.",
+      "soundfile": "VDat4.23.wav",
+      "category": "ambience; soundwalk",
+      "theme": "cityscape; people; commerce",
+      "images": "",
+      "notes": "soundwalk: Water (south) from Gassy Jack heading west; traffic, birds, voices in business, coughing, distant street music, then guitar up close, buses, pretty generic/classic city ambience; audibly changing acoustics"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.092569,49.297329],[-123.101313,49.290594],[-123.104779,49.288509],[-123.110395,49.286518],[-123.110773,49.28631],[-123.111272,49.286028],[-123.112008,49.285622],[-123.111821,49.285502],[-123.112007,49.285353]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Seabus to Seymour/Cordova (SW) via Waterfront Stn",
+      "decade": 1990,
+      "description": "August 27, 1993 (Friday)",
+      "soundfile": "VDat3.9.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.102245,49.280495],[-123.099952,49.280448]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Pender (north), Columbia to Main",
+      "decade": 1990,
+      "description": "September 10, 1993 (Friday)",
+      "soundfile": "VDat4.13.wav",
+      "category": "ambience; soundwalk",
+      "theme": "commerce; people; communal",
+      "images": "",
+      "notes": "soundwalk: Pender from Columbia to Main, Chinese flute music, almost no traffic, periods of near complete quiet, sparse voices in nearby businesses"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.097137,49.279412],[-123.099651,49.279449]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Keefer (south), Gore to Main",
+      "decade": 1990,
+      "description": "September 10, 1993 (Friday)",
+      "soundfile": "VDat4.16.wav",
+      "category": "ambience; soundwalk",
+      "theme": "commerce; people; communal",
+      "images": "",
+      "notes": "soundwalk: Keefer from Gore to Main, irregular traffic, pleasant resturant wallah, music from radios, children, grocers, construction, sound of walking on wooden planks"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.099682,49.27951],[-123.097113,49.279485]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Keefer (north), Main to Gore",
+      "decade": 1990,
+      "description": "September 10, 1993 (Friday)",
+      "soundfile": "VDat4.15.wav",
+      "category": "ambience; soundwalk",
+      "theme": "commerce; people; communal",
+      "images": "",
+      "notes": "soundwalk: Keefer from Main to Gore, rattling cart, general talk in Chinese, shouting/singing, wireless sounds, passing traffic, periods of near complete quiet, construction sometimes"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.131999,49.301161],[-123.131972,49.301558],[-123.131623,49.301949],[-123.131835,49.302005],[-123.132171,49.301729],[-123.132404,49.301708],[-123.132602,49.301667],[-123.133119,49.301881],[-123.13326,49.301703],[-123.133451,49.301701],[-123.133481,49.301653],[-123.133762,49.301653],[-123.133984,49.301668],[-123.134154,49.301694]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Japanese Canadian War Memorial to Stanley Park Railway",
+      "decade": 1990,
+      "description": "April 28, 1995 (Friday), 1 p.m.",
+      "soundfile": "VDat9.8.wav",
+      "category": "effects; ambience; soundwalk",
+      "theme": "nature; cityscape; transport; culture",
+      "images": "",
+      "notes": "starts with amplified Chinese fiddle, voices quite dense, great narrative arc of the recording, train passing"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.099963,49.281236],[-123.102065,49.281281]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Hastings (south), Main to Columbia",
+      "decade": 1990,
+      "description": "September 10, 1993 (Friday)",
+      "soundfile": "VDat4.12 part 1.wav",
+      "category": "ambience; soundwalk",
+      "theme": "commerce; people; communal",
+      "images": "",
+      "notes": "soundwalk: Hastings from Main to Columbia; pretty busy traffic, occasional voices, rattling sounds, buses, lots of footsteps; enters a busier scene with more babble/cursing, birds, honking"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.069785,49.26971],[-123.069884,49.269771],[-123.069778,49.269749],[-123.06966,49.274835]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Commercial Drive (west), Napier to 1st",
+      "decade": 1990,
+      "description": "April 28, 1995 (Friday)",
+      "soundfile": "VDat8.25.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.134841,49.272697]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Outside Granville Island Public Market",
+      "decade": 1990,
+      "description": "September 9, 1993 (Thursday), 3:05 p.m.",
+      "soundfile": "VDat5.17.wav",
+      "category": "ambience",
+      "theme": "people; communal",
+      "images": "",
+      "notes": "public square ambience"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.117801,49.298042]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Nine O'Clock Gun",
+      "decade": 1990,
+      "description": "August 27, 1993 (Friday), 8:55 p.m.",
+      "soundfile": "VDat3.15.wav",
+      "category": "effects; ambience",
+      "theme": "nature; cityscape; soundmark; people; tourism",
+      "images": "",
+      "notes": "birds, people bubbly talking, distant droning, gun fires at 4:45, very loud and echoey, followed by laughter, commotion among people, v. interesting"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.09992,49.280452]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Main & Pender",
+      "decade": 1990,
+      "description": "September 10, 1993 (Friday)",
+      "soundfile": "VDat4.14.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.0999,49.281218]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Main & Hastings SW",
+      "decade": 1990,
+      "description": "September 10, 1993 (Friday)",
+      "soundfile": "VDat4.11.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.130976,49.302544]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Lumberman's Arch Picnic Area",
+      "decade": 1990,
+      "description": "April 28, 1995 (Friday), 12:45 p.m.",
+      "soundfile": "VDat9.5.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.139661,49.297278]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Lost Lagoon",
+      "decade": 1990,
+      "description": "August 27, 1993 (Friday)",
+      "soundfile": "VDat3.12.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.158071,49.273152]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Kitsilano Pool",
+      "decade": 1990,
+      "description": "September 8, 1993 (Wednesday), 4:55 p.m.",
+      "soundfile": "VDat5.7.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.15371,49.273921]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Kitsilano Beach Tennis Courts",
+      "decade": 1990,
+      "description": "September 8, 1993 (Wednesday), 5:02 p.m.",
+      "soundfile": "WSP MP3s/VDat5.8.mp3",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.153872,49.274416]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Kitsilano Beach (concession)",
+      "decade": 1990,
+      "description": "September 8, 1993 (Wednesday), 5:16 p.m.",
+      "soundfile": "VDat5.9.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.153906,49.274903]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Kitsilano Beach",
+      "decade": 1990,
+      "description": "September 8, 1993 (Friday), 5:21 p.m.",
+      "soundfile": "VDat5.10.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.102141,49.28128]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Hastings & Columbia",
+      "decade": 1990,
+      "description": "September 10, 1993 (Friday)",
+      "soundfile": "VDat4.12 part 2.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.14903,49.277797]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Hadden Beach",
+      "decade": 1990,
+      "description": "September 8, 1993 (Wednesday), 5:43 p.m.",
+      "soundfile": "VDat5.11.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.135165,49.272385]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Granville Island Public Market (soundwalk)",
+      "decade": 1990,
+      "description": "September 9, 1993 (Thursday), 3:11 p.m.",
+      "soundfile": "VDat5.18.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.108904,49.28442]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Gastown Steam Clock",
+      "decade": 1990,
+      "description": "April 26, 1995 (Wednesday), 1:30 p.m.",
+      "soundfile": "VDat4.17.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.139513,49.271587]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Fishermen's Wharf",
+      "decade": 1990,
+      "description": "September 9, 1993 (Thursday), 2:45 p.m.",
+      "soundfile": "VDat5.16.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.103251,49.279594]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Dr. Sun Yat-Sen Park",
+      "decade": 1990,
+      "description": "April 26, 1995 (Friday), 1:25 p.m.",
+      "soundfile": "VDat8.21.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.110003,49.289513]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Canada Place (west prow)",
+      "decade": 1990,
+      "description": "September 10, 1993 (Friday)",
+      "soundfile": "VDat4.3.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.139926,49.275771]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Burrard Civic Marina",
+      "decade": 1990,
+      "description": "September 9, 1993 (Thursday), 2:10 p.m.",
+      "soundfile": "VDat5.14.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.116842,49.300723]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Brockton Point",
+      "decade": 1990,
+      "description": "April 28, 1995 (Friday), 11:55 a.m.",
+      "soundfile": "VDat9.3.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.13744,49.30357]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Beaver Lake",
+      "decade": 1990,
+      "description": "April 28, 1995 (Friday), 12 p.m.",
+      "soundfile": "VDat9.13.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.134139,49.301736]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Stanley Park Railway",
+      "decade": 2010,
+      "description": "September 9, 2011 (Friday), 12:30 p.m.",
+      "soundfile": "VFile8.9.wav",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/2010s/SP Railway booth.jpg; WSP JPEGs/2010s/SP Railway sign.jpg; WSP JPEGs/2010s/SP Railway.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.069634,49.26964],[-123.069562,49.273524]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: World Cup, Commercial Drive, Grandview Park to 1st Ave",
+      "decade": 2010,
+      "description": "July 11, 2010 (Sunday), 2:10 p.m., World Cup Fulltime. Roads closed, walking on road.",
+      "soundfile": "VFile7.2.wav",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/2010s/IMG_0920.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.069483,49.271265],[-123.069411,49.27494]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: World Cup, Commercial Drive (east), Grant to Napier",
+      "decade": 2010,
+      "description": "July 11, 2010 (Sunday), 12:30 p.m., World Cup Halftime",
+      "soundfile": "VFile7.1.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.104416,49.283578],[-123.108841,49.284405]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Water, Carrall to Cambie",
+      "decade": 2010,
+      "description": "November 10, 2010 (Wednesday), 2:51 p.m.",
+      "soundfile": "VFile11.3.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.092194,49.296975],[-123.101399,49.29044],[-123.103959,49.289085],[-123.106635,49.28776],[-123.107412,49.287508],[-123.110315,49.286507],[-123.111961,49.285622],[-123.111299,49.285186]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Seabus to Seymour/Cordova (NE) via Waterfront Stn",
+      "decade": 2010,
+      "description": "August 25, 2011 (Thursday)",
+      "soundfile": "VFile1.18.wav",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/2010s/Waterfront.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.099941,49.280335],[-123.104196,49.280411],[-123.105503,49.280635]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Pender (south), Main to Taylor",
+      "decade": 2010,
+      "description": "June 16, 2011 (Thursday), 4:23 p.m.",
+      "soundfile": "VFile15.2.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.102241,49.280473],[-123.099944,49.280429]],",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Pender (north), Columbia to Main",
+      "decade": 2010,
+      "description": "June 16, 2011 (Thursday), 4:20 p.m.",
+      "soundfile": "VFile15.5.wav",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/2010s/Pender north side soundwalk.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.09707,49.279379],[-123.099672,49.279424]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Keefer (south), Gore to Main",
+      "decade": 2010,
+      "description": "June 16, 2011 (Saturday), 1:40 p.m.",
+      "soundfile": "VFile15.4.wav",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/2010s/Keefer south soundwalk.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.102323,49.279288],[-123.101207,49.279521],[-123.097058,49.279468]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Keefer (north), Columbia to Gore",
+      "decade": 2010,
+      "description": "July 16, 2011 (Thursday), 1:40 p.m.",
+      "soundfile": "VFile15.3.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.067017,49.268613],[-123.065911,49.268604],[-123.065924,49.267031],[-123.069548,49.267048],[-123.069518,49.268611],[-123.069497,49.268638],[-123.067132,49.268612]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: East Van rectangle (2nd, Victoria, 4th, Commercial)",
+      "decade": 2010,
+      "description": "September 9, 2011 (Friday), 2:10 p.m.",
+      "soundfile": "VFile7.3.wav",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/2010s/IMG_1695_1000px.jpg; WSP JPEGs/2010s/IMG_1696_1000px.jpg; WSP JPEGs/2010s/IMG_1698_1000px.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.069892,49.263914],[-123.069639,49.276757],[-123.069709,49.277041],[-123.069859,49.277276],[-123.070189,49.27751]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Commercial Drive (west), N Grandview to Adanac",
+      "decade": 2010,
+      "description": "September 9, 2011 (Friday), 3 p.m.",
+      "soundfile": "VFile7.4.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.150954,49.29509]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Second Beach, Seawall",
+      "decade": 2010,
+      "description": "August 5, 2010 (Thursday), 6:30 p.m.",
+      "soundfile": "VFile8.5.wav",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/2010s/Second Beach.jpg; WSP JPEGs/2010s/Second Beach view.jpg; WSP JPEGs/2010s/Second Beach pool.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.104331,49.283396]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Maple Tree Square",
+      "decade": 2010,
+      "description": "November 10, 2010 (Wednesday), 2:45 p.m.",
+      "soundfile": "VFile11.2.wav",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/2010s/Maple Tree Square.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.099921,49.280489]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Main & Pender",
+      "decade": 2010,
+      "description": "June 16, 2011 (Thursday), 2:03 p.m.",
+      "soundfile": "VFile15.6.wav",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/2010s/Main and Pender.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.140752,49.29714]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Lost Lagoon",
+      "decade": 2010,
+      "description": "August 5, 2010 (Thursday), 6 p.m.",
+      "soundfile": "VFile8.2.wav",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/2010s/Lost Lagoon path.jpg; WSP JPEGs/2010s/Lost Lagoon city.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.135256,49.272458]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Granville Island Public Market (soundwalk)",
+      "decade": 2010,
+      "description": "November 5, 2011 (Saturday), 4:25 p.m.",
+      "soundfile": "VFile14.4.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.108885,49.284386]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Gastown Steam Clock",
+      "decade": 2010,
+      "description": "November 10, 2010 (Wednesday), 2:25 p.m.",
+      "soundfile": "VFile11.1.wav",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/2010s/Gastown Steam Clock.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.103331,49.279625]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Dr. Sun Yat-Sen Park",
+      "decade": 2010,
+      "description": "June 16, 2011 (Thursday), 4:09 p.m.",
+      "soundfile": "VFile15.1.wav",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/2010s/Sun Yat-Sen.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.110803,49.289362]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Canada Place (west prow)",
+      "decade": 2010,
+      "description": "June 4, 2010 (Friday), 3:40 p.m.",
+      "soundfile": "VFile1.1.wav; VFile1.2.wav",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/2010s/Canada Place.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.116912,49.300843]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Brockton Point",
+      "decade": 2010,
+      "description": "September 9, 2011 (Friday), 11:54 a.m.",
+      "soundfile": "VFile8.8.wav",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/2010s/Brockton Point 1.jpg; WSP JPEGs/2010s/Brockton Point 2.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.137496,49.303783]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Beaver Lake",
+      "decade": 2010,
+      "description": "September 9, 2011 (Friday), 12:49 p.m.",
+      "soundfile": "VFile8.10.wav",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/2010s/Beaver Lake.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.120661,49.298957]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Totem Poles",
+      "decade": 2020,
+      "description": "August 5, 2020 (Wednesday), 5:15 a.m.",
+      "soundfile": "Van12_2020.WAV",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.151159,49.295015]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Second Beach Pool",
+      "decade": 2020,
+      "description": "April 28, 2020 (Tuesday), during COVID closure",
+      "soundfile": "Van10.WAV",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.150505,49.300481]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Lovers Walk",
+      "decade": 2020,
+      "description": "May 22, 2020 (Friday), 4:40 a.m. (dawn)",
+      "soundfile": "Van19_2020.WAV",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.133272,49.271025]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Heidelberg Materials",
+      "decade": 2020,
+      "description": "July 22, 2020 (Wednesday)",
+      "soundfile": "Van26_2020.WAV",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.138462,49.302782]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Beaver Lake - dawn chorus",
+      "decade": 2020,
+      "description": "May 15, 2020 (Friday), 4:50 a.m. (dawn)",
+      "soundfile": "Van16.WAV",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.139646, 49.274394]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "By Burrard Street Bridge (Senakw construction)",
+      "decade": 2020,
+      "description": "July 25, 2024 (Thursday), 3:58 p.m.",
+      "soundfile": "20240725 3_58pm Senakw construction by the bridge.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 25-07-2024, 16 03 38.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.141882,49.277884]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Vanier Park Flagpole",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 6:05 p.m.",
+      "soundfile": "36 20240719 6_05pm Vanier Park flagpole.WAV",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.144556,49.278035]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Vanier Park",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 6 p.m.",
+      "soundfile": "35 20240719 6pm Vanier Pond.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 19-07-2024, 18 02 28.jpg; WSP JPEGs/Photo 19-07-2024, 18 02 30.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.139674,49.274535]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Under Burrard Street Bridge",
+      "decade": 2020,
+      "description": "July 25, 2024 (Thursday), 3:53 p.m.",
+      "soundfile": "20240725 3_49pm under Burrard Bridge.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 25-07-2024, 15 50 09.jpg; WSP JPEGs/Photo 25-07-2024, 16 03 42.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.120625,49.298907]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Totem Poles",
+      "decade": 2020,
+      "description": "October 10, 2024 (Thursday), 7:04 a.m.",
+      "soundfile": "20241010 7_04am Totem Poles dawn.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 10-10-2024, 07 10 07.jpg; WSP JPEGs/Photo 10-10-2024, 07 10 56.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.134245,49.301716]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Stanley Park Railway",
+      "decade": 2020,
+      "description": "July 26, 2024 (Friday), 12:50 p.m.",
+      "soundfile": "20240726 12_50pm Stanley Park Railway arriving.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 26-07-2024, 13 02 10.jpg; WSP JPEGs/Photo 26-07-2024, 13 10 21.jpg; WSP JPEGs/Photo 26-07-2024, 13 01 44.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.104399,49.283603],[-123.10883,49.284416]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Water (north), Carrall to Cambie",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 2:43 p.m.",
+      "soundfile": "20240719 2_43pm Maple Tree Square to Steamclock.WAV",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.092794,49.29743],[-123.093739,49.296514],[-123.10127,49.29079],[-123.103437,49.289404],[-123.105948,49.288173],[-123.110411,49.286549],[-123.111935,49.285699],[-123.112037,49.285625],[-123.111854,49.285503],[-123.112047,49.285347]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Seabus to Seymour/Cordova (SW) via Waterfront Stn",
+      "decade": 2020,
+      "description": "August 22, 2024 (Thursday), 3:50 p.m.",
+      "soundfile": "20240822 3_47pm from Seabus to Seymour and Cordova SW.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 22-08-2024, 15 48 35.jpg; WSP JPEGs/Photo 22-08-2024, 15 07 35.jpg; WSP JPEGs/Photo 22-08-2024, 15 03 00.jpg; WSP JPEGs/Photo 22-08-2024, 15 02 40.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.099908,49.280316],[-123.10421,49.28039],[-123.105539,49.280611]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Pender (south), Main to Taylor",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 3:35 p.m.",
+      "soundfile": "20240719 3_35pm Pender Main to Taylor.WAV",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.105795,49.280845],[-123.104406,49.280562],[-123.099977,49.280469]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Pender (north), Taylor to Main",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 3:30 p.m.",
+      "soundfile": "20240719 3_30pm Pender Taylor to Main.WAV",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[[-123.097081,49.279397],[-123.101184,49.279463]],[[-123.101184,49.279463],[-123.101305,49.279438],[-123.101426,49.279412],[-123.101546,49.279387],[-123.101667,49.279362],[-123.102123,49.27925]]]",
+      "type": "MultiLineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Keefer (south), Gore to Columbia",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 1:58 p.m.",
+      "soundfile": "20240719 1_58pm Keefer Gore to Columbia.WAV",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.102306,49.279314],[-123.101206,49.279537],[-123.097064,49.279491]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Keefer (north), Columbia to Gore",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 1:50 p.m.",
+      "soundfile": "20240719 1_50pm Keefer Columbia to Gore.WAV",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.135045,49.272047],[-123.133706,49.270988]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Johnston St, Granville Island Public Market to Heidelberg Materials",
+      "decade": 2020,
+      "description": "August 13, 2024 (Tuesday), 5 p.m.",
+      "soundfile": "33 20240813 5pm GIPM to industrial area SW.WAV",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[[-123.132014,49.301136],[-123.131981,49.301563],[-123.131641,49.301945],[-123.131829,49.301995],[-123.132161,49.301724],[-123.132395,49.301705],[-123.132609,49.301659],[-123.133111,49.301861],[-123.133253,49.301694],[-123.133443,49.301693],[-123.133473,49.301644],[-123.133762,49.301645],[-123.133973,49.301661],[-123.134198,49.301693]],[[-123.134198,49.301693]]]",
+      "type": "MultiLineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Japanese Canadian War Memorial to Stanley Park Railway",
+      "decade": 2020,
+      "description": "July 26, 2024 (Friday), 1:04 p.m.",
+      "soundfile": "20240726 1_04pm Japanese Can War Memorial to SP Railway SW.WAV",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.155185,49.270015],[-123.155107,49.272693],[-123.155051,49.272712],[-123.15492,49.273253],[-123.154957,49.273342],[-123.155086,49.273401],[-123.155598,49.273396],[-123.155936,49.273071],[-123.157948,49.273106],[-123.158287,49.273141],[-123.158282,49.273174]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Honda Festival of Light, Yew St (west) to Kitsilano Pool via Kitsilano Beach",
+      "decade": 2020,
+      "description": "July 27, 2024 (Saturday), 9:30 p.m.",
+      "soundfile": "20240727 9_30pm Yew and 2nd to Kits Beach Honda Festival of Light.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 27-07-2024, 21 39 03.jpg; WSP JPEGs/Photo 27-07-2024, 21 42 22.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.099929,49.281225],[-123.102082,49.281273]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Hastings (south), Main to Columbia",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 3:17 p.m.",
+      "soundfile": "20240719 3_17pm Hastings Main to Columbia.WAV",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.069615,49.262697],[-123.069588,49.266397],[-123.069391,49.276534]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "name": "Soundwalk: Commercial Drive (east), E Broadway to Venables",
+      "decade": 2020,
+      "description": "September 30, 2024 (Monday), 12:15 p.m. Truth and Reconciliation Day",
+      "soundfile": "17.wav",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.151052,49.295042]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Second Beach, Seawall",
+      "decade": 2020,
+      "description": "July 26, 2024 (Friday), 11:10 a.m.",
+      "soundfile": "20240726 11_10am Second Beach Pool.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 26-07-2024, 11 24 46.jpg; WSP JPEGs/Photo 26-07-2024, 11 24 48.jpg; WSP JPEGs/Photo 26-07-2024, 11 24 50.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.119877,49.281509]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Robson & Granville",
+      "decade": 2020,
+      "description": "September 30, 2024 (Monday), 4:18 p.m.",
+      "soundfile": "20240930 4_18pm Robson Granville.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 30-09-2024, 16 19 26.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.13479,49.272652]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Outside Granville Island Public Market",
+      "decade": 2020,
+      "description": "August 13, 2024 (Tuesday), 4:17 p.m.",
+      "soundfile": "20240813 4_17pm outside Granville Island Public Market.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 13-08-2024, 16 54 25.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.119633,49.297993]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Nine O'Clock Gun",
+      "decade": 2020,
+      "description": "August 23, 2024 (Friday), 8:57 p.m.",
+      "soundfile": "20240823 8_57pm Nine OClock Gun.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 23-08-2024, 21 00 23.jpg; WSP JPEGs/Photo 23-08-2024, 21 00 17.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.104352,49.283427]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Maple Tree Square",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 2:37 p.m.",
+      "soundfile": "20240719 2_37pm Maple Tree Square.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 19-07-2024, 14 38 01.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.099709,49.283354]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Main & Powell",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 3 p.m.",
+      "soundfile": "20240719 3pm Main and Powell.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 19-07-2024, 14 58 14.jpg; WSP JPEGs/Photo 19-07-2024, 14 58 11.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.099858,49.280493]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Main & Pender",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 2:10 p.m.",
+      "soundfile": "20240719 2_10pm Pender and Main.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 19-07-2024, 14 13 55.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.099861,49.281208]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Main & Hastings SW",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 3:11 p.m.",
+      "soundfile": "20240719 3_11pm Main and Hastings SW.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 19-07-2024, 15 13 29.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.099464,49.281463]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Main & Hastings NE",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 3:06 p.m.",
+      "soundfile": "20240719 3_06pm Main and Hastings NE.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 19-07-2024, 15 09 15.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.130989,49.302459]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Lumberman's Arch Picnic Area",
+      "decade": 2020,
+      "description": "July 26, 2024 (Friday), 1:27 p.m.",
+      "soundfile": "20240726 1_27pm Lumberman's Arch.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 26-07-2024, 13 32 42.jpg; WSP JPEGs/Photo 26-07-2024, 13 32 46.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.149732,49.300628]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Lovers Walk",
+      "decade": 2020,
+      "description": "October 10, 2024 (Thursday), 7:50 a.m. (sunrise)",
+      "soundfile": "20241010 7_50am Lovers Trail sunrise.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 10-10-2024, 07 47 00.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.139573,49.297328]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Lost Lagoon",
+      "decade": 2020,
+      "description": "July 26, 2024 (Friday), 2 p.m.",
+      "soundfile": "20240726 2pm Lost Lagoon.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 26-07-2024, 14 03 10.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.158014,49.273174]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Kitsilano Pool",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 4:52 p.m.",
+      "soundfile": "23 20240719 4_52pm Kits Pool benches.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 19-07-2024, 16 47 26.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.153968,49.273755]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Kitsilano Beach Tennis Courts",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 5:03 p.m.",
+      "soundfile": "25 20240719 5_03pm Kits Beach tennis courts.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 19-07-2024, 17 09 08.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.152152,49.276413]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Kitsilano Beach (north)",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 5:31 p.m.",
+      "soundfile": "31 20240719 5_31pm Kits Beach parking lot north.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/IMG_1483.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.153892,49.274339]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Kitsilano Beach (concession)",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 5:18 p.m.",
+      "soundfile": "28 20240719 5_18pm Kits Beach by The Boathouse.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 19-07-2024, 17 20 03.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.154605,49.274283]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Kitsilano Beach",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 5:10 p.m.",
+      "soundfile": "27 20240719 5_10pm Kits Beach 15m from water.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 19-07-2024, 17 12 13.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.102134,49.28125]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Hastings & Columbia",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 3:20 p.m.",
+      "soundfile": "20240719 3_20pm Columbia and Hastings.WAV",
+      "category": "",
+      "theme": "",
+      "images": "WSP JPEGs/Photo 19-07-2024, 15 22 53.jpg",
+      "notes": ""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.148794,49.27793]",
+      "type": "Point"
+    },
+    "properties": {
+      "name": "Hadden Beach",
+      "decade": 2020,
+      "description": "July 19, 2024 (Friday), 5:44 p.m.",
+      "soundfile": "33 20240719 5_44pm Hadden Beach 8m from water.WAV",
+      "category": "",
+      "theme": "",
+      "images": "",
+      "notes": ""
     }
   }
 ]

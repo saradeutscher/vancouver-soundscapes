@@ -16,6 +16,7 @@ export type ClusteredSoundMarkersProps = {
 export const ClusteredSoundMarkers = ({sounds}: ClusteredSoundMarkersProps) => {
   const [markers, setMarkers] = useState<{[key: string]: Marker}>({});
   const [selectedSoundKey, setSelectedSoundKey] = useState<string | null>(null);
+  const [infowindowOpen, setInfowindowOpen] = useState(false);
 
   const selectedSound = useMemo(
     () =>
@@ -63,8 +64,9 @@ export const ClusteredSoundMarkers = ({sounds}: ClusteredSoundMarkersProps) => {
   }, []);
 
   const handleMarkerClick = useCallback((sound: Sound) => {
-    setSelectedSoundKey(sound.key);
-  }, []);
+    setInfowindowOpen(prev => !prev);
+    infowindowOpen ? setSelectedSoundKey(null) : setSelectedSoundKey(sound.key)
+  }, [infowindowOpen]);
 
   return (
     <>
@@ -78,11 +80,13 @@ export const ClusteredSoundMarkers = ({sounds}: ClusteredSoundMarkersProps) => {
       ))}
 
       {selectedSoundKey && (
-        <InfoWindow
+        <InfoWindow className="sound-info"
           anchor={markers[selectedSoundKey]}
           onCloseClick={handleInfoWindowClose}>
-          {selectedSound?.properties.name} <br></br>
-          {selectedSound?.properties.description} <br></br>
+          <h2>
+            {selectedSound?.properties.name}
+          </h2>
+          {selectedSound?.properties.description}
           <audio controls src={"https://object-arbutus.cloud.computecanada.ca/soundscapes-public/" + selectedSound?.properties.soundfile}> </audio>
         </InfoWindow>
       )}
