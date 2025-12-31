@@ -16,7 +16,7 @@ export type SoundMarkerProps = {
 };
 
 /**
- * Wrapper Component for an AdvancedMarker for a single sound.
+ * Wrapper Component for an AdvancedMarker for a single sound marker.
  */
 export const SoundMarker = (props: SoundMarkerProps) => {
   const {sound, onClick, setMarkerRef} = props;

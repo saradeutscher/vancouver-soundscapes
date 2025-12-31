@@ -8,12 +8,40 @@ import {Homepage} from './Homepage'
 
 const App = () => {
   const [showOverlay, setShowOverlay] = useState(true);
+  const [activePage, setActivePage] = useState("home");
+
+  const renderContent = () => {
+    switch (activePage) {
+      case "about":
+        return (
+          <section>
+            <h2>About</h2>
+            <p>
+              add info here
+            </p>
+          </section>
+        );
+
+      default:
+        return (
+          <div className="homepage">
+            <SoundMap />
+          </div>
+        );
+    }
+  };
 
   return (
-    <div className="homepage">
-      <SoundMap />
+    <div className="site">
+      <nav className="nav">
+        <h1 className="title"> Vancouver Soundscapes </h1>
+        <div className="nav-options">
+          <button onClick={() => setActivePage("home")}>Home</button>
+          <button onClick={() => setActivePage("about")}>About</button>
+        </div>
+      </nav>
 
-      {showOverlay && <Homepage onFadeComplete={() => setShowOverlay(false)}/>}
+      <main className="content">{renderContent()}</main>
 
     </div>
   );

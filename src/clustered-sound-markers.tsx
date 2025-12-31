@@ -91,7 +91,7 @@ export const ClusteredSoundMarkers = ({sounds}: ClusteredSoundMarkersProps) => {
 
           {selectedSound?.properties.description}
 
-          <audio controls src={"https://object-arbutus.cloud.computecanada.ca/soundscapes-public/" + selectedSound?.properties.soundfile}> </audio>
+          <audio controls preload="metadata" src={"https://object-arbutus.cloud.computecanada.ca/soundscapes-public/" + selectedSound?.properties.soundfile}> </audio>
 
           {selectedSound?.properties.images.map((url, index) => (
             <img key={index} src={"https://object-arbutus.cloud.computecanada.ca/soundscapes-public/" + url}></img>
@@ -100,4 +100,5 @@ export const ClusteredSoundMarkers = ({sounds}: ClusteredSoundMarkersProps) => {
       )}
     </>
   )
+
 }

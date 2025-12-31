@@ -5,6 +5,12 @@
   text-align: center;
 }
 
+html, body {
+  height: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
 body {
   margin: 0;
   width: 100%;
@@ -16,6 +22,11 @@ body {
   position: relative;
   height: 100vh;
   width: 100%;
+}
+
+.site {
+  display: flex;
+  flex-direction: column;
 }
 
 .overlay {
@@ -52,7 +63,7 @@ body {
 } */
 
 .title {
-  font-size: 5rem;
+  font-size: 2rem;
   color: #333;
 }
 
@@ -106,7 +117,6 @@ button:hover {
   align-items: center;
 }
 
-
 select {
   max-width: 75%;
   min-width: 75%;
@@ -132,8 +142,9 @@ select {
 }
 
 .sound-info audio {
-  display: inline-block;
+  display: block;
   width: 100%;
+  min-height: 42px;
   margin: 1rem 0;
 }
 
@@ -143,37 +154,35 @@ select {
 }
 
 nav {
-  /* display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: left;
-  justify-content: left;
-  text-align: left; */
-  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
   top: 0;
   left: 0;
   width: 100%;
+  background-color: #fff; /* semi-transparent background */
+  z-index: 1;
+  margin-left: 10px;
+}
 
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-
-  /* padding: 1rem;
-  background: rgba(255, 255, 255, 1);
-  z-index: 1000; */
+.nav-options {
+  /* margin-top: -45px; */
+  margin-bottom: 10px;
+  margin-right: 10px;
 }
 
 nav button {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
-  text-decoration: underline;
-  text-underline-offset: 6px;
+  /* text-decoration: underline;
+  text-underline-offset: 6px; */
   cursor: pointer;
   background-color: transparent;
   color: #333;
   transition: background-color 0.3s ease;
   /* -webkit-text-stroke: 0.5px #333; */
-  ;
 }
 
 nav button:hover {

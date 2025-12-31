@@ -30,7 +30,6 @@ export const Homepage: React.FC<HomepageProps> = ({onFadeComplete}) => {
         return (
           <section>
             <h1 className="title"> Vancouver Soundscapes </h1>
-
           </section>
         );
     }
