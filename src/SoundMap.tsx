@@ -7,7 +7,7 @@ import {ClusteredSoundMarkers} from './clustered-sound-markers';
 import {Polyline} from './polyline';
 
 const API_KEY =
-  globalThis.GOOGLE_MAPS_API_KEY ?? ("AIzaSyAd7LcZOYNuhS91Yf4uKqjCkXTWG-ggU-A");
+  globalThis.GOOGLE_MAPS_API_KEY ?? ("");
 
 export const SoundMap = () => {
   const [sounds, setSounds] = useState<Sound[]>();
@@ -49,33 +49,33 @@ export const SoundMap = () => {
     return getDecades(combinedFilteredSounds);
   }, [combinedFilteredSounds]);
 
-  const flightPlanCoordinates = [
-    { lat: 37.772, lng: -122.214 },
-    { lat: 21.291, lng: -157.821 },
-    { lat: -18.142, lng: 178.431 },
-    { lat: -27.467, lng: 153.027 },
-  ]
+  // const flightPlanCoordinates = [
+  //   { lat: 37.772, lng: -122.214 },
+  //   { lat: 21.291, lng: -157.821 },
+  //   { lat: -18.142, lng: 178.431 },
+  //   { lat: -27.467, lng: 153.027 },
+  // ]
 
   return (
     <APIProvider
       solutionChannel='GMP_devsite_samples_v3_rgmbasicmap'
       apiKey={API_KEY}>
     <Map
-      mapId={'54137f32133013761e8f2a9d'}
+      mapId={''}
       defaultZoom={12}
       defaultCenter={{ lat: 49.28, lng: -123.12 }}
       gestureHandling={'greedy'}
       disableDefaultUI>
 
       {combinedFilteredSounds && <ClusteredSoundMarkers sounds={combinedFilteredSounds} />}
-      <Polyline
+      {/* <Polyline
           path={flightPlanCoordinates}
           options={{
             strokeColor: "#FF0000",
             strokeOpacity: 1,
             strokeWeight: 3,
           }}
-        />
+        /> */}
 
     </Map>
 

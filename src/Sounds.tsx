@@ -14,7 +14,7 @@ export type Sound = {
     soundfile: string;
     category: string;
     theme: string;
-    images: string;
+    images: string[];
     notes: string;
   };
 };

@@ -56,7 +56,7 @@ body {
   color: #333;
 }
 
-.toggle-btn {
+button {
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 1rem;
@@ -68,7 +68,7 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.toggle-btn:hover {
+button:hover {
   background-color: #005f6b;
 }
 
@@ -117,7 +117,67 @@ select {
   flex-direction: column;
   gap: 6px;
   margin-top: 0px;
-  width: 300px;
-  height: 100%;
+  width: 100%;
+  max-width: 300px;
+  height: 300px;
   align-items: center;
+}
+
+.sound-info img {
+  width: 85%;
+  height: flex;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.sound-info audio {
+  display: inline-block;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.divider {
+  border: 1px solid #333;
+  width: 100%;
+}
+
+nav {
+  /* display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: left;
+  justify-content: left;
+  text-align: left; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+
+  /* padding: 1rem;
+  background: rgba(255, 255, 255, 1);
+  z-index: 1000; */
+}
+
+nav button {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  cursor: pointer;
+  background-color: transparent;
+  color: #333;
+  transition: background-color 0.3s ease;
+  /* -webkit-text-stroke: 0.5px #333; */
+  ;
+}
+
+nav button:hover {
+  color: #008cba;
+  background-color: transparent;
+  text-decoration: underline;
 }

@@ -86,8 +86,16 @@ export const ClusteredSoundMarkers = ({sounds}: ClusteredSoundMarkersProps) => {
           <h2>
             {selectedSound?.properties.name}
           </h2>
+
+          <hr className="divider" />
+
           {selectedSound?.properties.description}
+
           <audio controls src={"https://object-arbutus.cloud.computecanada.ca/soundscapes-public/" + selectedSound?.properties.soundfile}> </audio>
+
+          {selectedSound?.properties.images.map((url, index) => (
+            <img key={index} src={"https://object-arbutus.cloud.computecanada.ca/soundscapes-public/" + url}></img>
+          ))}
         </InfoWindow>
       )}
     </>
