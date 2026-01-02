@@ -8,7 +8,7 @@
 html, body {
   height: 100%;
   min-height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 body {
@@ -135,7 +135,7 @@ select {
   min-width: 75%;
 }
 
-.sound-info {
+.sound-info, .sound-card {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -159,6 +159,18 @@ select {
   width: 100%;
   min-height: 42px;
   margin: 1rem 0;
+}
+
+.sound-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.sound-card {
+  border-width: 1px;
+  border-color: #333;
 }
 
 .divider {

@@ -1,14 +1,27 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import { createRoot } from 'react-dom/client';
 
 import './App.css';
 
 import { SoundMap } from './SoundMap';
-import {Homepage} from './Homepage'
+import {Sound, loadSoundDataset} from './Sounds';
+import { SoundCard } from './sound-card';
 
 const App = () => {
   const [showOverlay, setShowOverlay] = useState(true);
   const [activePage, setActivePage] = useState("home");
+
+  const [sounds, setSounds] = useState<Sound[]>();
+  const [selectedSoundKey, setSelectedSoundKey] = useState<string | null>(null);
+
+  // load data asynchronously
+  useEffect(() => {
+    loadSoundDataset().then(data => setSounds(data));
+  }, []);
+
+  const handleCardClick = useCallback(() => {
+    setSelectedSoundKey(null);
+  }, []);
 
   const renderContent = () => {
     switch (activePage) {
@@ -28,9 +41,17 @@ const App = () => {
             <p>
               add card gallery of sounds here
             </p>
+            <div className="sound-cards">
+            {sounds?.map(sound => (
+              <SoundCard
+                key={sound.key}
+                sound={sound}
+                onClick={() => handleCardClick}
+              />
+             ))}
+            </div>
           </div>
         )
-
       default:
         return (
           <div className="homepage">

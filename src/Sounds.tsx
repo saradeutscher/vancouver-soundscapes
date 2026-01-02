@@ -49,7 +49,7 @@ export function getTypes(sounds?: Sound[]) : CategoryData[] {
   }
 
   return Object.entries(countByType).map(([key, value]) => {
-    const label = key;
+    const label = (key == "LineString") ? "Soundwalk" : key;
     return {
       key: key,
       label,
