@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { APIProvider, Map} from '@vis.gl/react-google-maps';
+import { APIProvider, Map, MapControl, ControlPosition} from '@vis.gl/react-google-maps';
 import {ControlPanel} from './control-panel';
 
 import{getCategories, getThemes, getDecades, loadSoundDataset, Sound} from './Sounds';
@@ -26,8 +26,8 @@ export const SoundMap = () => {
 
     return sounds.filter(
       s => (!selectDecade || s.properties.decade == selectDecade) &&
-           (!selectTheme || s.properties.theme == selectTheme) &&
-           (!selectCategory || s.properties.category == selectCategory)
+           (!selectTheme || s.properties.theme.includes(selectTheme)) &&
+           (!selectCategory || s.properties.class.includes(selectCategory))
      );
   }, [sounds, selectDecade, selectCategory, selectTheme])
 
@@ -62,6 +62,7 @@ export const SoundMap = () => {
       apiKey={API_KEY}>
     <Map
       mapId={''}
+      zoomControl={true}
       defaultZoom={12}
       defaultCenter={{ lat: 49.28, lng: -123.12 }}
       gestureHandling={'greedy'}

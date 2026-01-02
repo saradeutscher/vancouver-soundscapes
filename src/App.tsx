@@ -14,13 +14,22 @@ const App = () => {
     switch (activePage) {
       case "about":
         return (
-          <section>
+          <div className="about">
             <h2>About</h2>
             <p>
               add info here
             </p>
-          </section>
+          </div>
         );
+      case "sounds":
+        return (
+          <div className="sounds">
+            <h2>All Sounds</h2>
+            <p>
+              add card gallery of sounds here
+            </p>
+          </div>
+        )
 
       default:
         return (
@@ -38,6 +47,7 @@ const App = () => {
         <div className="nav-options">
           <button onClick={() => setActivePage("home")}>Home</button>
           <button onClick={() => setActivePage("about")}>About</button>
+          <button onClick={() => setActivePage("sounds")}>Sounds</button>
         </div>
       </nav>
 

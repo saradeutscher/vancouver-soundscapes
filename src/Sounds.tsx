@@ -12,8 +12,8 @@ export type Sound = {
     decade: number;
     description: string;
     soundfile: string;
-    class: string;
-    theme: string;
+    class: string[];
+    theme: string[];
     images: string[];
     notes: string;
   };
@@ -44,8 +44,10 @@ export function getCategories(sounds?: Sound[]): CategoryData[] {
 
   const countByCategory: {[c: string]: number} = {};
   for (const s of sounds) {
-    if (!countByCategory[s.properties.class]) countByCategory[s.properties.class] = 0;
-    countByCategory[s.properties.class]++;
+    for (const c of s.properties.class) {
+      if (!countByCategory[c]) countByCategory[c] = 0;
+      countByCategory[c]++;
+    }
   }
 
   return Object.entries(countByCategory).map(([key, value]) => {
@@ -63,8 +65,10 @@ export function getThemes(sounds?: Sound[]): CategoryData[] {
 
   const countByTheme: {[t: string]: number} = {};
   for (const s of sounds) {
-    if(!countByTheme[s.properties.theme]) countByTheme[s.properties.theme] = 0;
-    countByTheme[s.properties.theme]++;
+    for (const t of s.properties.theme) {
+      if(!countByTheme[t]) countByTheme[t] = 0;
+      countByTheme[t]++;
+    }
   }
 
   return Object.entries(countByTheme).map(([key, value]) => {
