@@ -6,19 +6,30 @@ type ControlPanelProps = {
   categories: Array<CategoryData>;
   themes: Array<CategoryData>;
   decades: Array<CategoryData>;
+  types: Array<CategoryData>
   onCategoryChange: (value: string | null) => void;
   onThemeChange: (value: string | null) => void;
   onDecadeChange: (value: number | null) => void;
+  onTypeChange: (value: string | null) => void;
 }
 
 export const ControlPanel = ({
   categories,
   themes,
   decades,
+  types,
   onCategoryChange,
   onThemeChange,
-  onDecadeChange
+  onDecadeChange,
+  onTypeChange
 }: ControlPanelProps) => {
+  const handleTypeChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      onTypeChange(e.target.value || null);
+    },
+    [onTypeChange]
+  );
+
   const handleCategoryChange = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
       onCategoryChange(e.target.value || null);
@@ -54,6 +65,17 @@ export const ControlPanel = ({
             {decades.map(decade => (
               <option key={decade.key} value={decade.key}>
                 {decade.label} ({decade.count})
+              </option>
+            ))}
+          </select>
+
+          <label> Filter by Type:</label>{' '}
+          <select onChange={handleTypeChange}>
+            <option value={''}>All sounds</option>
+
+            {types.map(type => (
+              <option key={type.key} value={type.key}>
+                {type.label} ({type.count})
               </option>
             ))}
           </select>

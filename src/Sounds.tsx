@@ -39,6 +39,25 @@ export async function loadSoundDataset() : Promise<Sound[]> {
   });
 }
 
+export function getTypes(sounds?: Sound[]) : CategoryData[] {
+  if (!sounds) return [];
+
+  const countByType: {[t: string]: number} = {};
+  for (const s of sounds) {
+    if(!countByType[s.geometry.type]) countByType[s.geometry.type] = 0;
+    countByType[s.geometry.type]++;
+  }
+
+  return Object.entries(countByType).map(([key, value]) => {
+    const label = key;
+    return {
+      key: key,
+      label,
+      count: value
+    };
+  });
+}
+
 export function getCategories(sounds?: Sound[]): CategoryData[] {
   if (!sounds) return [];
 
