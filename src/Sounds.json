@@ -758,13 +758,19 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "dialogue",
+        "ambience"
+      ],
+      "theme": [
+        "people",
+        "cityscape"
+      ],
       "name": "Main & Pender",
       "decade": 1990,
       "description": "September 10, 1993 (Friday)",
       "soundfile": "VDat4.14.wav",
-      "notes": ""
+      "notes": "a lot of talking up close (Chinese Canadian school tour), sparse traffic"
     }
   },
   {
@@ -776,13 +782,20 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "dialogue",
+        "ambience"
+      ],
+      "theme": [
+        "cityscape",
+        "people",
+        "communal"
+      ],
       "name": "Main & Hastings SW",
       "decade": 1990,
       "description": "September 10, 1993 (Friday)",
       "soundfile": "VDat4.11.wav",
-      "notes": ""
+      "notes": "traffic, shouting (frequent), footsteps, police whistles (repeated), some car wheezing, some kids, dialogue (about the project)"
     }
   },
   {
@@ -794,13 +807,20 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "nature",
+        "cityscape",
+        "people",
+        "tourism"
+      ],
       "name": "Lumberman's Arch Picnic Area",
       "decade": 1990,
       "description": "April 28, 1995 (Friday), 12:45 p.m.",
       "soundfile": "VDat9.5.wav",
-      "notes": ""
+      "notes": "lively voices, multilayered and immersive, diverse bird calls, smooth hum of traffic, seaplane passing very low, birds scared"
     }
   },
   {
@@ -812,13 +832,19 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "nature",
+        "cityscape",
+        "transport"
+      ],
       "name": "Lost Lagoon",
       "decade": 1990,
       "description": "August 27, 1993 (Friday)",
       "soundfile": "VDat3.12.wav",
-      "notes": ""
+      "notes": "commotion among birds, bird whistles a few times (heron?), same traffic hum, ~3:10 loud plane passing (jet?), scares the ducks"
     }
   },
   {
@@ -830,13 +856,19 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "sports",
+        "people",
+        "communal"
+      ],
       "name": "Kitsilano Pool",
       "decade": 1990,
       "description": "September 8, 1993 (Wednesday), 4:55 p.m.",
       "soundfile": "VDat5.7.wav",
-      "notes": ""
+      "notes": "Kits pool on a sunny day, afternoon, very rich beautiful dynamic ambience, sprinklers/showers, kids screaming, seaplanes"
     }
   },
   {
@@ -848,13 +880,19 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "effects",
+        "ambience"
+      ],
+      "theme": [
+        "sports",
+        "people"
+      ],
       "name": "Kitsilano Beach Tennis Courts",
       "decade": 1990,
       "description": "September 8, 1993 (Wednesday), 5:02 p.m.",
       "soundfile": "WSP MP3s/VDat5.8.mp3",
-      "notes": ""
+      "notes": "Kits Beach tennis courts, droning in background"
     }
   },
   {
@@ -866,13 +904,19 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "people",
+        "nature",
+        "cityscape"
+      ],
       "name": "Kitsilano Beach (concession)",
       "decade": 1990,
       "description": "September 8, 1993 (Wednesday), 5:16 p.m.",
       "soundfile": "VDat5.9.wav",
-      "notes": ""
+      "notes": "Kits Beach from concession stand, 5pm"
     }
   },
   {
@@ -884,13 +928,19 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "people",
+        "nature",
+        "cityscape"
+      ],
       "name": "Kitsilano Beach",
       "decade": 1990,
       "description": "September 8, 1993 (Friday), 5:21 p.m.",
       "soundfile": "VDat5.10.wav",
-      "notes": ""
+      "notes": "Kits Beach close to water, 5pm, mild construction, traffic, cars beeeping"
     }
   },
   {
@@ -902,13 +952,20 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "soundwalk"
+      ],
+      "theme": [
+        "commerce",
+        "people",
+        "communal"
+      ],
       "name": "Hastings & Columbia",
       "decade": 1990,
       "description": "September 10, 1993 (Friday)",
       "soundfile": "VDat4.12 part 2.wav",
-      "notes": ""
+      "notes": "soundwalk: Hastings from Main to Columbia; pretty busy traffic, occasional voices, rattling sounds, buses, lots of footsteps; enters a busier scene with more babble/cursing, birds, honking"
     }
   },
   {
@@ -920,13 +977,18 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "nature",
+        "cityscape"
+      ],
       "name": "Hadden Beach",
       "decade": 1990,
       "description": "September 8, 1993 (Wednesday), 5:43 p.m.",
       "soundfile": "VDat5.11.wav",
-      "notes": ""
+      "notes": "beach West of Maritime Museum at 5:43 p.m.; birds, distant motor, waves, dogs"
     }
   },
   {
@@ -938,13 +1000,19 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "soundwalk"
+      ],
+      "theme": [
+        "commerce",
+        "people"
+      ],
       "name": "Granville Island Public Market (soundwalk)",
       "decade": 1990,
       "description": "September 9, 1993 (Thursday), 3:11 p.m.",
       "soundfile": "VDat5.18.wav",
-      "notes": ""
+      "notes": "soundwalk: Granville Island Market"
     }
   },
   {
@@ -956,13 +1024,20 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "effects"
+      ],
+      "theme": [
+        "cityscape",
+        "soundmark",
+        "people"
+      ],
       "name": "Gastown Steam Clock",
       "decade": 1990,
       "description": "April 26, 1995 (Wednesday), 1:30 p.m.",
       "soundfile": "VDat4.17.wav",
-      "notes": ""
+      "notes": "Gastown Steam Clock + overall interesting neighbourhood ambience (traffic/honking/chatter)"
     }
   },
   {
@@ -974,8 +1049,13 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "transport",
+        "industrial"
+      ],
       "name": "Fishermen's Wharf",
       "decade": 1990,
       "description": "September 9, 1993 (Thursday), 2:45 p.m.",
@@ -992,13 +1072,18 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "nature",
+        "cityscape"
+      ],
       "name": "Dr. Sun Yat-Sen Park",
       "decade": 1990,
       "description": "April 26, 1995 (Friday), 1:25 p.m.",
       "soundfile": "VDat8.21.wav",
-      "notes": ""
+      "notes": "Sun Yat-Sen Park, uneventful quite ambience with helicopter passing by; birds"
     }
   },
   {
@@ -1010,13 +1095,22 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "cityscape",
+        "nature",
+        "tourism",
+        "people",
+        "soundmark",
+        "transport"
+      ],
       "name": "Canada Place (west prow)",
       "decade": 1990,
       "description": "September 10, 1993 (Friday)",
       "soundfile": "VDat4.3.wav",
-      "notes": ""
+      "notes": "lively but distant restaurant talking, cuttlery clanking, seagulls quietly but regularly, continuous hum, foosteps, nice subtle ambience, horn of passing ship in the distance, v. distant ambulance, wave gently splashing, seaplane gearing up and taking off, passing left-right in the pan"
     }
   },
   {
@@ -1028,13 +1122,19 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "nature",
+        "cityscape",
+        "transport"
+      ],
       "name": "Burrard Civic Marina",
       "decade": 1990,
       "description": "September 9, 1993 (Thursday), 2:10 p.m.",
       "soundfile": "VDat5.14.wav",
-      "notes": ""
+      "notes": "Burrard Marina; much more rumble, industrial rattle, more voices, more birds, much busier"
     }
   },
   {
@@ -1046,13 +1146,20 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "nature",
+        "cityscape",
+        "transport",
+        "tourism"
+      ],
       "name": "Brockton Point",
       "decade": 1990,
       "description": "April 28, 1995 (Friday), 11:55 a.m.",
       "soundfile": "VDat9.3.wav",
-      "notes": ""
+      "notes": "before 12pm; rumble sounds differently (higher?), more children's voices at start, crows, helicopter, v. distant ambulance, fewer seaplanes"
     }
   },
   {
@@ -1064,13 +1171,18 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "nature",
+        "cityscape"
+      ],
       "name": "Beaver Lake",
       "decade": 1990,
       "description": "April 28, 1995 (Friday), 12 p.m.",
       "soundfile": "VDat9.13.wav",
-      "notes": ""
+      "notes": "quiet hum of traffic, ducks, bird tweeting, plane flying by, bike passing, footsteps, children crying"
     }
   },
   {
@@ -1086,13 +1198,22 @@
         "WSP JPEGs/2010s/SP Railway sign.jpg",
         "WSP JPEGs/2010s/SP Railway.jpg"
       ],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "effects"
+      ],
+      "theme": [
+        "nature",
+        "cityscape",
+        "transport",
+        "tourism",
+        "people"
+      ],
       "name": "Stanley Park Railway",
       "decade": 2010,
       "description": "September 9, 2011 (Friday), 12:30 p.m.",
       "soundfile": "VFile8.9.wav",
-      "notes": ""
+      "notes": "12:30; ambience by the train, announcer first, then bells-passing, then v. quiet ambience, no birds no nothing, children crying in the distance, traffic v. distant"
     }
   },
   {
@@ -1142,13 +1263,20 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "soundwalk"
+      ],
+      "theme": [
+        "cityscape",
+        "people",
+        "commerce"
+      ],
       "name": "Soundwalk: Water, Carrall to Cambie",
       "decade": 2010,
       "description": "November 10, 2010 (Wednesday), 2:51 p.m.",
       "soundfile": "VFile11.3.wav",
-      "notes": ""
+      "notes": "soundwalk: Water (north) from Gassy Jack heading west; traffic, peoplee, seaplanes, crows, voice over PA, skateboard, honking, medium-dense"
     }
   },
   {
@@ -1162,13 +1290,20 @@
       "images": [
         "WSP JPEGs/2010s/Waterfront.jpg"
       ],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "soundwalk"
+      ],
+      "theme": [
+        "transport",
+        "people",
+        "cityscape"
+      ],
       "name": "Soundwalk: Seabus to Seymour/Cordova (NE) via Waterfront Stn",
       "decade": 2010,
       "description": "August 25, 2011 (Thursday)",
       "soundfile": "VFile1.18.wav",
-      "notes": ""
+      "notes": "mostly unusable because of interfering people talking, last minute or so: outside of the station, useful for comparison, traffic, traffic light sounds. people talking, laughing"
     }
   },
   {
@@ -1180,33 +1315,47 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "soundwalk"
+      ],
+      "theme": [
+        "commerce",
+        "people",
+        "cityscape"
+      ],
       "name": "Soundwalk: Pender (south), Main to Taylor",
       "decade": 2010,
       "description": "June 16, 2011 (Thursday), 4:23 p.m.",
       "soundfile": "VFile15.2.wav",
-      "notes": ""
+      "notes": "soundwalk: Pender from Main to Taylor, 4:23 pm, similar as above, rumbling of motors, birds, light chatter, acoustically becomes wider halfway through, overall generic unattractive ambience"
     }
   },
   {
     "key": "",
     "type": "Feature",
     "geometry": {
-      "coordinates": "[[-123.102241,49.280473],[-123.099944,49.280429]],",
+      "coordinates": "[[-123.102241,49.280473],[-123.099944,49.280429]]",
       "type": "LineString"
     },
     "properties": {
       "images": [
         "WSP JPEGs/2010s/Pender north side soundwalk.jpg"
       ],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "soundwalk"
+      ],
+      "theme": [
+        "commerce",
+        "people",
+        "cityscape"
+      ],
       "name": "Soundwalk: Pender (north), Columbia to Main",
       "decade": 2010,
       "description": "June 16, 2011 (Thursday), 4:20 p.m.",
       "soundfile": "VFile15.5.wav",
-      "notes": ""
+      "notes": "soundwalk: Pender from Columbia to Main; mostly just light traffic, birds, guitar at one point, some talking in English"
     }
   },
   {
@@ -1220,13 +1369,20 @@
       "images": [
         "WSP JPEGs/2010s/Keefer south soundwalk.jpg"
       ],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "soundwalk"
+      ],
+      "theme": [
+        "commerce",
+        "people",
+        "cityscape"
+      ],
       "name": "Soundwalk: Keefer (south), Gore to Main",
       "decade": 2010,
       "description": "June 16, 2011 (Saturday), 1:40 p.m.",
       "soundfile": "VFile15.4.wav",
-      "notes": ""
+      "notes": "soundwalk: Keefer from Gore to Main; only occasional voices in Mandarin, some cars passing, Chinese melody from speakers"
     }
   },
   {
@@ -1238,13 +1394,20 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "soundwalk"
+      ],
+      "theme": [
+        "commerce",
+        "people",
+        "cityscape"
+      ],
       "name": "Soundwalk: Keefer (north), Columbia to Gore",
       "decade": 2010,
       "description": "July 16, 2011 (Thursday), 1:40 p.m.",
       "soundfile": "VFile15.3.wav",
-      "notes": ""
+      "notes": "soundwalk: Keefer from Columbia to Gore; Main to Gore is from 2:47, much much more sparse in people, more traffic"
     }
   },
   {
@@ -1300,13 +1463,21 @@
         "WSP JPEGs/2010s/Second Beach view.jpg",
         "WSP JPEGs/2010s/Second Beach pool.jpg"
       ],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "people",
+        "communal",
+        "sports",
+        "cityscape",
+        "nature"
+      ],
       "name": "Second Beach, Seawall",
       "decade": 2010,
       "description": "August 5, 2010 (Thursday), 6:30 p.m.",
       "soundfile": "VFile8.5.wav",
-      "notes": ""
+      "notes": "children's voices a bit further + loud seaplane droning/harbour ambience"
     }
   },
   {
@@ -1320,13 +1491,19 @@
       "images": [
         "WSP JPEGs/2010s/Maple Tree Square.jpg"
       ],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "cityscape",
+        "people",
+        "commerce"
+      ],
       "name": "Maple Tree Square",
       "decade": 2010,
       "description": "November 10, 2010 (Wednesday), 2:45 p.m.",
       "soundfile": "VFile11.2.wav",
-      "notes": ""
+      "notes": "Gassy Jack square ambience, traffic, distant voices from restaurants, quite a lively, layered ambience"
     }
   },
   {
@@ -1340,13 +1517,17 @@
       "images": [
         "WSP JPEGs/2010s/Main and Pender.jpg"
       ],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "cityscape"
+      ],
       "name": "Main & Pender",
       "decade": 2010,
       "description": "June 16, 2011 (Thursday), 2:03 p.m.",
       "soundfile": "VFile15.6.wav",
-      "notes": ""
+      "notes": "Main & Pender, much denser traffic, traffic light beeps, etc., talking more sparse, Spanish"
     }
   },
   {
@@ -1361,13 +1542,18 @@
         "WSP JPEGs/2010s/Lost Lagoon path.jpg",
         "WSP JPEGs/2010s/Lost Lagoon city.jpg"
       ],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "nature",
+        "cityscape"
+      ],
       "name": "Lost Lagoon",
       "decade": 2010,
       "description": "August 5, 2010 (Thursday), 6 p.m.",
       "soundfile": "VFile8.2.wav",
-      "notes": ""
+      "notes": "loud persistent droning sound (motorboat idling) at start, plane landing, traffic more distant, distant ambulance, birds chirping/calling up close but much fewer and generally different ones, footsteps passing, helicopter, seaplane, busy sky"
     }
   },
   {
@@ -1379,13 +1565,19 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "soundwalk"
+      ],
+      "theme": [
+        "commerce",
+        "people"
+      ],
       "name": "Granville Island Public Market (soundwalk)",
       "decade": 2010,
       "description": "November 5, 2011 (Saturday), 4:25 p.m.",
       "soundfile": "VFile14.4.wav",
-      "notes": ""
+      "notes": "soundwalk: Granville Island Market"
     }
   },
   {
@@ -1399,13 +1591,20 @@
       "images": [
         "WSP JPEGs/2010s/Gastown Steam Clock.jpg"
       ],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "effects"
+      ],
+      "theme": [
+        "cityscape",
+        "soundmark",
+        "people"
+      ],
       "name": "Gastown Steam Clock",
       "decade": 2010,
       "description": "November 10, 2010 (Wednesday), 2:25 p.m.",
       "soundfile": "VFile11.1.wav",
-      "notes": ""
+      "notes": "Gastown Steam Clock; 2:25pm; street music (voice+guitar), loud traffic, some echoey shouting, sometimes whistling towards the end"
     }
   },
   {
@@ -1419,13 +1618,18 @@
       "images": [
         "WSP JPEGs/2010s/Sun Yat-Sen.jpg"
       ],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "nature",
+        "cityscape"
+      ],
       "name": "Dr. Sun Yat-Sen Park",
       "decade": 2010,
       "description": "June 16, 2011 (Thursday), 4:09 p.m.",
       "soundfile": "VFile15.1.wav",
-      "notes": ""
+      "notes": "Sun Yat-Sen Park, really generic ambience, some talking, bell of sorts? lots of helicopters"
     }
   },
   {
@@ -1439,13 +1643,19 @@
       "images": [
         "WSP JPEGs/2010s/Canada Place.jpg"
       ],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "events"
+      ],
+      "theme": [
+        "transport",
+        "tourism"
+      ],
       "name": "Canada Place (west prow)",
       "decade": 2010,
       "description": "June 4, 2010 (Friday), 3:40 p.m.",
       "soundfile": "VFile1.1.wav; VFile1.2.wav",
-      "notes": ""
+      "notes": "cruise ship sounds: very loud continuous rumble, PA announcements in many languages, some rattle"
     }
   },
   {
@@ -1460,13 +1670,19 @@
         "WSP JPEGs/2010s/Brockton Point 1.jpg",
         "WSP JPEGs/2010s/Brockton Point 2.jpg"
       ],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "nature",
+        "cityscape",
+        "transport"
+      ],
       "name": "Brockton Point",
       "decade": 2010,
       "description": "September 9, 2011 (Friday), 11:54 a.m.",
       "soundfile": "VFile8.8.wav",
-      "notes": ""
+      "notes": "very distant droning, gentle waves, one seaplane passing, some other buzzing, very sparse people, jogger passing, O'Canada Horn at 6:00"
     }
   },
   {
@@ -1480,13 +1696,18 @@
       "images": [
         "WSP JPEGs/2010s/Beaver Lake.jpg"
       ],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience"
+      ],
+      "theme": [
+        "nature",
+        "cityscape"
+      ],
       "name": "Beaver Lake",
       "decade": 2010,
       "description": "September 9, 2011 (Friday), 12:49 p.m.",
       "soundfile": "VFile8.10.wav",
-      "notes": ""
+      "notes": "12 pm; traffic more distant, bike passing, birds silent or gone? owl hooting tho, footsteps, generally more quiet, gentle wind, seaplane passing at one point"
     }
   },
   {
@@ -1498,13 +1719,20 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "effects"
+      ],
+      "theme": [
+        "nature",
+        "cityscape",
+        "industrial"
+      ],
       "name": "Totem Poles",
       "decade": 2020,
       "description": "August 5, 2020 (Wednesday), 5:15 a.m.",
       "soundfile": "Van12_2020.WAV",
-      "notes": ""
+      "notes": "birds crying at dawn, eerie sounds from the shipyard, distand hum of traffic"
     }
   },
   {
@@ -1516,13 +1744,19 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "effects"
+      ],
+      "theme": [
+        "nature",
+        "cityscape"
+      ],
       "name": "Second Beach Pool",
       "decade": 2020,
       "description": "April 28, 2020 (Tuesday), during COVID closure",
       "soundfile": "Van10.WAV",
-      "notes": ""
+      "notes": "pool closed due to Covid, echoey calls of crows and geese, people talking, low hum of traffic"
     }
   },
   {
@@ -1534,13 +1768,19 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "effects"
+      ],
+      "theme": [
+        "nature",
+        "cityscape"
+      ],
       "name": "Lovers Walk",
       "decade": 2020,
       "description": "May 22, 2020 (Friday), 4:40 a.m. (dawn)",
       "soundfile": "Van19_2020.WAV",
-      "notes": ""
+      "notes": "bird crying loudly at dawn, distant traffic"
     }
   },
   {
@@ -1552,13 +1792,18 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "effects"
+      ],
+      "theme": [
+        "industrial"
+      ],
       "name": "Heidelberg Materials",
       "decade": 2020,
       "description": "July 22, 2020 (Wednesday)",
       "soundfile": "Van26_2020.WAV",
-      "notes": ""
+      "notes": "industrial area, low rumble, episodic hitting noises, beeping"
     }
   },
   {
@@ -1570,13 +1815,18 @@
     },
     "properties": {
       "images": [],
-      "class": [],
-      "theme": [],
+      "class": [
+        "ambience",
+        "effects"
+      ],
+      "theme": [
+        "nature"
+      ],
       "name": "Beaver Lake - dawn chorus",
       "decade": 2020,
       "description": "May 15, 2020 (Friday), 4:50 a.m. (dawn)",
       "soundfile": "Van16.WAV",
-      "notes": ""
+      "notes": "bird chorus at dawn, dense tweeting, no traffic audible as no lows (HPF)"
     }
   },
   {
@@ -1783,8 +2033,8 @@
     "key": "",
     "type": "Feature",
     "geometry": {
-      "coordinates": "[[[-123.097081,49.279397],[-123.101184,49.279463]],[[-123.101184,49.279463],[-123.101305,49.279438],[-123.101426,49.279412],[-123.101546,49.279387],[-123.101667,49.279362],[-123.102123,49.27925]]]",
-      "type": "MultiLineString"
+      "coordinates": "[[-123.097081,49.279397],[-123.101184,49.279463],[-123.101184,49.279463],[-123.101305,49.279438],[-123.101426,49.279412],[-123.101546,49.279387],[-123.101667,49.279362],[-123.102123,49.27925]]",
+      "type": "LineString"
     },
     "properties": {
       "images": [],
@@ -1837,8 +2087,8 @@
     "key": "",
     "type": "Feature",
     "geometry": {
-      "coordinates": "[[[-123.132014,49.301136],[-123.131981,49.301563],[-123.131641,49.301945],[-123.131829,49.301995],[-123.132161,49.301724],[-123.132395,49.301705],[-123.132609,49.301659],[-123.133111,49.301861],[-123.133253,49.301694],[-123.133443,49.301693],[-123.133473,49.301644],[-123.133762,49.301645],[-123.133973,49.301661],[-123.134198,49.301693]],[[-123.134198,49.301693]]]",
-      "type": "MultiLineString"
+      "coordinates": "[[-123.132014,49.301136],[-123.131981,49.301563],[-123.131641,49.301945],[-123.131829,49.301995],[-123.132161,49.301724],[-123.132395,49.301705],[-123.132609,49.301659],[-123.133111,49.301861],[-123.133253,49.301694],[-123.133443,49.301693],[-123.133473,49.301644],[-123.133762,49.301645],[-123.133973,49.301661],[-123.134198,49.301693],[-123.134198,49.301693]]",
+      "type": "LineString"
     },
     "properties": {
       "images": [],

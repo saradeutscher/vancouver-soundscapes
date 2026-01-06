@@ -25,6 +25,11 @@ body {
   width: 100%;
 }
 
+.content {
+  background-color: #fafafa;
+  height: calc(100vh - 90px);
+}
+
 .about {
   text-align: left;
   padding-top: 15px;
@@ -81,11 +86,10 @@ body {
 }
 
 button {
-  margin-top: 20px;
-  padding: 10px 20px;
+  padding: 5px 20px;
   font-size: 1rem;
   cursor: pointer;
-  background-color: #008cba;
+  background-color: #537334;
   color: white;
   border: none;
   border-radius: 5px;
@@ -93,7 +97,13 @@ button {
 }
 
 button:hover {
-  background-color: #005f6b;
+  background-color: #395225;
+}
+
+#sound-search {
+  margin: 10px;
+  padding: 5px 20px;
+  width: 350px;
 }
 
 .control-panel {
@@ -144,6 +154,7 @@ select {
   max-width: 300px;
   height: 300px;
   align-items: center;
+  background-color: #fff;
 }
 
 .sound-info img {
@@ -161,6 +172,10 @@ select {
   margin: 1rem 0;
 }
 
+#sounds-page-title {
+  margin-left: 10px;
+}
+
 .sound-cards {
   display: flex;
   flex-direction: row;
@@ -169,8 +184,18 @@ select {
 }
 
 .sound-card {
-  border-width: 1px;
-  border-color: #333;
+  border: 3px solid;
+  border-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 5px 5px #d3d3d3;
+}
+
+.sound-card:hover {
+  /* box-shadow: 5px 5px #008cba; */
+  border-color: #395225;
+  box-shadow: 5px 5px #537334;
+  cursor: pointer;
 }
 
 .divider {
@@ -195,7 +220,7 @@ nav {
 
 .nav-options {
   /* margin-top: -45px; */
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   margin-right: 15px;
 }
 
@@ -204,7 +229,6 @@ nav button {
   font-weight: bold;
   /* text-decoration: underline;
   text-underline-offset: 6px; */
-  cursor: pointer;
   background-color: transparent;
   color: #333;
   transition: background-color 0.3s ease;
@@ -212,7 +236,8 @@ nav button {
 }
 
 nav button:hover {
-  color: #008cba;
+  color: #537334;
   background-color: transparent;
+  cursor: pointer;
   /* text-decoration: underline; */
 }

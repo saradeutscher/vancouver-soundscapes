@@ -30,17 +30,20 @@ const App = () => {
           <div className="about">
             <h2>About</h2>
             <p>
-              add info here
+              The project was inspired by the <a href="https://www.sfu.ca/~truax/wsp.html">World Soundscapes Project</a>,
+              led by R. Murray Schaefer and Barry Truax at SFU.
+            </p>
+            <p>
+              add more info here
             </p>
           </div>
         );
       case "sounds":
         return (
           <div className="sounds">
-            <h2>All Sounds</h2>
-            <p>
-              add card gallery of sounds here
-            </p>
+            <h2 id="sounds-page-title">All Sounds</h2>
+            <input type="search" id="sound-search" name="q"  placeholder="Search the sounds..."/>
+            <button>Search</button>
             <div className="sound-cards">
             {sounds?.map(sound => (
               <SoundCard
@@ -77,6 +80,7 @@ const App = () => {
     </div>
   );
 };
+
 const root = createRoot(document.getElementById('root')!);
 root.render(<App />);
 
