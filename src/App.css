@@ -19,6 +19,27 @@ body {
 
 /* App.css */
 
+#footer {
+  position: relative;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  /* background-color: #537334; */
+  z-index: 1;
+  height: 35px;
+  bottom: 0;
+  left: 0;
+}
+
+a {
+  /* color: #537334; */
+  color: #008cba;
+}
+
+/* a::after {
+  color:#395225;
+} */
+
 .homepage {
   position: relative;
   height: calc(100vh - 90px);
@@ -89,7 +110,8 @@ button {
   padding: 5px 20px;
   font-size: 1rem;
   cursor: pointer;
-  background-color: #537334;
+  /* background-color: #537334; */
+  background-color: #008cba;
   color: white;
   border: none;
   border-radius: 5px;
@@ -97,7 +119,8 @@ button {
 }
 
 button:hover {
-  background-color: #395225;
+  /* background-color: #395225; */
+  background-color: #005f6b;
 }
 
 #sound-search {
@@ -192,9 +215,11 @@ select {
 }
 
 .sound-card:hover {
-  /* box-shadow: 5px 5px #008cba; */
-  border-color: #395225;
-  box-shadow: 5px 5px #537334;
+  box-shadow: 5px 5px #008cba;
+  border-color: #005f6b;
+  /* border-color: #395225; */
+  /* box-shadow: 5px 5px #537334; */
+  /* border-color: #008cba; */
   cursor: pointer;
 }
 
@@ -236,8 +261,87 @@ nav button {
 }
 
 nav button:hover {
-  color: #537334;
+  /* color: #537334; */
+  color: #008cba;
   background-color: transparent;
   cursor: pointer;
   /* text-decoration: underline; */
 }
+
+/* image gallery styling */
+.image-gallery {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.image-gallery img {
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-navigation {
+  position: absolute;
+  inset: 0;
+  /* opacity: 0;
+  visibility: hidden; */
+  padding: 16px 8px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+}
+
+.nav-btns {
+  width: 100%;
+  margin: auto 0;
+
+  display: flex;
+  justify-content: space-between;
+
+  transform: translateY(50%);
+}
+
+.nav-btns button {
+  padding: 8px;
+  background: var(--background-color-primary);
+  color: var(--estate-green-light);
+  border: none;
+  box-shadow:
+    0px 1.417px 4.25px 1.417px rgba(0, 0, 0, 0.15),
+    0px 1.417px 2.833px 0px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  transition: opacity 0.3s ease-in;
+}
+
+.nav-btns button span {
+  font-size: 16px;
+}
+
+.nav-btns button:disabled {
+  opacity: 0;
+}
+
+.dot {
+  cursor: pointer;
+  height: 6px;
+  width: 6px;
+  margin: 0 2px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  display: inline-block;
+
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: var(--background-color-primary);
+}
+

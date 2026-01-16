@@ -8,7 +8,6 @@ import {Sound, loadSoundDataset} from './Sounds';
 import { SoundCard } from './sound-card';
 
 const App = () => {
-  const [showOverlay, setShowOverlay] = useState(true);
   const [activePage, setActivePage] = useState("home");
 
   const [sounds, setSounds] = useState<Sound[]>();
@@ -30,14 +29,24 @@ const App = () => {
           <div className="about">
             <h2>About</h2>
             <p>
-              The project was inspired by the <a href="https://www.sfu.ca/~truax/wsp.html">World Soundscapes Project</a>,
+              The project was inspired by the <a target="_blank" href="https://www.sfu.ca/~truax/wsp.html">World Soundscapes Project</a>,
               led by R. Murray Schaefer and Barry Truax at SFU.
             </p>
             <p>
-              add more info here
+              An interview with Barry Truax about the World Soundscapes Project was conducted by the CBC Radio show
+              On the Coast with Gloria Macarenko. The interview can be found on the CBC website <a target="_blank" href="https://www.cbc.ca/player/play/audio/9.7035933">here</a>.
             </p>
           </div>
         );
+      case "request":
+        return (
+          <div className="about">
+            <h2>Request an Addition</h2>
+            <p>
+              form for adding a sound to the map here
+            </p>
+          </div>
+          );
       case "sounds":
         return (
           <div className="sounds">
@@ -71,12 +80,16 @@ const App = () => {
         <div className="nav-options">
           <button onClick={() => setActivePage("home")}>Home</button>
           <button onClick={() => setActivePage("about")}>About</button>
+          <button onClick={() => setActivePage("request")}>Submit a Sound</button>
           <button onClick={() => setActivePage("sounds")}>Sounds</button>
         </div>
       </nav>
 
       <main className="content">{renderContent()}</main>
 
+      {/* <footer id="footer">
+        <img src="src/assets/wordmark.png"></img>
+      </footer> */}
     </div>
   );
 };

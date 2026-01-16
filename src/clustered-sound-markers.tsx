@@ -4,6 +4,7 @@ import {type Marker, MarkerClusterer} from '@googlemaps/markerclusterer';
 
 import {Sound} from './Sounds';
 import {SoundMarker} from './sound-marker';
+import { ImageGallery } from './image-gallery';
 
 export type ClusteredSoundMarkersProps = {
   sounds: Sound[];
@@ -17,6 +18,7 @@ export const ClusteredSoundMarkers = ({sounds}: ClusteredSoundMarkersProps) => {
   const [markers, setMarkers] = useState<{[key: string]: Marker}>({});
   const [selectedSoundKey, setSelectedSoundKey] = useState<string | null>(null);
   const [infowindowOpen, setInfowindowOpen] = useState(false);
+  const [hoverId, setHoverId] = useState<string | null>(null);
 
   const selectedSound = useMemo(
     () =>
@@ -92,6 +94,8 @@ export const ClusteredSoundMarkers = ({sounds}: ClusteredSoundMarkersProps) => {
           {selectedSound?.properties.description}
 
           <audio controls preload="metadata" src={"https://object-arbutus.cloud.computecanada.ca/soundscapes-public/" + selectedSound?.properties.soundfile}> </audio>
+
+          {/* <ImageGallery images={selectedSound ? selectedSound.properties.images : []}/> */}
 
           {selectedSound?.properties.images.map((url, index) => (
             <img key={index} src={"https://object-arbutus.cloud.computecanada.ca/soundscapes-public/" + url}></img>
