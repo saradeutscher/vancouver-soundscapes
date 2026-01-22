@@ -78,6 +78,7 @@ export const ClusteredSoundMarkers = ({sounds}: ClusteredSoundMarkersProps) => {
           sound={sound}
           onClick={handleMarkerClick}
           setMarkerRef={setMarkerRef}
+          isSelected={sound.key === selectedSoundKey}
         />
       ))}
 

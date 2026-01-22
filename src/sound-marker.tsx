@@ -10,19 +10,27 @@ import { Polyline } from './polyline';
 //   type: string;
 // };
 
+const DECADE_COLORS = new Map([
+  [1970, {background: '#C422FF', border: '#340047', glyph: '#560075'}],
+  [1990, {background: '#22ccff', border: '#1e89a1', glyph: '#0f677a'}],
+  [2010, {background: '#85D134', border: '#243A0D', glyph: '#3C6016'}],
+  [2020, {background: '#F7314B', border: '#45020B', glyph: '#710413'}]
+]);
+
 export type Coordinate = [number, number];
 
 export type SoundMarkerProps = {
   sound: Sound;
   onClick: (sound: Sound) => void;
   setMarkerRef: (marker: Marker | null, key: string) => void;
+  isSelected: boolean;
 };
 
 /**
  * Wrapper Component for an AdvancedMarker for a single sound marker.
  */
 export const SoundMarker = (props: SoundMarkerProps) => {
-  const {sound, onClick, setMarkerRef} = props;
+  const {sound, onClick, setMarkerRef, isSelected} = props;
 
   const handleClick = useCallback(() => onClick(sound), [onClick, sound]);
   const ref = useCallback(
@@ -53,12 +61,12 @@ export const SoundMarker = (props: SoundMarkerProps) => {
         ref={ref}
         onClick={handleClick}>
         <Pin
-          background={markerColor[0]}
-          borderColor={markerColor[1]}
-          glyphColor={markerColor[2]}/>
+          background={DECADE_COLORS.get(sound.properties.decade)?.background}
+          borderColor={DECADE_COLORS.get(sound.properties.decade)?.border}
+          glyphColor={DECADE_COLORS.get(sound.properties.decade)?.glyph}/>
       </AdvancedMarker>
 
-      {sound.geometry.type === "LineString" && linePath && (
+      {sound.geometry.type === "LineString" && linePath && isSelected && (
         <Polyline
           path={linePath}
           options={{
