@@ -3,6 +3,7 @@ import React, {useCallback} from 'react';
 import {AdvancedMarker, Pin} from '@vis.gl/react-google-maps';
 
 import {Sound} from './Sounds';
+import { Polyline } from './polyline';
 
 // export type Geometry = {
 //   coordinates: string;
@@ -30,32 +31,44 @@ export const SoundMarker = (props: SoundMarkerProps) => {
     [setMarkerRef, sound.key]
   );
 
-  // clunky for now since I haven't fully dealt with soundwalks yet
+  // Handle both Point and LineString geometries
   let point: { lat: number; lng: number };
+  let linePath: { lat: number; lng: number }[] | null = null;
 
-  if (sound.geometry.type == "LineString") {
-    const { line } = parseLineString(sound.geometry.coordinates);
-    const [lat, lng] = line[0];
-    point = { lat, lng };
+  if (sound.geometry.type === "LineString") {
+    const parsed = parseLineString(sound.geometry.coordinates);
+    linePath = parsed.line.map(([lat, lng]) => ({ lat, lng }));
+    point = linePath[0];
   } else {
     point = getLatLng(sound.geometry.coordinates);
   }
 
-  // const point = (sound.geometry.type == "Point") ? getLatLng(sound.geometry.coordinates) : parseLineString(sound.geometry.coordinates);
-
   // blue marker for points, purple markers for soundwalks
-  const markerColor: string[] = (sound.geometry.type == "Point") ? ['#22ccff', '#1e89a1', '#0f677a'] : ['#C422FF', '#340047', '#560075'];
+  const markerColor: string[] = (sound.geometry.type === "Point") ? ['#22ccff', '#1e89a1', '#0f677a'] : ['#C422FF', '#340047', '#560075'];
 
   return (
-    <AdvancedMarker
-      position={point}
-      ref={ref}
-      onClick={handleClick}>
-      <Pin
-        background={markerColor[0]}
-        borderColor={markerColor[1]}
-        glyphColor={markerColor[2]}/>
-    </AdvancedMarker>
+    <>
+      <AdvancedMarker
+        position={point}
+        ref={ref}
+        onClick={handleClick}>
+        <Pin
+          background={markerColor[0]}
+          borderColor={markerColor[1]}
+          glyphColor={markerColor[2]}/>
+      </AdvancedMarker>
+
+      {sound.geometry.type === "LineString" && linePath && (
+        <Polyline
+          path={linePath}
+          options={{
+            strokeColor: "#C422FF",
+            strokeOpacity: 1,
+            strokeWeight: 3,
+          }}
+        />
+      )}
+    </>
   );
 }
 

@@ -33,10 +33,10 @@ export const ImageGallery: FunctionComponent<ImageGalleryProps> = ({
       <div className="gallery-navigation">
         <div className="nav-btns">
           <button onClick={handleBack} disabled={currentImageIndex === 0}>
-            <span className="material-symbols-outlined">chevron_left</span>
+            <span className="material-symbols-outlined"> &lsaquo;	</span>
           </button>
           <button onClick={handleNext} disabled={currentImageIndex === images.length - 1}>
-            <span className="material-symbols=outlined">chevron_right</span>
+            <span className="material-symbols=outlined"> &rsaquo;	</span>
           </button>
         </div>
 

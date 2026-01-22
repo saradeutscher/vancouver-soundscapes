@@ -55,14 +55,7 @@ export const SoundMap = () => {
   const types = useMemo(() => {
     if (!combinedFilteredSounds) return [];
     return getTypes(combinedFilteredSounds);
-  }, [combinedFilteredSounds])
-
-  // const flightPlanCoordinates = [
-  //   { lat: 37.772, lng: -122.214 },
-  //   { lat: 21.291, lng: -157.821 },
-  //   { lat: -18.142, lng: 178.431 },
-  //   { lat: -27.467, lng: 153.027 },
-  // ]
+  }, [combinedFilteredSounds]);
 
   return (
     <APIProvider
@@ -71,20 +64,13 @@ export const SoundMap = () => {
     <Map
       mapId={''}
       zoomControl={true}
+      mapTypeControl={true}
       defaultZoom={12}
       defaultCenter={{ lat: 49.28, lng: -123.12 }}
       gestureHandling={'greedy'}
       disableDefaultUI>
 
-      {combinedFilteredSounds && <ClusteredSoundMarkers sounds={combinedFilteredSounds} />}
-      {/* <Polyline
-          path={flightPlanCoordinates}
-          options={{
-            strokeColor: "#FF0000",
-            strokeOpacity: 1,
-            strokeWeight: 3,
-          }}
-        /> */}
+      {combinedFilteredSounds && <ClusteredSoundMarkers sounds={combinedFilteredSounds}/>}
 
     </Map>
 

@@ -34,7 +34,7 @@ const App = () => {
             </p>
             <p>
               An interview with Barry Truax about the World Soundscapes Project was conducted by the CBC Radio show
-              On the Coast with Gloria Macarenko. The interview can be found on the CBC website <a target="_blank" href="https://www.cbc.ca/player/play/audio/9.7035933">here</a>.
+              On the Coast with Gloria Macarenko. The interview can be found <a target="_blank" href="https://www.cbc.ca/player/play/audio/9.7035933">on the CBC website</a>.
             </p>
           </div>
         );
@@ -43,7 +43,7 @@ const App = () => {
           <div className="about">
             <h2>Request an Addition</h2>
             <p>
-              form for adding a sound to the map here
+              Form to request an addition to the map coming soon.
             </p>
           </div>
           );
@@ -81,7 +81,7 @@ const App = () => {
           <button onClick={() => setActivePage("home")}>Home</button>
           <button onClick={() => setActivePage("about")}>About</button>
           <button onClick={() => setActivePage("request")}>Submit a Sound</button>
-          <button onClick={() => setActivePage("sounds")}>Sounds</button>
+          <button onClick={() => setActivePage("sounds")}>Sound List</button>
         </div>
       </nav>
 

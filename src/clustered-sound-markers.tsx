@@ -95,11 +95,11 @@ export const ClusteredSoundMarkers = ({sounds}: ClusteredSoundMarkersProps) => {
 
           <audio controls preload="metadata" src={"https://object-arbutus.cloud.computecanada.ca/soundscapes-public/" + selectedSound?.properties.soundfile}> </audio>
 
-          {/* <ImageGallery images={selectedSound ? selectedSound.properties.images : []}/> */}
+          {selectedSound && selectedSound.properties.images.length > 0 && <ImageGallery images={selectedSound.properties.images}/>}
 
-          {selectedSound?.properties.images.map((url, index) => (
+          {/* {selectedSound?.properties.images.map((url, index) => (
             <img key={index} src={"https://object-arbutus.cloud.computecanada.ca/soundscapes-public/" + url}></img>
-          ))}
+          ))} */}
         </InfoWindow>
       )}
     </>
