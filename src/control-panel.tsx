@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 
 import { CategoryData } from './Sounds';
 
@@ -7,6 +7,10 @@ type ControlPanelProps = {
   themes: Array<CategoryData>;
   decades: Array<CategoryData>;
   types: Array<CategoryData>
+  selectedCategory: string | null;
+  selectedTheme: string | null;
+  selectedDecade: number | null;
+  selectedType: string | null;
   onCategoryChange: (value: string | null) => void;
   onThemeChange: (value: string | null) => void;
   onDecadeChange: (value: number | null) => void;
@@ -18,16 +22,16 @@ export const ControlPanel = ({
   themes,
   decades,
   types,
+  selectedCategory,
+  selectedTheme,
+  selectedDecade,
+  selectedType,
   onCategoryChange,
   onThemeChange,
   onDecadeChange,
   onTypeChange
 }: ControlPanelProps) => {
   const [isMinimized, setIsMinimized] = useState(false);
-  const decadeRef = useRef<HTMLSelectElement>(null);
-  const typeRef = useRef<HTMLSelectElement>(null);
-  const categoryRef = useRef<HTMLSelectElement>(null);
-  const themeRef = useRef<HTMLSelectElement>(null);
 
   const handleTypeChange = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -58,11 +62,6 @@ export const ControlPanel = ({
   );
 
   const handleReset = useCallback(() => {
-    if (decadeRef.current) decadeRef.current.value = '';
-    if (typeRef.current) typeRef.current.value = '';
-    if (categoryRef.current) categoryRef.current.value = '';
-    if (themeRef.current) themeRef.current.value = '';
-
     onDecadeChange(null);
     onTypeChange(null);
     onCategoryChange(null);
@@ -88,7 +87,7 @@ export const ControlPanel = ({
           </p>
           <p className="filter-options">
           <label> Filter by Decade:</label>{' '}
-            <select ref={decadeRef} onChange={handleDecadeChange}>
+            <select value={selectedDecade ?? ''} onChange={handleDecadeChange}>
               <option value={''}>All sounds</option>
 
               {decades.map(decade => (
@@ -99,7 +98,7 @@ export const ControlPanel = ({
             </select>
 
             <label> Filter by Type:</label>{' '}
-            <select ref={typeRef} onChange={handleTypeChange}>
+            <select value={selectedType ?? ''} onChange={handleTypeChange}>
               <option value={''}>All sounds</option>
 
               {types.map(type => (
@@ -110,7 +109,7 @@ export const ControlPanel = ({
             </select>
 
             <label> Filter by Class:</label>{' '}
-            <select ref={categoryRef} onChange={handleCategoryChange}>
+            <select value={selectedCategory ?? ''} onChange={handleCategoryChange}>
               <option value={''}>All sounds</option>
 
               {categories.map(category => (
@@ -121,7 +120,7 @@ export const ControlPanel = ({
             </select>
 
             <label> Filter by Theme:</label>{' '}
-            <select ref={themeRef} onChange={handleThemeChange}>
+            <select value={selectedTheme ?? ''} onChange={handleThemeChange}>
               <option value={''}>All sounds</option>
 
               {themes.map(theme => (

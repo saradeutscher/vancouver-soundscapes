@@ -17,6 +17,8 @@ export type Coordinate = [number, number];
 export type SoundMarkerProps = {
   sound: Sound;
   onClick: (sound: Sound) => void;
+  onMouseEnter?: (sound: Sound) => void;
+  onMouseLeave?: () => void;
   setMarkerRef: (marker: Marker | null, key: string) => void;
   isSelected: boolean;
 };
@@ -25,9 +27,12 @@ export type SoundMarkerProps = {
  * Wrapper Component for an AdvancedMarker for a single sound marker.
  */
 export const SoundMarker = (props: SoundMarkerProps) => {
-  const {sound, onClick, setMarkerRef, isSelected} = props;
+  const {sound, onClick, onMouseEnter, onMouseLeave, setMarkerRef, isSelected} = props;
 
   const handleClick = useCallback(() => onClick(sound), [onClick, sound]);
+  const handleMouseEnter = useCallback(() => onMouseEnter?.(sound), [onMouseEnter, sound]);
+  const handleMouseLeave = useCallback(() => onMouseLeave?.(), [onMouseLeave]);
+
   const ref = useCallback(
     (marker: google.maps.marker.AdvancedMarkerElement) =>
       setMarkerRef(marker, sound.key),
@@ -51,7 +56,9 @@ export const SoundMarker = (props: SoundMarkerProps) => {
       <AdvancedMarker
         position={point}
         ref={ref}
-        onClick={handleClick}>
+        onClick={handleClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}>
         <Pin
           background={DECADE_COLORS.get(sound.properties.decade)?.background}
           borderColor={DECADE_COLORS.get(sound.properties.decade)?.border}

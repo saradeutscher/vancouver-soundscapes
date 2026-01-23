@@ -70,6 +70,35 @@ export const ClusteredSoundMarkers = ({sounds}: ClusteredSoundMarkersProps) => {
     infowindowOpen ? setSelectedSoundKey(null) : setSelectedSoundKey(sound.key)
   }, [infowindowOpen]);
 
+  // Preload images and audio when hovering over a marker
+  useEffect(() => {
+    if (!hoverId) return;
+
+    const sound = sounds.find(s => s.key === hoverId);
+    if (!sound) return;
+
+    // Preload images
+    sound.properties.images.forEach(imageUrl => {
+      const img = new Image();
+      img.src = `https://object-arbutus.cloud.computecanada.ca/soundscapes-public/${imageUrl}`;
+    });
+
+    // Preload audio
+    if (sound.properties.soundfile) {
+      const audio = new Audio();
+      audio.preload = 'auto';
+      audio.src = `https://object-arbutus.cloud.computecanada.ca/soundscapes-public/${sound.properties.soundfile}`;
+    }
+  }, [hoverId, sounds]);
+
+  const handleMarkerMouseEnter = useCallback((sound: Sound) => {
+    setHoverId(sound.key);
+  }, []);
+
+  const handleMarkerMouseLeave = useCallback(() => {
+    setHoverId(null);
+  }, []);
+
   return (
     <>
       {sounds.map(sound => (
@@ -77,6 +106,8 @@ export const ClusteredSoundMarkers = ({sounds}: ClusteredSoundMarkersProps) => {
           key={sound.key}
           sound={sound}
           onClick={handleMarkerClick}
+          onMouseEnter={handleMarkerMouseEnter}
+          onMouseLeave={handleMarkerMouseLeave}
           setMarkerRef={setMarkerRef}
           isSelected={sound.key === selectedSoundKey}
         />
