@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useRef} from 'react';
 
 import { CategoryData } from './Sounds';
 
@@ -23,6 +23,11 @@ export const ControlPanel = ({
   onDecadeChange,
   onTypeChange
 }: ControlPanelProps) => {
+  const decadeRef = useRef<HTMLSelectElement>(null);
+  const typeRef = useRef<HTMLSelectElement>(null);
+  const categoryRef = useRef<HTMLSelectElement>(null);
+  const themeRef = useRef<HTMLSelectElement>(null);
+
   const handleTypeChange = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
       onTypeChange(e.target.value || null);
@@ -51,6 +56,18 @@ export const ControlPanel = ({
     [onDecadeChange]
   );
 
+  const handleReset = useCallback(() => {
+    if (decadeRef.current) decadeRef.current.value = '';
+    if (typeRef.current) typeRef.current.value = '';
+    if (categoryRef.current) categoryRef.current.value = '';
+    if (themeRef.current) themeRef.current.value = '';
+
+    onDecadeChange(null);
+    onTypeChange(null);
+    onCategoryChange(null);
+    onThemeChange(null);
+  }, [onDecadeChange, onTypeChange, onCategoryChange, onThemeChange]);
+
   return (
     <div className="control-panel marker-clustering-control-panel">
       <h3>Filter the Map</h3>
@@ -59,7 +76,7 @@ export const ControlPanel = ({
         </p>
         <p className="filter-options">
         <label> Filter by Decade:</label>{' '}
-          <select onChange={handleDecadeChange}>
+          <select ref={decadeRef} onChange={handleDecadeChange}>
             <option value={''}>All sounds</option>
 
             {decades.map(decade => (
@@ -70,7 +87,7 @@ export const ControlPanel = ({
           </select>
 
           <label> Filter by Type:</label>{' '}
-          <select onChange={handleTypeChange}>
+          <select ref={typeRef} onChange={handleTypeChange}>
             <option value={''}>All sounds</option>
 
             {types.map(type => (
@@ -81,7 +98,7 @@ export const ControlPanel = ({
           </select>
 
           <label> Filter by Class:</label>{' '}
-          <select onChange={handleCategoryChange}>
+          <select ref={categoryRef} onChange={handleCategoryChange}>
             <option value={''}>All sounds</option>
 
             {categories.map(category => (
@@ -92,7 +109,7 @@ export const ControlPanel = ({
           </select>
 
           <label> Filter by Theme:</label>{' '}
-          <select onChange={handleThemeChange}>
+          <select ref={themeRef} onChange={handleThemeChange}>
             <option value={''}>All sounds</option>
 
             {themes.map(theme => (
@@ -102,6 +119,7 @@ export const ControlPanel = ({
             ))}
           </select>
         </p>
+        <button id="filter-reset" onClick={handleReset}>Reset</button>
     </div>
   );
 };

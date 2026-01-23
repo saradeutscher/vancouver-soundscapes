@@ -3,6 +3,8 @@
   margin: 0 auto;
   /* padding: 2rem; */
   text-align: center;
+  font-family: sans-serif;
+
 }
 
 html, body {
@@ -121,6 +123,21 @@ button {
 button:hover {
   /* background-color: #395225; */
   background-color: #005f6b;
+}
+
+#filter-reset {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  font-size: 14px;
+  border-radius: 0;
+  padding: 3px 10px;
+}
+
+#filter-reset:hover {
+  border-color: gray;
+  color: gray;
+  cursor: pointer;
 }
 
 #sound-search {

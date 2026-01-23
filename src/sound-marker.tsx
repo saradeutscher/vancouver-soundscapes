@@ -5,11 +5,6 @@ import {AdvancedMarker, Pin} from '@vis.gl/react-google-maps';
 import {Sound} from './Sounds';
 import { Polyline } from './polyline';
 
-// export type Geometry = {
-//   coordinates: string;
-//   type: string;
-// };
-
 const DECADE_COLORS = new Map([
   [1970, {background: '#C422FF', border: '#340047', glyph: '#560075'}],
   [1990, {background: '#22ccff', border: '#1e89a1', glyph: '#0f677a'}],
@@ -51,9 +46,6 @@ export const SoundMarker = (props: SoundMarkerProps) => {
     point = getLatLng(sound.geometry.coordinates);
   }
 
-  // blue marker for points, purple markers for soundwalks
-  const markerColor: string[] = (sound.geometry.type === "Point") ? ['#22ccff', '#1e89a1', '#0f677a'] : ['#C422FF', '#340047', '#560075'];
-
   return (
     <>
       <AdvancedMarker
@@ -70,7 +62,7 @@ export const SoundMarker = (props: SoundMarkerProps) => {
         <Polyline
           path={linePath}
           options={{
-            strokeColor: "#C422FF",
+            strokeColor: DECADE_COLORS.get(sound.properties.decade)?.background,
             strokeOpacity: 1,
             strokeWeight: 3,
           }}
