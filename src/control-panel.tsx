@@ -1,4 +1,4 @@
-import React, {useCallback, useRef} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 
 import { CategoryData } from './Sounds';
 
@@ -23,6 +23,7 @@ export const ControlPanel = ({
   onDecadeChange,
   onTypeChange
 }: ControlPanelProps) => {
+  const [isMinimized, setIsMinimized] = useState(false);
   const decadeRef = useRef<HTMLSelectElement>(null);
   const typeRef = useRef<HTMLSelectElement>(null);
   const categoryRef = useRef<HTMLSelectElement>(null);
@@ -69,57 +70,70 @@ export const ControlPanel = ({
   }, [onDecadeChange, onTypeChange, onCategoryChange, onThemeChange]);
 
   return (
-    <div className="control-panel marker-clustering-control-panel">
-      <h3>Filter the Map</h3>
-        <p>
-          Use the controls below to filter the sounds shown on the map.
-        </p>
-        <p className="filter-options">
-        <label> Filter by Decade:</label>{' '}
-          <select ref={decadeRef} onChange={handleDecadeChange}>
-            <option value={''}>All sounds</option>
+    <div className={`control-panel marker-clustering-control-panel ${isMinimized ? 'minimized' : ''}`}>
+      <div className="control-panel-header">
+        <h3>Filter the Map</h3>
+        <button
+          className="minimize-button"
+          onClick={() => setIsMinimized(!isMinimized)}
+          aria-label={isMinimized ? 'Expand panel' : 'Minimize panel'}
+        >
+          {isMinimized ? '+' : '-'}
+        </button>
+      </div>
+      {!isMinimized && (
+        <>
+          <p>
+            Use the controls below to filter the sounds shown on the map.
+          </p>
+          <p className="filter-options">
+          <label> Filter by Decade:</label>{' '}
+            <select ref={decadeRef} onChange={handleDecadeChange}>
+              <option value={''}>All sounds</option>
 
-            {decades.map(decade => (
-              <option key={decade.key} value={decade.key}>
-                {decade.label} ({decade.count})
-              </option>
-            ))}
-          </select>
+              {decades.map(decade => (
+                <option key={decade.key} value={decade.key}>
+                  {decade.label} ({decade.count})
+                </option>
+              ))}
+            </select>
 
-          <label> Filter by Type:</label>{' '}
-          <select ref={typeRef} onChange={handleTypeChange}>
-            <option value={''}>All sounds</option>
+            <label> Filter by Type:</label>{' '}
+            <select ref={typeRef} onChange={handleTypeChange}>
+              <option value={''}>All sounds</option>
 
-            {types.map(type => (
-              <option key={type.key} value={type.key}>
-                {type.label} ({type.count})
-              </option>
-            ))}
-          </select>
+              {types.map(type => (
+                <option key={type.key} value={type.key}>
+                  {type.label} ({type.count})
+                </option>
+              ))}
+            </select>
 
-          <label> Filter by Class:</label>{' '}
-          <select ref={categoryRef} onChange={handleCategoryChange}>
-            <option value={''}>All sounds</option>
+            <label> Filter by Class:</label>{' '}
+            <select ref={categoryRef} onChange={handleCategoryChange}>
+              <option value={''}>All sounds</option>
 
-            {categories.map(category => (
-              <option key={category.key} value={category.key}>
-                {category.label} ({category.count})
-              </option>
-            ))}
-          </select>
+              {categories.map(category => (
+                <option key={category.key} value={category.key}>
+                  {category.label} ({category.count})
+                </option>
+              ))}
+            </select>
 
-          <label> Filter by Theme:</label>{' '}
-          <select ref={themeRef} onChange={handleThemeChange}>
-            <option value={''}>All sounds</option>
+            <label> Filter by Theme:</label>{' '}
+            <select ref={themeRef} onChange={handleThemeChange}>
+              <option value={''}>All sounds</option>
 
-            {themes.map(theme => (
-              <option key={theme.key} value={theme.key}>
-                {theme.label} ({theme.count})
-              </option>
-            ))}
-          </select>
-        </p>
-        <button id="filter-reset" onClick={handleReset}>Reset</button>
+              {themes.map(theme => (
+                <option key={theme.key} value={theme.key}>
+                  {theme.label} ({theme.count})
+                </option>
+              ))}
+            </select>
+          </p>
+          <button id="filter-reset" onClick={handleReset}>Reset</button>
+        </>
+      )}
     </div>
   );
 };
