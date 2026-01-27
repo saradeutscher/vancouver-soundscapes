@@ -215,16 +215,38 @@ select {
   min-width: 75%;
 }
 
+.clustering-toggle {
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.clustering-toggle label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.clustering-toggle input[type="checkbox"] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
 .sound-info {
   display: flex;
   flex-direction: column;
   gap: 6px;
   margin-top: 0px;
-  width: 100%;
-  max-width: 300px;
+  width: 300px;
   height: 300px;
   align-items: center;
   background-color: #fff;
+  overflow-y: auto;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .sound-info img {

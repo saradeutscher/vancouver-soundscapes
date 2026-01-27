@@ -11,10 +11,12 @@ type ControlPanelProps = {
   selectedTheme: string | null;
   selectedDecade: number | null;
   selectedType: string | null;
+  clusteringEnabled: boolean;
   onCategoryChange: (value: string | null) => void;
   onThemeChange: (value: string | null) => void;
   onDecadeChange: (value: number | null) => void;
   onTypeChange: (value: string | null) => void;
+  onClusteringToggle: (enabled: boolean) => void;
 }
 
 export const ControlPanel = ({
@@ -26,10 +28,12 @@ export const ControlPanel = ({
   selectedTheme,
   selectedDecade,
   selectedType,
+  clusteringEnabled,
   onCategoryChange,
   onThemeChange,
   onDecadeChange,
-  onTypeChange
+  onTypeChange,
+  onClusteringToggle
 }: ControlPanelProps) => {
   const [isMinimized, setIsMinimized] = useState(false);
 
@@ -130,6 +134,16 @@ export const ControlPanel = ({
               ))}
             </select>
           </p>
+          <div className="clustering-toggle">
+            <label>
+              <input
+                type="checkbox"
+                checked={clusteringEnabled}
+                onChange={(e) => onClusteringToggle(e.target.checked)}
+              />
+              Enable Marker Clustering
+            </label>
+          </div>
           <button id="filter-reset" onClick={handleReset}>Reset</button>
         </>
       )}

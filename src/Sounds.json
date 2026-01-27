@@ -2766,5 +2766,329 @@
       "soundfile": "20240726 12_27pm Beaver Lake SE.WAV",
       "notes": ""
     }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.24674061872595, 49.26740373681267]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "UBC Bus Loop",
+      "decade": 1990,
+      "description": "1993-09-10T07:00:00.000Z",
+      "soundfile": "Vdat6.9",
+      "notes": ""
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.25043661608616, 49.2677911701665]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "Student Union Building",
+      "decade": 2010,
+      "description": "2011-08-26T21:19:00.000Z",
+      "soundfile": "VFile4.6",
+      "notes": ""
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.24915023852381, 49.263876932667785]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "Soundwalk: Mechanical Engineering Building",
+      "decade": 1970,
+      "description": "1973-02-26T08:00:00.000Z",
+      "soundfile": "Van20B",
+      "notes": "Soundwalk in and around the Mechanical Engineering Building on Applied Science Lane/East Mall"
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.25335773478267, 49.2692394715116]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "Soundwalk: Buchanan Tower",
+      "decade": 2010,
+      "description": "August 26, 2011, 3:50 p.m.",
+      "soundfile": "VFile4.8",
+      "notes": ""
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.25335773478267, 49.2692394715116]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "Buchanan Tower",
+      "decade": 1970,
+      "description": "1973-02-06T08:00:00.000Z",
+      "soundfile": "Van19B; Van20A",
+      "notes": ""
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.25521324227185, 49.2679821490373]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "Sedgewick Library (prior to reconstruction in 1997)",
+      "decade": 1970,
+      "description": "1973-02-16T08:00:00.000Z",
+      "soundfile": "Van19A",
+      "notes": ""
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.25508181403012, 49.2674413341854]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "Sedgewick Library Study Carrels (prior to reconstruction in 1997)",
+      "decade": 1990,
+      "description": "1993-09-10T07:00:00.000Z",
+      "soundfile": "Vdat6.6",
+      "notes": ""
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.25508181403012, 49.2674413341854]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "Koerner Library Basement",
+      "decade": 2010,
+      "description": "2011-08-26T07:00:00.000Z",
+      "soundfile": "VFile4.9",
+      "notes": ""
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.25771512698104, 49.2749723486134]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "Soundwalk: Shoreline Tour (UBC to False Creek)",
+      "decade": 1970,
+      "description": "1973-03-21T08:00:00.000Z",
+      "soundfile": "Van71A",
+      "notes": ""
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.26127710055282, 49.2723683508555]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "UBC Wreck Beach",
+      "decade": 2010,
+      "description": "2010-07-15T07:00:00.000Z",
+      "soundfile": "VFile4.5",
+      "notes": ""
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.26053144644668, 49.2701746516256]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "UBC Museum of Anthropology Interior",
+      "decade": 1990,
+      "description": "September 10, 1993, 2:29 p.m.",
+      "soundfile": "Vdat6.3",
+      "notes": ""
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.26053144644668, 49.2701746516256]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "UBC Museum of Anthropology Interior",
+      "decade": 2010,
+      "description": "2010-07-15T07:00:00.000Z",
+      "soundfile": "VFile4.4",
+      "notes": ""
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.25976613017622, 49.2666193037932]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "Nitobe Memorial Garden",
+      "decade": 1970,
+      "description": "1973-03-21T08:00:00.000Z",
+      "soundfile": "Van70F",
+      "notes": ""
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.25976613017622, 49.2666193037932]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "Nitobe Memorial Garden",
+      "decade": 1990,
+      "description": "September 10, 1993, 4:30 p.m.",
+      "soundfile": "Vdat6.10",
+      "notes": ""
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.25976613017622, 49.2666193037932]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "Nitobe Memorial Garden",
+      "decade": 2010,
+      "description": "2011-08-26T07:00:00.000Z",
+      "soundfile": "VFile4.11",
+      "notes": ""
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.21598200467326, 49.280455141695]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "Spanish Banks Beach",
+      "decade": 1990,
+      "description": "September 9, 1993, 5:30 p.m.",
+      "soundfile": "Vdat5.26",
+      "notes": ""
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.195363432773, 49.275413592008746]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "Jericho Beach",
+      "decade": 1990,
+      "description": "September 9, 1993, 5:03 p.m.",
+      "soundfile": "Vdat5.25",
+      "notes": "On the beach, halfway between the walkway and the water, facing the water"
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[-123.19536343277343, 49.2754135920087]",
+      "type": "Point"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "Jericho Park Footbridge",
+      "decade": 1990,
+      "description": "September 9, 1993, 4:54 p.m.",
+      "soundfile": "Vdat5.24",
+      "notes": ""
+    }
   }
 ]

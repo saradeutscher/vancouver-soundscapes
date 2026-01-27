@@ -4,7 +4,6 @@ import {ControlPanel} from './control-panel';
 
 import{getCategories, getThemes, getDecades, loadSoundDataset, Sound, getTypes} from './Sounds';
 import {ClusteredSoundMarkers} from './clustered-sound-markers';
-import {Polyline} from './polyline';
 
 const API_KEY =
   globalThis.GOOGLE_MAPS_API_KEY ?? ("");
@@ -15,6 +14,8 @@ export const SoundMap = () => {
   const [selectTheme, setSelectedTheme] = useState<string | null>(null);
   const [selectDecade, setSelectedDecade] = useState<number | null>(null);
   const [selectType, setSelectedType] = useState<string | null>(null);
+  const [selectedSoundKey, setSelectedSoundKey] = useState<string | null>(null);
+  const [clusteringEnabled, setClusteringEnabled] = useState<boolean>(true);
 
   // load data asynchronously
   useEffect(() => {
@@ -67,10 +68,12 @@ export const SoundMap = () => {
       mapTypeControl={true}
       defaultZoom={12}
       defaultCenter={{ lat: 49.28, lng: -123.12 }}
+      // mapTypeId={'satellite'}
       gestureHandling={'greedy'}
-      disableDefaultUI>
+      disableDefaultUI
+      onClick={() => setSelectedSoundKey(null)}>
 
-      {combinedFilteredSounds && <ClusteredSoundMarkers sounds={combinedFilteredSounds}/>}
+      {combinedFilteredSounds && <ClusteredSoundMarkers sounds={combinedFilteredSounds} selectedSoundKey={selectedSoundKey} onSoundSelect={setSelectedSoundKey} clusteringEnabled={clusteringEnabled}/>}
 
     </Map>
 
@@ -79,10 +82,16 @@ export const SoundMap = () => {
       themes={themes}
       decades={decades}
       types={types}
+      selectedCategory={selectCategory}
+      selectedTheme={selectTheme}
+      selectedDecade={selectDecade}
+      selectedType={selectType}
+      clusteringEnabled={clusteringEnabled}
       onCategoryChange={setSelectedCategory}
       onThemeChange={setSelectedTheme}
       onDecadeChange={setSelectedDecade}
       onTypeChange={setSelectedType}
+      onClusteringToggle={setClusteringEnabled}
     />
 
     </APIProvider>

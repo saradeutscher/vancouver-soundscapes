@@ -8,17 +8,20 @@ import { ImageGallery } from './image-gallery';
 
 export type ClusteredSoundMarkersProps = {
   sounds: Sound[];
+  selectedSoundKey: string | null;
+  onSoundSelect: (key: string | null) => void;
+  clusteringEnabled: boolean;
 };
 
 /**
  * The ClusteredSoundMarkers component is responsible for integrating the markers
  * with the markerclusterer.
  */
-export const ClusteredSoundMarkers = ({sounds}: ClusteredSoundMarkersProps) => {
+export const ClusteredSoundMarkers = ({sounds, selectedSoundKey, onSoundSelect, clusteringEnabled}: ClusteredSoundMarkersProps) => {
   const [markers, setMarkers] = useState<{[key: string]: Marker}>({});
-  const [selectedSoundKey, setSelectedSoundKey] = useState<string | null>(null);
   const [infowindowOpen, setInfowindowOpen] = useState(false);
   const [hoverId, setHoverId] = useState<string | null>(null);
+  const clustererRef = React.useRef<MarkerClusterer | null>(null);
 
   const selectedSound = useMemo(
     () =>
@@ -31,18 +34,53 @@ export const ClusteredSoundMarkers = ({sounds}: ClusteredSoundMarkersProps) => {
   // create the markerClusterer once the map is available and update it
   // when the markers are changed
   const map = useMap();
-  const clusterer = useMemo(() => {
-    if (!map) return null;
 
-    return new MarkerClusterer({map});
-  }, [map]);
-
+  // Effect to manage clusterer lifecycle
   useEffect(() => {
-    if (!clusterer) return;
+    if (!map) return;
 
-    clusterer.clearMarkers();
-    clusterer.addMarkers(Object.values(markers));
-  }, [clusterer, markers]);
+    const markerArray = Object.values(markers);
+
+    // Clean up old clusterer if it exists
+    if (clustererRef.current) {
+      clustererRef.current.clearMarkers();
+      clustererRef.current.setMap(null);
+      clustererRef.current = null;
+    }
+
+    // Create new clusterer if clustering is enabled
+    if (clusteringEnabled) {
+      clustererRef.current = new MarkerClusterer({map});
+
+      // Add existing markers to the new clusterer
+      if (markerArray.length > 0) {
+        clustererRef.current.addMarkers(markerArray);
+      }
+    } else {
+      // When clustering is disabled, ensure all markers are visible on the map
+      markerArray.forEach(marker => {
+        if (marker) {
+          (marker as any).setMap(map);
+        }
+      });
+    }
+
+    // Cleanup on unmount or when dependencies change
+    return () => {
+      if (clustererRef.current) {
+        clustererRef.current.clearMarkers();
+        clustererRef.current.setMap(null);
+      }
+    };
+  }, [map, clusteringEnabled, markers]);
+
+  // Effect to update clusterer when markers change (only when clustering is enabled)
+  useEffect(() => {
+    if (!clustererRef.current) return;
+
+    clustererRef.current.clearMarkers();
+    clustererRef.current.addMarkers(Object.values(markers));
+  }, [markers]);
 
   // callback that gets passed as ref to the markers to keep track of
   // markers currently on the map
@@ -62,13 +100,13 @@ export const ClusteredSoundMarkers = ({sounds}: ClusteredSoundMarkersProps) => {
   }, []);
 
   const handleInfoWindowClose = useCallback(() => {
-    setSelectedSoundKey(null);
-  }, []);
+    onSoundSelect(null);
+  }, [onSoundSelect]);
 
   const handleMarkerClick = useCallback((sound: Sound) => {
     setInfowindowOpen(prev => !prev);
-    infowindowOpen ? setSelectedSoundKey(null) : setSelectedSoundKey(sound.key)
-  }, [infowindowOpen]);
+    infowindowOpen ? onSoundSelect(null) : onSoundSelect(sound.key)
+  }, [infowindowOpen, onSoundSelect]);
 
   // Preload images and audio when hovering over a marker
   useEffect(() => {
