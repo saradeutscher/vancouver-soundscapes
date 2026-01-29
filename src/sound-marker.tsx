@@ -1,6 +1,6 @@
 import type {Marker} from '@googlemaps/markerclusterer';
 import React, {useCallback} from 'react';
-import {AdvancedMarker, Pin} from '@vis.gl/react-google-maps';
+import {AdvancedMarker, AdvancedMarkerAnchorPoint, Pin} from '@vis.gl/react-google-maps';
 
 import {Sound} from './Sounds';
 import { Polyline } from './polyline';
@@ -21,13 +21,14 @@ export type SoundMarkerProps = {
   onMouseLeave?: () => void;
   setMarkerRef: (marker: Marker | null, key: string) => void;
   isSelected: boolean;
+  hoverId: string | null;
 };
 
 /**
  * Wrapper Component for an AdvancedMarker for a single sound marker.
  */
 export const SoundMarker = (props: SoundMarkerProps) => {
-  const {sound, onClick, onMouseEnter, onMouseLeave, setMarkerRef, isSelected} = props;
+  const {sound, onClick, onMouseEnter, onMouseLeave, setMarkerRef, isSelected, hoverId} = props;
 
   const handleClick = useCallback(() => onClick(sound), [onClick, sound]);
   const handleMouseEnter = useCallback(() => onMouseEnter?.(sound), [onMouseEnter, sound]);
@@ -58,7 +59,11 @@ export const SoundMarker = (props: SoundMarkerProps) => {
         ref={ref}
         onClick={handleClick}
         onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}>
+        onMouseLeave={handleMouseLeave}
+        style={{
+          transform: `scale(${(hoverId === sound.key) ? 1.2 : 1})`,
+          transformOrigin: AdvancedMarkerAnchorPoint['BOTTOM'].join(' ')
+        }}>
         <Pin
           background={DECADE_COLORS.get(sound.properties.decade)?.background}
           borderColor={DECADE_COLORS.get(sound.properties.decade)?.border}
@@ -67,11 +72,24 @@ export const SoundMarker = (props: SoundMarkerProps) => {
 
       {sound.geometry.type === "LineString" && linePath && isSelected && (
         <Polyline
+          key={sound.key}
           path={linePath}
+          animate={true}
+          animationDuration={1500}
           options={{
             strokeColor: DECADE_COLORS.get(sound.properties.decade)?.background,
-            strokeOpacity: 1,
-            strokeWeight: 3,
+            strokeOpacity: 0,
+            strokeWeight: 4,
+            icons: [{
+              icon: {
+                path: 'M 0,-1 0,1',
+                strokeOpacity: 1,
+                strokeWeight: 4,
+                scale: 2,
+              },
+              offset: '0',
+              repeat: '15px'
+            }]
           }}
         />
       )}

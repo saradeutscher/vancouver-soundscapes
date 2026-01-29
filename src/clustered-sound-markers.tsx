@@ -148,6 +148,7 @@ export const ClusteredSoundMarkers = ({sounds, selectedSoundKey, onSoundSelect, 
           onMouseLeave={handleMarkerMouseLeave}
           setMarkerRef={setMarkerRef}
           isSelected={sound.key === selectedSoundKey}
+          hoverId={hoverId}
         />
       ))}
 
@@ -167,9 +168,6 @@ export const ClusteredSoundMarkers = ({sounds, selectedSoundKey, onSoundSelect, 
 
           {selectedSound && selectedSound.properties.images.length > 0 && <ImageGallery images={selectedSound.properties.images}/>}
 
-          {/* {selectedSound?.properties.images.map((url, index) => (
-            <img key={index} src={"https://object-arbutus.cloud.computecanada.ca/soundscapes-public/" + url}></img>
-          ))} */}
         </InfoWindow>
       )}
     </>
