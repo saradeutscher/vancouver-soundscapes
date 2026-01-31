@@ -264,23 +264,221 @@ select {
   margin-top: 4px;
 }
 
+/* Override Google Maps InfoWindow default styles */
+.gm-style .gm-style-iw-c {
+  padding: 0 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  max-width: 320px !important;
+  overflow: visible !important;
+}
+
+.gm-style .gm-style-iw-d {
+  overflow: visible !important;
+  max-height: 500px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.gm-style .gm-style-iw-d > div {
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block !important;
+}
+
+.gm-style .gm-style-iw {
+  padding: 0 !important;
+  margin: 0 !important;
+  top: 0 !important;
+}
+
+/* Remove any potential child spacing */
+.gm-style-iw-ch {
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+}
+
+/* Target the .gm-style-iw-chr wrapper at the top */
+.gm-style-iw-chr {
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+}
+
+/* Target all possible wrapper elements */
+.gm-style .gm-style-iw-c > div,
+.gm-style .gm-style-iw-c > div > div,
+.gm-style .gm-style-iw-d,
+.gm-style .gm-style-iw {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Force the content to start at the top */
+.gm-style .gm-style-iw-c .sound-info-header {
+  margin-top: 0 !important;
+}
+
+/* Pull the content wrapper upward to eliminate top gap */
+.gm-style .gm-style-iw-c > .gm-style-iw-d > div:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Target the empty wrapper div between gm-style-iw-d and sound-info */
+.gm-style .gm-style-iw-d > div:first-child {
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block !important;
+  line-height: 0 !important;
+}
+
+/* Style the close button */
+.gm-style .gm-style-iw-tc {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.gm-style .gm-style-iw-tc::after {
+  background: white !important;
+}
+
+button.gm-ui-hover-effect {
+  top: 8px !important;
+  right: 8px !important;
+  width: 28px !important;
+  height: 28px !important;
+  opacity: 0.9 !important;
+  z-index: 1000 !important;
+}
+
+button.gm-ui-hover-effect:hover {
+  opacity: 1 !important;
+}
+
 .sound-info {
+  width: 320px;
+  max-height: 500px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  border-top: 4px solid var(--decade-color, #008cba);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  position: relative;
+  display: block;
+  transform: translateY(-12px);
+}
+
+.sound-info * {
+  line-height: normal;
+}
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sound-info-header {
+  padding: 16px 16px 16px 16px;
+  background: linear-gradient(to bottom, #fafafa, #fff);
+  border-bottom: 1px solid #e5e5e5;
+  position: relative;
+  display: block;
+  margin: 0;
+  margin-top: -12px !important;
+}
+
+.sound-info-header h2 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.3;
+}
+
+.sound-metadata {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 6px;
-  margin-top: 0px;
-  width: 300px;
-  height: 300px;
-  align-items: center;
-  background-color: #fff;
+}
+
+.metadata-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.decade-badge {
+  color: white;
+}
+
+.class-badge {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.sound-info-body {
+  padding: 16px;
   overflow-y: auto;
-  padding: 10px;
-  box-sizing: border-box;
+  max-height: 400px;
+}
+
+.sound-info-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sound-info-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.sound-info-body::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.sound-info-body::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.sound-description {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0 0 12px 0;
+}
+
+.sound-notes {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.5;
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 6px;
+  margin-top: 12px;
+  border-left: 3px solid #008cba;
 }
 
 .sound-info img {
-  width: 85%;
-  height: flex;
+  width: 100%;
+  border-radius: 8px;
+  margin: 8px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   object-fit: cover;
   object-position: center;
   display: block;
@@ -289,8 +487,15 @@ select {
 .sound-info audio {
   display: block;
   width: 100%;
-  min-height: 42px;
-  margin: 1rem 0;
+  height: 40px;
+  margin: 12px 0;
+  border-radius: 20px;
+  outline: none;
+}
+
+.sound-info audio::-webkit-media-controls-panel {
+  background-color: #f5f5f5;
+  border-radius: 20px;
 }
 
 #sounds-page-title {
