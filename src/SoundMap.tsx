@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { APIProvider, Map, MapControl, ControlPosition} from '@vis.gl/react-google-maps';
+import { APIProvider, Map} from '@vis.gl/react-google-maps';
 import {ControlPanel} from './control-panel';
+import lunr from 'lunr';
 
 import{getCategories, getThemes, getDecades, loadSoundDataset, Sound, getTypes} from './Sounds';
 import {ClusteredSoundMarkers} from './clustered-sound-markers';
@@ -8,7 +9,11 @@ import {ClusteredSoundMarkers} from './clustered-sound-markers';
 const API_KEY =
   globalThis.GOOGLE_MAPS_API_KEY ?? ("");
 
-export const SoundMap = () => {
+type SoundMapProps = {
+  searchIndex: lunr.Index | null;
+};
+
+export const SoundMap = ({ searchIndex }: SoundMapProps) => {
   const [sounds, setSounds] = useState<Sound[]>();
   const [selectCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectTheme, setSelectedTheme] = useState<string | null>(null);
@@ -16,23 +21,47 @@ export const SoundMap = () => {
   const [selectType, setSelectedType] = useState<string | null>(null);
   const [selectedSoundKey, setSelectedSoundKey] = useState<string | null>(null);
   const [clusteringEnabled, setClusteringEnabled] = useState<boolean>(true);
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [searchResults, setSearchResults] = useState<Set<string> | null>(null);
 
   // load data asynchronously
   useEffect(() => {
     loadSoundDataset().then(data => setSounds(data));
   }, []);
 
+  // debounced search effect
+  useEffect(() => {
+    if (!searchIndex || !searchQuery.trim()) {
+      setSearchResults(null);
+      return;
+    }
+
+    const timeoutId = setTimeout(() => {
+      try {
+        const results = searchIndex.search(searchQuery);
+        const resultKeys = new Set<string>(results.map((r: any) => r.ref as string));
+        setSearchResults(resultKeys);
+      } catch (error) {
+        console.error('Search error:', error);
+        setSearchResults(new Set<string>());
+      }
+    }, 300);
+
+    return () => clearTimeout(timeoutId);
+  }, [searchQuery, searchIndex]);
+
   // combined filtered sounds
   const combinedFilteredSounds = useMemo(() => {
     if (!sounds) return null;
 
     return sounds.filter(
-      s => (!selectDecade || s.properties.decade == selectDecade) &&
+      s => (!searchResults || searchResults.has(s.key)) &&
+           (!selectDecade || s.properties.decade == selectDecade) &&
            (!selectTheme || s.properties.theme.includes(selectTheme)) &&
            (!selectCategory || s.properties.class.includes(selectCategory)) &&
            (!selectType || s.geometry.type == (selectType))
      );
-  }, [sounds, selectDecade, selectCategory, selectTheme, selectType])
+  }, [sounds, searchResults, selectDecade, selectCategory, selectTheme, selectType])
 
   // get category information for the filter-dropdown
   const categories = useMemo(() => {
@@ -73,7 +102,11 @@ export const SoundMap = () => {
       disableDefaultUI
       onClick={() => setSelectedSoundKey(null)}>
 
-      {combinedFilteredSounds && <ClusteredSoundMarkers sounds={combinedFilteredSounds} selectedSoundKey={selectedSoundKey} onSoundSelect={setSelectedSoundKey} clusteringEnabled={clusteringEnabled}/>}
+      {combinedFilteredSounds &&
+        <ClusteredSoundMarkers sounds={combinedFilteredSounds}
+                               selectedSoundKey={selectedSoundKey}
+                               onSoundSelect={setSelectedSoundKey}
+                               clusteringEnabled={clusteringEnabled}/>}
 
     </Map>
 
@@ -92,6 +125,9 @@ export const SoundMap = () => {
       onDecadeChange={setSelectedDecade}
       onTypeChange={setSelectedType}
       onClusteringToggle={setClusteringEnabled}
+      searchQuery={searchQuery}
+      onSearchChange={setSearchQuery}
+      searchResultCount={combinedFilteredSounds?.length}
     />
 
     </APIProvider>

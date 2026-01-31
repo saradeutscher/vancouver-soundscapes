@@ -7,15 +7,40 @@ import './App.css';
 import { SoundMap } from './SoundMap';
 import {Sound, loadSoundDataset} from './Sounds';
 import { SoundCard } from './sound-card';
+import lunr from 'lunr';
 
 const App = () => {
   const [sounds, setSounds] = useState<Sound[]>();
   const [selectedSoundKey, setSelectedSoundKey] = useState<string | null>(null);
+  const [searchIndex, setSearchIndex] = useState<lunr.Index | null>(null);
 
   // load data asynchronously
   useEffect(() => {
     loadSoundDataset().then(data => setSounds(data));
   }, []);
+
+  // create search index when sounds are loaded
+  useEffect(() => {
+    if (!sounds) return;
+
+    const idx = lunr(function () {
+      this.ref('key');
+      this.field('name', { boost: 10 });
+      this.field('notes', { boost: 5 });
+      this.field('description', { boost: 2 });
+
+      sounds.forEach(sound => {
+        this.add({
+          key: sound.key,
+          name: sound.properties.name,
+          notes: sound.properties.notes,
+          description: sound.properties.description
+        });
+      });
+    });
+
+    setSearchIndex(idx);
+  }, [sounds]);
 
   const handleCardClick = useCallback(() => {
     setSelectedSoundKey(null);
@@ -38,7 +63,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={
               <div className="homepage">
-                <SoundMap />
+                <SoundMap searchIndex={searchIndex} />
               </div>
             } />
             <Route path="/about" element={

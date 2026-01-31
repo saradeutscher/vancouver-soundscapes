@@ -17,6 +17,9 @@ type ControlPanelProps = {
   onDecadeChange: (value: number | null) => void;
   onTypeChange: (value: string | null) => void;
   onClusteringToggle: (enabled: boolean) => void;
+  searchQuery: string;
+  onSearchChange: (value: string) => void;
+  searchResultCount?: number;
 }
 
 export const ControlPanel = ({
@@ -33,7 +36,10 @@ export const ControlPanel = ({
   onThemeChange,
   onDecadeChange,
   onTypeChange,
-  onClusteringToggle
+  onClusteringToggle,
+  searchQuery,
+  onSearchChange,
+  searchResultCount
 }: ControlPanelProps) => {
   const [isMinimized, setIsMinimized] = useState(false);
 
@@ -70,7 +76,8 @@ export const ControlPanel = ({
     onTypeChange(null);
     onCategoryChange(null);
     onThemeChange(null);
-  }, [onDecadeChange, onTypeChange, onCategoryChange, onThemeChange]);
+    onSearchChange('');
+  }, [onDecadeChange, onTypeChange, onCategoryChange, onThemeChange, onSearchChange]);
 
   return (
     <div className={`control-panel marker-clustering-control-panel ${isMinimized ? 'minimized' : ''}`}>
@@ -89,6 +96,22 @@ export const ControlPanel = ({
           <p>
             Use the controls below to filter the sounds shown on the map.
           </p>
+          <div className="search-control">
+            <div className="search-input-wrapper">
+              <input
+                type="search"
+                value={searchQuery}
+                onChange={(e) => onSearchChange(e.target.value)}
+                placeholder="Search the sounds..."
+                className="search-input"
+              />
+            </div>
+            {searchResultCount !== undefined && searchQuery && (
+              <div className="search-result-count">
+                ({searchResultCount} result{searchResultCount !== 1 ? 's' : ''})
+              </div>
+            )}
+          </div>
           <p className="filter-options">
           <label> Filter by Decade:</label>{' '}
             <select value={selectedDecade ?? ''} onChange={handleDecadeChange}>

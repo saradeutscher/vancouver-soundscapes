@@ -19,7 +19,6 @@ export type ClusteredSoundMarkersProps = {
  */
 export const ClusteredSoundMarkers = ({sounds, selectedSoundKey, onSoundSelect, clusteringEnabled}: ClusteredSoundMarkersProps) => {
   const [markers, setMarkers] = useState<{[key: string]: Marker}>({});
-  const [infowindowOpen, setInfowindowOpen] = useState(false);
   const [hoverId, setHoverId] = useState<string | null>(null);
   const clustererRef = React.useRef<MarkerClusterer | null>(null);
 
@@ -104,9 +103,13 @@ export const ClusteredSoundMarkers = ({sounds, selectedSoundKey, onSoundSelect, 
   }, [onSoundSelect]);
 
   const handleMarkerClick = useCallback((sound: Sound) => {
-    setInfowindowOpen(prev => !prev);
-    infowindowOpen ? onSoundSelect(null) : onSoundSelect(sound.key)
-  }, [infowindowOpen, onSoundSelect]);
+    // If clicking the same marker, close it. Otherwise, open the new marker's InfoWindow
+    if (selectedSoundKey === sound.key) {
+      onSoundSelect(null);
+    } else {
+      onSoundSelect(sound.key);
+    }
+  }, [selectedSoundKey, onSoundSelect]);
 
   // Preload images and audio when hovering over a marker
   useEffect(() => {

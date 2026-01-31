@@ -52,6 +52,9 @@ export const SoundMarker = (props: SoundMarkerProps) => {
     point = getLatLng(sound.geometry.coordinates);
   }
 
+  // Calculate z-index based on state: selected > hovered > normal
+  const zIndex = isSelected ? 200 : (hoverId === sound.key ? 100 : 1);
+
   return (
     <>
       <AdvancedMarker
@@ -60,8 +63,9 @@ export const SoundMarker = (props: SoundMarkerProps) => {
         onClick={handleClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        zIndex={zIndex}
         style={{
-          transform: `scale(${(hoverId === sound.key) ? 1.2 : 1})`,
+          transform: `scale(${(hoverId === sound.key || isSelected) ? 1.2 : 1})`,
           transformOrigin: AdvancedMarkerAnchorPoint['BOTTOM'].join(' ')
         }}>
         <Pin
