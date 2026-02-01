@@ -413,6 +413,7 @@ button.gm-ui-hover-effect:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  justify-content: center;
 }
 
 .metadata-badge {

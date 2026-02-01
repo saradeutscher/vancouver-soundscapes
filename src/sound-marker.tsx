@@ -1,11 +1,11 @@
 import type {Marker} from '@googlemaps/markerclusterer';
 import React, {useCallback} from 'react';
-import {AdvancedMarker, AdvancedMarkerAnchorPoint, Pin} from '@vis.gl/react-google-maps';
+import {AdvancedMarker, Pin} from '@vis.gl/react-google-maps';
 
 import {Sound} from './Sounds';
 import { Polyline } from './polyline';
 
-const DECADE_COLORS = new Map([
+export const DECADE_COLORS = new Map([
   [1970, {background: '#C422FF', border: '#340047', glyph: '#560075'}],
   [1990, {background: '#22ccff', border: '#1e89a1', glyph: '#0f677a'}],
   [2010, {background: '#85D134', border: '#243A0D', glyph: '#3C6016'}],
@@ -66,7 +66,8 @@ export const SoundMarker = (props: SoundMarkerProps) => {
         zIndex={zIndex}
         style={{
           transform: `scale(${(hoverId === sound.key || isSelected) ? 1.2 : 1})`,
-          transformOrigin: AdvancedMarkerAnchorPoint['BOTTOM'].join(' ')
+          // Transform origin at bottom-center so marker scales from where it touches the map
+          transformOrigin: '50% 100%'
         }}>
         <Pin
           background={DECADE_COLORS.get(sound.properties.decade)?.background}

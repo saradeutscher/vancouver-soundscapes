@@ -3,7 +3,7 @@ import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {type Marker, MarkerClusterer} from '@googlemaps/markerclusterer';
 
 import {Sound} from './Sounds';
-import {SoundMarker} from './sound-marker';
+import {SoundMarker, DECADE_COLORS} from './sound-marker';
 import { ImageGallery } from './image-gallery';
 
 export type ClusteredSoundMarkersProps = {
@@ -132,6 +132,28 @@ export const ClusteredSoundMarkers = ({sounds, selectedSoundKey, onSoundSelect, 
     }
   }, [hoverId, sounds]);
 
+  // Auto-adjust map bounds when a soundwalk is selected
+  useEffect(() => {
+    if (!map || !selectedSound || selectedSound.geometry.type !== 'LineString') return;
+
+    // Parse the LineString coordinates
+    const coordinates = JSON.parse(selectedSound.geometry.coordinates) as [number, number][];
+
+    // Create bounds that include all points in the polyline
+    const bounds = new google.maps.LatLngBounds();
+    coordinates.forEach(([lng, lat]) => {
+      bounds.extend({ lat, lng });
+    });
+
+    // Fit the map to show the entire polyline with padding
+    map.fitBounds(bounds, {
+      top: 100,    // Extra padding at top for InfoWindow
+      bottom: 50,
+      left: 50,
+      right: 50
+    });
+  }, [map, selectedSound]);
+
   const handleMarkerMouseEnter = useCallback((sound: Sound) => {
     setHoverId(sound.key);
   }, []);
@@ -155,22 +177,57 @@ export const ClusteredSoundMarkers = ({sounds, selectedSoundKey, onSoundSelect, 
         />
       ))}
 
-      {selectedSoundKey && (
-        <InfoWindow className="sound-info"
+      {selectedSoundKey && selectedSound && (
+        <InfoWindow
           anchor={markers[selectedSoundKey]}
-          onCloseClick={handleInfoWindowClose}>
-          <h2>
-            {selectedSound?.properties.name}
-          </h2>
+          onCloseClick={handleInfoWindowClose}
+        >
+          <div
+            className="sound-info"
+            data-decade-color={DECADE_COLORS.get(selectedSound.properties.decade)?.background || '#008cba'}
+            style={{
+              '--decade-color': DECADE_COLORS.get(selectedSound.properties.decade)?.background || '#008cba'
+            } as React.CSSProperties}
+          >
+            <div className="sound-info-header">
+              <h2>{selectedSound.properties.name}</h2>
+              <div className="sound-metadata">
+              <span
+                className="metadata-badge decade-badge"
+                style={{
+                  background: DECADE_COLORS.get(selectedSound.properties.decade)?.background || '#008cba'
+                }}
+              >
+                {selectedSound.properties.decade}s
+              </span>
+              {selectedSound.properties.class.map(cls => (
+                <span key={cls} className="metadata-badge class-badge">{cls}</span>
+              ))}
+              {selectedSound.properties.theme.map(t => (
+                <span key={t} className="metadata-badge class-badge">{t}</span>
+              ))}
+              <span key={selectedSound.geometry.type} className="metadata-badge class-badge">{selectedSound.geometry.type}</span>
+            </div>
+          </div>
 
-          <hr className="divider" />
+          <div className="sound-info-body">
+            <p className="sound-description">{selectedSound.properties.description}</p>
 
-          {selectedSound?.properties.description}
+            <audio
+              controls
+              preload="metadata"
+              src={`https://object-arbutus.cloud.computecanada.ca/soundscapes-public/${selectedSound.properties.soundfile}`}
+            />
 
-          <audio controls preload="metadata" src={"https://object-arbutus.cloud.computecanada.ca/soundscapes-public/" + selectedSound?.properties.soundfile}> </audio>
+            {selectedSound.properties.images.length > 0 && (
+              <ImageGallery images={selectedSound.properties.images}/>
+            )}
 
-          {selectedSound && selectedSound.properties.images.length > 0 && <ImageGallery images={selectedSound.properties.images}/>}
-
+            {selectedSound.properties.notes && (
+              <div className="sound-notes">{selectedSound.properties.notes}</div>
+            )}
+          </div>
+          </div>
         </InfoWindow>
       )}
     </>
