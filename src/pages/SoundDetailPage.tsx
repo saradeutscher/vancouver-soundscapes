@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { APIProvider, Map as GoogleMap } from '@vis.gl/react-google-maps';
 import type { Sound } from '../types/Sound';
@@ -42,6 +42,14 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
     [sounds, id]
   );
 
+  const handleBackToMap = useCallback(() => {
+    if (sound) {
+      navigate(`/?soundId=${sound.key}`);
+    } else {
+      navigate('/');
+    }
+  }, [navigate, sound]);
+
   if (!sound) {
     return (
       <div className="sound-detail-error">
@@ -60,12 +68,20 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
   return (
     <div className="sound-detail-page">
       <div className="sound-detail-header">
-        <button
-          className="back-button"
-          onClick={() => navigate('/sounds')}
-        >
-          ← Back to Sounds
-        </button>
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <button
+            className="back-button"
+            onClick={() => navigate('/sounds')}
+          >
+            ← Back to List
+          </button>
+          <button
+            className="back-button"
+            onClick={handleBackToMap}
+          >
+            View on Overall Map
+          </button>
+        </div>
         <h1>{sound.properties.name}</h1>
         <div className="sound-metadata">
           <span

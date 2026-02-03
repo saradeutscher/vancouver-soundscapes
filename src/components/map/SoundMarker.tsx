@@ -1,5 +1,5 @@
 import type {Marker} from '@googlemaps/markerclusterer';
-import React, {useCallback} from 'react';
+import {useCallback} from 'react';
 import {AdvancedMarker, Pin} from '@vis.gl/react-google-maps';
 
 import type { Sound } from '../../types/Sound';

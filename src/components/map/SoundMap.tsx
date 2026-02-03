@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from 'react';
-import { APIProvider, Map} from '@vis.gl/react-google-maps';
+import { APIProvider, Map } from '@vis.gl/react-google-maps';
 import { ControlPanel } from './ControlPanel';
+import { MapController } from './MapController';
 import lunr from 'lunr';
 
 import { getCategories, getThemes, getDecades, loadSoundDataset, getTypes } from '../../services/soundService';
@@ -107,6 +108,12 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
                                selectedSoundKey={selectedSoundKey}
                                onSoundSelect={setSelectedSoundKey}
                                clusteringEnabled={clusteringEnabled}/>}
+
+      <MapController
+        sounds={sounds}
+        selectedSoundKey={selectedSoundKey}
+        onSoundSelect={setSelectedSoundKey}
+      />
 
     </Map>
 

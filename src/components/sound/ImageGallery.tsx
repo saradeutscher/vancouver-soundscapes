@@ -1,7 +1,7 @@
 // adapted from visgl react-google-maps examples
 // https://github.com/visgl/react-google-maps/blob/main/examples/advanced-marker/src/components/real-estate-gallery/real-estate-gallery.tsx
 
-import React, {useState, FunctionComponent, MouseEvent} from 'react';
+import {useState, FunctionComponent, MouseEvent} from 'react';
 
 export type ImageGalleryProps = {
   images: string[];
