@@ -2,8 +2,8 @@ import type {Marker} from '@googlemaps/markerclusterer';
 import React, {useCallback} from 'react';
 import {AdvancedMarker, Pin} from '@vis.gl/react-google-maps';
 
-import {Sound} from './Sounds';
-import { Polyline } from './polyline';
+import type { Sound } from '../../types/Sound';
+import { Polyline } from './Polyline';
 
 export const DECADE_COLORS = new Map([
   [1970, {background: '#C422FF', border: '#340047', glyph: '#560075'}],

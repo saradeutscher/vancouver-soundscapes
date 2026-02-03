@@ -1,17 +1,20 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import {useState, useEffect} from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
-import './App.css';
+import './styles/global.css';
 
-import { SoundMap } from './SoundMap';
-import {Sound, loadSoundDataset} from './Sounds';
-import { SoundCard } from './sound-card';
+import { SoundMap } from './components/map/SoundMap';
+import { loadSoundDataset } from './services/soundService';
+import type { Sound } from './types/Sound';
+import { About } from './pages/About';
+import { SubmitSound } from './pages/SubmitSound';
+import { SoundsPage } from './pages/SoundsPage';
+import { SoundDetailPage } from './pages/SoundDetailPage';
 import lunr from 'lunr';
 
 const App = () => {
   const [sounds, setSounds] = useState<Sound[]>();
-  const [selectedSoundKey, setSelectedSoundKey] = useState<string | null>(null);
   const [searchIndex, setSearchIndex] = useState<lunr.Index | null>(null);
 
   // load data asynchronously
@@ -42,10 +45,6 @@ const App = () => {
     setSearchIndex(idx);
   }, [sounds]);
 
-  const handleCardClick = useCallback(() => {
-    setSelectedSoundKey(null);
-  }, []);
-
   return (
     <BrowserRouter>
       <div className="site">
@@ -66,49 +65,16 @@ const App = () => {
                 <SoundMap searchIndex={searchIndex} />
               </div>
             } />
-            <Route path="/about" element={
-              <div className="about">
-                <h2>About</h2>
-                <p>
-                  The project was inspired by the <a target="_blank" href="https://www.sfu.ca/~truax/wsp.html">World Soundscapes Project</a>,
-                  led by R. Murray Schaefer and Barry Truax at SFU.
-                </p>
-                <p>
-                  An interview with Barry Truax about the World Soundscapes Project was conducted by the CBC Radio show
-                  On the Coast with Gloria Macarenko. The interview can be found <a target="_blank" href="https://www.cbc.ca/player/play/audio/9.7035933">on the CBC website</a>.
-                </p>
-              </div>
-            } />
-            <Route path="/request" element={
-              <div className="about">
-                <h2>Request an Addition</h2>
-                <p>
-                  Form to request an addition to the map coming soon.
-                </p>
-              </div>
-            } />
+            <Route path="/about" element={<About />} />
+            <Route path="/request" element={<SubmitSound />} />
             <Route path="/sounds" element={
-              <div className="sounds">
-                <h2 id="sounds-page-title">All Sounds</h2>
-                <input type="search" id="sound-search" name="q"  placeholder="Search the sounds..."/>
-                <button>Search</button>
-                <div className="sound-cards">
-                {sounds?.map(sound => (
-                  <SoundCard
-                    key={sound.key}
-                    sound={sound}
-                    onClick={() => handleCardClick}
-                  />
-                 ))}
-                </div>
-              </div>
+              <SoundsPage sounds={sounds} searchIndex={searchIndex} />
+            } />
+            <Route path="/sounds/:id" element={
+              <SoundDetailPage sounds={sounds} />
             } />
           </Routes>
         </main>
-
-        {/* <footer id="footer">
-          <img src="src/assets/wordmark.png"></img>
-        </footer> */}
       </div>
     </BrowserRouter>
   );

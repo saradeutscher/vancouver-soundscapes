@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 
-import { CategoryData } from './Sounds';
+import type { CategoryData } from '../../types/Sound';
 
 type ControlPanelProps = {
   categories: Array<CategoryData>;

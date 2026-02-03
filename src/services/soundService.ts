@@ -1,29 +1,5 @@
-import sounds from './Sounds.json';
-
-export type Sound = {
-  key: string;
-  type: string;
-  geometry: {
-    coordinates: string;
-    type: string
-  };
-  properties: {
-    name: string;
-    decade: number;
-    description: string;
-    soundfile: string;
-    class: string[];
-    theme: string[];
-    images: string[];
-    notes: string;
-  };
-};
-
-export type CategoryData = {
-  key: string;
-  label: string;
-  count: number;
-};
+import sounds from '../data/sounds.json';
+import type { Sound, CategoryData } from '../types/Sound';
 
 for (let i = 0; i < sounds.length; i++) {
   (sounds[i] as Sound).key = `sound-${i}`;
@@ -118,6 +94,5 @@ export function getDecades(sounds?: Sound[]): CategoryData[] {
     };
   });
 }
-
 
 export default sounds as Sound[];

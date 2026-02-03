@@ -2,9 +2,9 @@ import {InfoWindow, useMap} from '@vis.gl/react-google-maps';
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {type Marker, MarkerClusterer} from '@googlemaps/markerclusterer';
 
-import {Sound} from './Sounds';
-import {SoundMarker, DECADE_COLORS} from './sound-marker';
-import { ImageGallery } from './image-gallery';
+import type { Sound } from '../../types/Sound';
+import {SoundMarker, DECADE_COLORS} from './SoundMarker';
+import { ImageGallery } from '../sound/ImageGallery';
 
 export type ClusteredSoundMarkersProps = {
   sounds: Sound[];

@@ -270,11 +270,11 @@ select {
   border-radius: 8px !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
   max-width: 320px !important;
-  overflow: visible !important;
+  overflow: hidden !important;
 }
 
 .gm-style .gm-style-iw-d {
-  overflow: visible !important;
+  overflow: hidden !important;
   max-height: 500px !important;
   padding: 0 !important;
   margin: 0 !important;
@@ -348,8 +348,8 @@ select {
 }
 
 button.gm-ui-hover-effect {
-  top: 8px !important;
-  right: 8px !important;
+  top: 2px !important;
+  right: 14px !important;
   width: 28px !important;
   height: 28px !important;
   opacity: 0.9 !important;
@@ -371,8 +371,8 @@ button.gm-ui-hover-effect:hover {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   position: relative;
-  display: block;
-  transform: translateY(-12px);
+  display: flex;
+  flex-direction: column;
 }
 
 .sound-info * {
@@ -398,7 +398,7 @@ button.gm-ui-hover-effect:hover {
   position: relative;
   display: block;
   margin: 0;
-  margin-top: -12px !important;
+  flex-shrink: 0;
 }
 
 .sound-info-header h2 {
@@ -436,7 +436,11 @@ button.gm-ui-hover-effect:hover {
 .sound-info-body {
   padding: 16px;
   overflow-y: auto;
-  max-height: 400px;
+  overflow-x: hidden;
+  flex: 1;
+  min-height: 0;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 .sound-info-body::-webkit-scrollbar {
@@ -472,7 +476,7 @@ button.gm-ui-hover-effect:hover {
   background: #f9f9f9;
   border-radius: 6px;
   margin-top: 12px;
-  border-left: 3px solid #008cba;
+  border-left: 3px solid var(--decade-color, #008cba);
 }
 
 .sound-info img {
@@ -575,13 +579,22 @@ nav a:hover {
 /* image gallery styling */
 .image-gallery {
   width: 100%;
-  height: 100%;
   position: relative;
+  margin: 12px 0;
+  box-sizing: border-box;
 }
 
 .image-gallery img {
   width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 300px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  box-sizing: border-box;
 }
 
 .gallery-navigation {
@@ -649,3 +662,287 @@ nav a:hover {
   background-color: var(--background-color-primary);
 }
 
+/* ========================================
+   SOUNDS PAGE STYLES
+   ======================================== */
+
+/* Sounds Page */
+.sounds-page {
+  background-color: #fafafa;
+  min-height: calc(100vh - 90px);
+  padding: 40px 20px;
+}
+
+.sounds-page-header {
+  max-width: 1400px;
+  margin: 0 auto 32px;
+  padding: 0 24px;
+}
+
+#sounds-page-title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+/* Search Container */
+.sounds-search-container {
+  max-width: 600px;
+}
+
+.sounds-search-input {
+  width: 100%;
+  padding: 12px 20px;
+  border: 2px solid #e5e5e5;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.sounds-search-input:focus {
+  outline: none;
+  border-color: #008cba;
+}
+
+.search-result-count {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* No Results */
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.no-results p {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.no-results button {
+  background: #008cba;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.no-results button:hover {
+  background: #005f6b;
+}
+
+/* Sounds Grid Layout */
+.sounds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Sound Card v2 (Redesigned) */
+.sound-card-v2 {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.sound-card-v2:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.sound-card-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.sound-card-image,
+.static-map-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.sound-card-content {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sound-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.sound-card-metadata {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.type-badge {
+  background: #666;
+}
+
+.sound-card-description {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+/* ========================================
+   SOUND DETAIL PAGE STYLES
+   ======================================== */
+
+/* Sound Detail Page */
+.sound-detail-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #fafafa;
+  min-height: calc(100vh - 90px);
+}
+
+.sound-detail-error {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.sound-detail-error h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.sound-detail-error button {
+  background: #008cba;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sound-detail-header {
+  margin-bottom: 32px;
+}
+
+.back-button {
+  background: transparent;
+  border: 1px solid #ccc;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 16px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  background: #f5f5f5;
+  border-color: #008cba;
+  color: #008cba;
+}
+
+.sound-detail-header h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.sound-metadata {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.class-badge {
+  background: #666;
+  color: white;
+}
+
+.theme-badge {
+  background: #008cba;
+  color: white;
+}
+
+/* Detail Content Grid */
+.sound-detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+@media (max-width: 968px) {
+  .sound-detail-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sound-detail-map-section {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 400px;
+}
+
+.sound-detail-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sound-detail-info-section h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.sound-audio-section audio {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.sound-description-section p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.theme-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sounds-grid {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 16px;
+  }
+}

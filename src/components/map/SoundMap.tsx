@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { APIProvider, Map} from '@vis.gl/react-google-maps';
-import {ControlPanel} from './control-panel';
+import { ControlPanel } from './ControlPanel';
 import lunr from 'lunr';
 
-import{getCategories, getThemes, getDecades, loadSoundDataset, Sound, getTypes} from './Sounds';
-import {ClusteredSoundMarkers} from './clustered-sound-markers';
+import { getCategories, getThemes, getDecades, loadSoundDataset, getTypes } from '../../services/soundService';
+import type { Sound } from '../../types/Sound';
+import { ClusteredSoundMarkers } from './ClusteredSoundMarkers';
 
-const API_KEY =
-  globalThis.GOOGLE_MAPS_API_KEY ?? ("");
+const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 type SoundMapProps = {
   searchIndex: lunr.Index | null;
@@ -92,7 +92,7 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
       solutionChannel='GMP_devsite_samples_v3_rgmbasicmap'
       apiKey={API_KEY}>
     <Map
-      mapId={''}
+      mapId={'54137f32133013763f6a2d7f'}
       zoomControl={true}
       mapTypeControl={true}
       defaultZoom={12}
