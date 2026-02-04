@@ -20,6 +20,10 @@ type ControlPanelProps = {
   searchQuery: string;
   onSearchChange: (value: string) => void;
   searchResultCount?: number;
+  hideClusteringToggle?: boolean;
+  title?: string;
+  description?: string;
+  hideMinimizeButton?: boolean;
 }
 
 export const ControlPanel = ({
@@ -39,7 +43,11 @@ export const ControlPanel = ({
   onClusteringToggle,
   searchQuery,
   onSearchChange,
-  searchResultCount
+  searchResultCount,
+  hideClusteringToggle,
+  title = "Filter the Map",
+  description = "Use the controls below to filter the sounds shown on the map.",
+  hideMinimizeButton = false
 }: ControlPanelProps) => {
   const [isMinimized, setIsMinimized] = useState(false);
 
@@ -80,22 +88,26 @@ export const ControlPanel = ({
   }, [onDecadeChange, onTypeChange, onCategoryChange, onThemeChange, onSearchChange]);
 
   return (
-    <div className={`control-panel marker-clustering-control-panel ${isMinimized ? 'minimized' : ''}`}>
+    <div className={`control-panel marker-clustering-control-panel ${isMinimized ? 'minimized' : ''} ${hideMinimizeButton ? 'no-minimize' : ''}`}>
       <div className="control-panel-header">
-        <h3>Filter the Map</h3>
-        <button
-          className="minimize-button"
-          onClick={() => setIsMinimized(!isMinimized)}
-          aria-label={isMinimized ? 'Expand panel' : 'Minimize panel'}
-        >
-          {isMinimized ? '+' : '-'}
-        </button>
+        <h3>{title}</h3>
+        {!hideMinimizeButton && (
+          <button
+            className="minimize-button"
+            onClick={() => setIsMinimized(!isMinimized)}
+            aria-label={isMinimized ? 'Expand panel' : 'Minimize panel'}
+          >
+            {isMinimized ? '+' : '-'}
+          </button>
+        )}
       </div>
       {!isMinimized && (
         <>
-          <p>
-            Use the controls below to filter the sounds shown on the map.
-          </p>
+          {description && (
+            <p>
+              {description}
+            </p>
+          )}
           <div className="search-control">
             <div className="search-input-wrapper">
               <input
@@ -157,16 +169,18 @@ export const ControlPanel = ({
               ))}
             </select>
           </p>
-          <div className="clustering-toggle">
-            <label>
-              <input
-                type="checkbox"
-                checked={clusteringEnabled}
-                onChange={(e) => onClusteringToggle(e.target.checked)}
-              />
-              Enable Marker Clustering
-            </label>
-          </div>
+          {!hideClusteringToggle && (
+            <div className="clustering-toggle">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={clusteringEnabled}
+                  onChange={(e) => onClusteringToggle(e.target.checked)}
+                />
+                Enable Marker Clustering
+              </label>
+            </div>
+          )}
           <button id="filter-reset" onClick={handleReset}>Reset</button>
         </>
       )}

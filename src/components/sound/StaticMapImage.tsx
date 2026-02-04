@@ -1,14 +1,8 @@
 import React from 'react';
 import type { Sound } from '../../types/Sound';
+import { getDecadeColor } from '../../constants/colors';
 
 const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-
-const DECADE_COLORS = new Map([
-  [1970, '#C422FF'],  // Purple
-  [1990, '#22ccff'],  // Cyan
-  [2010, '#85D134'],  // Green
-  [2020, '#F7314B']   // Red
-]);
 
 type StaticMapImageProps = {
   sound: Sound;
@@ -23,7 +17,7 @@ export const StaticMapImage: React.FC<StaticMapImageProps> = ({
   height = 200,
   zoom = 14
 }) => {
-  const decadeColor = DECADE_COLORS.get(sound.properties.decade) || '#008cba';
+  const decadeColor = getDecadeColor(sound.properties.decade);
   let url: string;
 
   if (sound.geometry.type === "Point") {

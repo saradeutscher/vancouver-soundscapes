@@ -4,15 +4,9 @@ import { APIProvider, Map as GoogleMap } from '@vis.gl/react-google-maps';
 import type { Sound } from '../types/Sound';
 import { SoundMarker } from '../components/map/SoundMarker';
 import { ImageGallery } from '../components/sound/ImageGallery';
+import { getDecadeColor } from '../constants/colors';
 
 const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-
-const DECADE_COLORS = new Map([
-  [1970, '#C422FF'],
-  [1990, '#22ccff'],
-  [2010, '#85D134'],
-  [2020, '#F7314B']
-]);
 
 // Helper to get {lat, lng} from coordinates string
 function getLatLng(coordsStr: string): { lat: number; lng: number } {
@@ -63,7 +57,7 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
     ? getLatLng(sound.geometry.coordinates)
     : getFirstPoint(sound.geometry.coordinates);
 
-  const decadeColor = DECADE_COLORS.get(sound.properties.decade) || '#008cba';
+  const decadeColor = getDecadeColor(sound.properties.decade);
 
   return (
     <div className="sound-detail-page">
@@ -79,7 +73,7 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
             className="back-button"
             onClick={handleBackToMap}
           >
-            View on Overall Map
+            View on Main Map
           </button>
         </div>
         <h1>{sound.properties.name}</h1>

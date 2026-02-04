@@ -3,8 +3,9 @@ import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {type Marker, MarkerClusterer} from '@googlemaps/markerclusterer';
 
 import type { Sound } from '../../types/Sound';
-import {SoundMarker, DECADE_COLORS} from './SoundMarker';
+import {SoundMarker} from './SoundMarker';
 import { ImageGallery } from '../sound/ImageGallery';
+import { getDecadeColor } from '../../constants/colors';
 
 export type ClusteredSoundMarkersProps = {
   sounds: Sound[];
@@ -184,9 +185,9 @@ export const ClusteredSoundMarkers = ({sounds, selectedSoundKey, onSoundSelect, 
         >
           <div
             className="sound-info"
-            data-decade-color={DECADE_COLORS.get(selectedSound.properties.decade)?.background || '#008cba'}
+            data-decade-color={getDecadeColor(selectedSound.properties.decade)}
             style={{
-              '--decade-color': DECADE_COLORS.get(selectedSound.properties.decade)?.background || '#008cba'
+              '--decade-color': getDecadeColor(selectedSound.properties.decade)
             } as React.CSSProperties}
           >
             <div className="sound-info-header">
@@ -195,7 +196,7 @@ export const ClusteredSoundMarkers = ({sounds, selectedSoundKey, onSoundSelect, 
               <span
                 className="metadata-badge decade-badge"
                 style={{
-                  background: DECADE_COLORS.get(selectedSound.properties.decade)?.background || '#008cba'
+                  background: getDecadeColor(selectedSound.properties.decade)
                 }}
               >
                 {selectedSound.properties.decade}s

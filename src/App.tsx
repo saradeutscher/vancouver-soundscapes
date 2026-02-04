@@ -1,13 +1,13 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, StrictMode} from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 
 import './styles/global.css';
 
 import { SoundMap } from './components/map/SoundMap';
 import { loadSoundDataset } from './services/soundService';
 import type { Sound } from './types/Sound';
-import { About } from './pages/About';
+// import { About } from './pages/About';
 import { SubmitSound } from './pages/SubmitSound';
 import { SoundsPage } from './pages/SoundsPage';
 import { SoundDetailPage } from './pages/SoundDetailPage';
@@ -48,13 +48,13 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="site">
-        <nav className="nav">
+        <nav className="nav" aria-label="Main navigation">
           <h1 className="title"> Vancouver Soundscapes </h1>
           <div className="nav-options">
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/request">Submit a Sound</Link>
-            <Link to="/sounds">Sound List</Link>
+            <NavLink to="/" end>Home</NavLink>
+            {/* <NavLink to="/about">About</NavLink> */}
+            <NavLink to="/request">Submit a Sound</NavLink>
+            <NavLink to="/sounds">Sound List</NavLink>
           </div>
         </nav>
 
@@ -65,7 +65,7 @@ const App = () => {
                 <SoundMap searchIndex={searchIndex} />
               </div>
             } />
-            <Route path="/about" element={<About />} />
+            {/* <Route path="/about" element={<About />} /> */}
             <Route path="/request" element={<SubmitSound />} />
             <Route path="/sounds" element={
               <SoundsPage sounds={sounds} searchIndex={searchIndex} />
@@ -81,6 +81,6 @@ const App = () => {
 };
 
 const root = createRoot(document.getElementById('root')!);
-root.render(<App />);
+root.render(<StrictMode><App /></StrictMode>); // Only use StrictMode for development
 
 export default App;

@@ -2,13 +2,7 @@ import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { Sound } from '../../types/Sound';
 import { StaticMapImage } from './StaticMapImage';
-
-const DECADE_COLORS = new Map([
-  [1970, '#C422FF'],
-  [1990, '#22ccff'],
-  [2010, '#85D134'],
-  [2020, '#F7314B']
-]);
+import { getDecadeColor } from '../../constants/colors';
 
 type SoundCardProps = {
   sound: Sound;
@@ -21,7 +15,7 @@ export const SoundCard: React.FC<SoundCardProps> = ({ sound }) => {
     navigate(`/sounds/${sound.key}`);
   }, [navigate, sound.key]);
 
-  const decadeColor = DECADE_COLORS.get(sound.properties.decade) || '#008cba';
+  const decadeColor = getDecadeColor(sound.properties.decade);
 
   return (
     <div className="sound-card-v2" onClick={handleClick}>
@@ -49,7 +43,7 @@ export const SoundCard: React.FC<SoundCardProps> = ({ sound }) => {
             {sound.properties.decade}s
           </span>
           <span className="metadata-badge type-badge">
-            {sound.geometry.type === "LineString" ? "Soundwalk" : "Sound"}
+            {sound.geometry.type === "LineString" ? "Soundwalk" : "Point"}
           </span>
         </div>
 

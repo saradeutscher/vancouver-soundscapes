@@ -35,6 +35,7 @@ export const MapLocationPicker: React.FC<MapLocationPickerProps> = ({
     <div className="map-picker">
       <APIProvider apiKey={GOOGLE_MAPS_API_KEY}>
         <Map
+          mapId={'54137f32133013763f6a2d7f'}
           style={{ width: '100%', height: '400px' }}
           defaultCenter={markerPosition}
           defaultZoom={12}

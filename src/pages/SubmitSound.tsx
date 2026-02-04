@@ -43,7 +43,7 @@ export const SubmitSound: React.FC = () => {
     latitude: '',
     longitude: '',
     locationType: 'Point',
-    decade: new Date().getFullYear().toString(),
+    decade: '2020',
     categories: [],
     themes: [],
     notes: '',
@@ -188,8 +188,7 @@ export const SubmitSound: React.FC = () => {
       <div className="submit-header">
         <h1>Submit a Sound Recording</h1>
         <p>
-          Share your sound recordings and help document Vancouver's evolving soundscape.
-          Fill out the form below to submit your recording for review.
+          Fill out the form below to submit a recording for review to be added to the map.
         </p>
       </div>
 
@@ -205,20 +204,20 @@ export const SubmitSound: React.FC = () => {
               id="name"
               value={formData.name}
               onChange={(e) => handleChange('name', e.target.value)}
-              placeholder="e.g., Stanley Park Seaplane Landing"
+              placeholder="e.g., Stanley Park Railway"
               required
             />
             {errors.name && <span className="error">{errors.name}</span>}
           </div>
 
           <div className="form-field">
-            <label htmlFor="description">Date & Description *</label>
+            <label htmlFor="description">Date & Time *</label>
             <input
               type="text"
               id="description"
               value={formData.description}
               onChange={(e) => handleChange('description', e.target.value)}
-              placeholder="e.g., July 15, 2024 (Saturday), 2:30 p.m."
+              placeholder="e.g., February 3, 2026 (Tuesday), 2:30 p.m."
               required
             />
             {errors.description && <span className="error">{errors.description}</span>}
@@ -231,24 +230,25 @@ export const SubmitSound: React.FC = () => {
               id="audioLink"
               value={formData.audioLink}
               onChange={(e) => handleChange('audioLink', e.target.value)}
-              placeholder="https://drive.google.com/... or https://dropbox.com/..."
+              placeholder="https://drive.google.com/..."
               required
             />
             <p className="field-hint">
-              Upload your audio file to Google Drive, Dropbox, or another service and paste the share link here.
+              Upload your audio file to Google Drive or another service and paste the share link here.
             </p>
             {errors.audioLink && <span className="error">{errors.audioLink}</span>}
           </div>
 
           <div className="form-field">
-            <label htmlFor="decade">Year</label>
+            <label htmlFor="decade">Decade</label>
             <input
               type="number"
               id="decade"
               value={formData.decade}
               onChange={(e) => handleChange('decade', e.target.value)}
               min="1900"
-              max={new Date().getFullYear()}
+              max="2020"
+              step="10"
             />
           </div>
         </div>
@@ -326,9 +326,9 @@ export const SubmitSound: React.FC = () => {
           <h2>Classification (Optional)</h2>
 
           <div className="form-field">
-            <label>Categories</label>
+            <label>Class</label>
             <div className="checkbox-group">
-              {['effects', 'ambience', 'soundwalk', 'events', 'scenes'].map(cat => (
+              {['effects', 'ambience', 'soundwalk', 'events', 'scenes', 'dialogue'].map(cat => (
                 <label key={cat} className="checkbox-label">
                   <input
                     type="checkbox"
@@ -350,7 +350,7 @@ export const SubmitSound: React.FC = () => {
           <div className="form-field">
             <label>Themes</label>
             <div className="checkbox-group">
-              {['nature', 'cityscape', 'transport', 'tourism', 'people', 'festivals', 'events'].map(theme => (
+              {['nature', 'cityscape', 'transport', 'tourism', 'people', 'festivals', 'events', 'industrial', 'culture', 'commerce', 'sports'].map(theme => (
                 <label key={theme} className="checkbox-label">
                   <input
                     type="checkbox"
@@ -381,7 +381,7 @@ export const SubmitSound: React.FC = () => {
               value={formData.notes}
               onChange={(e) => handleChange('notes', e.target.value)}
               rows={4}
-              placeholder="Describe what you hear in the recording, environmental conditions, notable sound events, etc."
+              placeholder="Optionally describe what you hear in the recording, environmental conditions, notable sound events, etc."
             />
           </div>
 
@@ -402,7 +402,7 @@ export const SubmitSound: React.FC = () => {
 
         {/* Section 5: Submitter Information */}
         <div className="form-section">
-          <h2>Your Information</h2>
+          <h2>Your Information (Optional)</h2>
 
           <div className="form-field">
             <label htmlFor="submitterName">Your Name</label>
@@ -416,18 +416,17 @@ export const SubmitSound: React.FC = () => {
           </div>
 
           <div className="form-field">
-            <label htmlFor="submitterEmail">Your Email *</label>
+            <label htmlFor="submitterEmail">Your Email</label>
             <input
               type="email"
               id="submitterEmail"
               value={formData.submitterEmail}
               onChange={(e) => handleChange('submitterEmail', e.target.value)}
               placeholder="your.email@example.com"
-              required
             />
             {errors.submitterEmail && <span className="error">{errors.submitterEmail}</span>}
             <p className="field-hint">
-              We'll use this to contact you about your submission.
+              We'll use this to contact you about your submission if there are any issues or questions.
             </p>
           </div>
         </div>

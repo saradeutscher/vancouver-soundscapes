@@ -4,13 +4,7 @@ import {AdvancedMarker, Pin} from '@vis.gl/react-google-maps';
 
 import type { Sound } from '../../types/Sound';
 import { Polyline } from './Polyline';
-
-export const DECADE_COLORS = new Map([
-  [1970, {background: '#C422FF', border: '#340047', glyph: '#560075'}],
-  [1990, {background: '#22ccff', border: '#1e89a1', glyph: '#0f677a'}],
-  [2010, {background: '#85D134', border: '#243A0D', glyph: '#3C6016'}],
-  [2020, {background: '#F7314B', border: '#45020B', glyph: '#710413'}]
-]);
+import { getDecadeColors, DEFAULT_COLOR } from '../../constants/colors';
 
 export type Coordinate = [number, number];
 
@@ -55,6 +49,11 @@ export const SoundMarker = (props: SoundMarkerProps) => {
   // Calculate z-index based on state: selected > hovered > normal
   const zIndex = isSelected ? 200 : (hoverId === sound.key ? 100 : 1);
 
+  const colors = getDecadeColors(sound.properties.decade);
+  const background = colors?.background || DEFAULT_COLOR;
+  const borderColor = colors?.border || '#340047';
+  const glyphColor = colors?.glyph || '#560075';
+
   return (
     <>
       <AdvancedMarker
@@ -70,9 +69,9 @@ export const SoundMarker = (props: SoundMarkerProps) => {
           transformOrigin: '50% 100%'
         }}>
         <Pin
-          background={DECADE_COLORS.get(sound.properties.decade)?.background}
-          borderColor={DECADE_COLORS.get(sound.properties.decade)?.border}
-          glyphColor={DECADE_COLORS.get(sound.properties.decade)?.glyph}/>
+          background={background}
+          borderColor={borderColor}
+          glyphColor={glyphColor}/>
       </AdvancedMarker>
 
       {sound.geometry.type === "LineString" && linePath && isSelected && (
@@ -82,7 +81,7 @@ export const SoundMarker = (props: SoundMarkerProps) => {
           animate={true}
           animationDuration={1500}
           options={{
-            strokeColor: DECADE_COLORS.get(sound.properties.decade)?.background,
+            strokeColor: background,
             strokeOpacity: 0,
             strokeWeight: 4,
             icons: [{
