@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import { MapLocationPicker } from '../components/map/MapLocationPicker';
-import '../styles/SubmitSound.css';
 
 // Google Apps Script deployment URL
 const GOOGLE_SCRIPT_URL =

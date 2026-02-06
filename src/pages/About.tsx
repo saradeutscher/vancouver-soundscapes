@@ -4,7 +4,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { ArticleCard } from '../components/articles/ArticleCard';
 import { Article } from '../types/Article';
 import { loadArticles, sortArticlesByDate } from '../utils/articles';
-import '../styles/About.css';
 
 export const About: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
