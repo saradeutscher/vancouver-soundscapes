@@ -1,9 +1,9 @@
-import { Article } from '../types/Article';
 import articlesData from '../data/articles.json';
+import { Article } from '../types/Article';
 
 export async function loadArticles(): Promise<Article[]> {
   // Simulate async loading (like loadSoundDataset)
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve(articlesData.articles);
     }, 100);
@@ -11,9 +11,7 @@ export async function loadArticles(): Promise<Article[]> {
 }
 
 export function sortArticlesByDate(articles: Article[]): Article[] {
-  return [...articles].sort((a, b) =>
-    new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  return [...articles].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export function getFeaturedArticles(articles: Article[]): Article[] {
@@ -29,6 +27,6 @@ export function formatDate(dateString: string): string {
   return date.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
   });
 }

@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useMemo } from 'react';
 import lunr from 'lunr';
+import React, { useState, useEffect, useMemo } from 'react';
+
+import { ArticleCard } from '../components/articles/ArticleCard';
 import { Article } from '../types/Article';
 import { loadArticles, sortArticlesByDate } from '../utils/articles';
-import { ArticleCard } from '../components/articles/ArticleCard';
 import '../styles/About.css';
 
 export const About: React.FC = () => {
@@ -14,31 +15,34 @@ export const About: React.FC = () => {
 
   // Load articles
   useEffect(() => {
-    loadArticles().then(data => {
-      const sorted = sortArticlesByDate(data);
-      setArticles(sorted);
+    loadArticles()
+      // eslint-disable-next-line promise/always-return
+      .then(data => {
+        const sorted = sortArticlesByDate(data);
+        setArticles(sorted);
 
-      // Build search index (like App.tsx lines 25-38)
-      const idx = lunr(function () {
-        this.ref('id');
-        this.field('title');
-        this.field('content');
-        this.field('excerpt');
-        this.field('tags');
+        // Build search index (like App.tsx lines 25-38)
+        const idx = lunr(function () {
+          this.ref('id');
+          this.field('title');
+          this.field('content');
+          this.field('excerpt');
+          this.field('tags');
 
-        data.forEach(article => {
-          this.add({
-            id: article.id,
-            title: article.title,
-            content: article.content.replace(/<[^>]*>/g, ''), // Strip HTML
-            excerpt: article.excerpt,
-            tags: article.tags.join(' ')
+          data.forEach(article => {
+            this.add({
+              id: article.id,
+              title: article.title,
+              content: article.content.replace(/<[^>]*>/g, ''), // Strip HTML
+              excerpt: article.excerpt,
+              tags: article.tags.join(' '),
+            });
           });
         });
-      });
 
-      setSearchIndex(idx);
-    });
+        setSearchIndex(idx);
+      })
+      .catch(error => console.log(error));
   }, []);
 
   // Handle search
@@ -51,7 +55,7 @@ export const About: React.FC = () => {
     try {
       const results = searchIndex.search(searchQuery);
       setSearchResults(results.map(r => r.ref));
-    } catch (e) {
+    } catch {
       setSearchResults([]);
     }
   }, [searchQuery, searchIndex]);
@@ -77,8 +81,8 @@ export const About: React.FC = () => {
       <div className="about-header">
         <h1>About Vancouver Soundscapes</h1>
         <p>
-          Explore the history, methodology, and stories behind this collection
-          of historical sound recordings from Vancouver.
+          Explore the history, methodology, and stories behind this collection of historical sound
+          recordings from Vancouver.
         </p>
       </div>
 
@@ -88,7 +92,7 @@ export const About: React.FC = () => {
           className="search-input"
           placeholder="Search articles..."
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={e => setSearchQuery(e.target.value)}
         />
         {searchQuery && (
           <span className="search-result-count">
@@ -122,9 +126,7 @@ export const About: React.FC = () => {
       </div>
 
       {filteredArticles.length === 0 && searchQuery && (
-        <div className="no-results">
-          No articles found for "{searchQuery}"
-        </div>
+        <div className="no-results">No articles found for &quot;{searchQuery}&quot;</div>
       )}
     </div>
   );

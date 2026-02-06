@@ -1,4 +1,6 @@
-import React, {useCallback, useState} from 'react';
+import React, { useCallback, useState } from 'react';
+
+import { FilterSelect } from '../controls/FilterSelect';
 
 import type { CategoryData } from '../../types/Sound';
 
@@ -6,7 +8,7 @@ type ControlPanelProps = {
   categories: Array<CategoryData>;
   themes: Array<CategoryData>;
   decades: Array<CategoryData>;
-  types: Array<CategoryData>
+  types: Array<CategoryData>;
   selectedCategory: string | null;
   selectedTheme: string | null;
   selectedDecade: number | null;
@@ -24,7 +26,7 @@ type ControlPanelProps = {
   title?: string;
   description?: string;
   hideMinimizeButton?: boolean;
-}
+};
 
 export const ControlPanel = ({
   categories,
@@ -45,39 +47,13 @@ export const ControlPanel = ({
   onSearchChange,
   searchResultCount,
   hideClusteringToggle,
-  title = "Filter the Map",
-  description = "Use the controls below to filter the sounds shown on the map.",
-  hideMinimizeButton = false
+  title = 'Filter the Map',
+  description = 'Use the controls below to filter the sounds shown on the map.',
+  hideMinimizeButton = false,
 }: ControlPanelProps) => {
   const [isMinimized, setIsMinimized] = useState(false);
 
-  const handleTypeChange = useCallback(
-    (e: React.ChangeEvent<HTMLSelectElement>) => {
-      onTypeChange(e.target.value || null);
-    },
-    [onTypeChange]
-  );
-
-  const handleCategoryChange = useCallback(
-    (e: React.ChangeEvent<HTMLSelectElement>) => {
-      onCategoryChange(e.target.value || null);
-    },
-    [onCategoryChange]
-  );
-
-  const handleThemeChange = useCallback(
-    (e: React.ChangeEvent<HTMLSelectElement>) => {
-      onThemeChange(e.target.value || null);
-    },
-    [onThemeChange]
-  );
-
-  const handleDecadeChange = useCallback(
-    (e: React.ChangeEvent<HTMLSelectElement>) => {
-      onDecadeChange(Number(e.target.value) || null);
-    },
-    [onDecadeChange]
-  );
+  const parseNumber = useCallback((value: string) => Number(value) || null, []);
 
   const handleReset = useCallback(() => {
     onDecadeChange(null);
@@ -88,7 +64,9 @@ export const ControlPanel = ({
   }, [onDecadeChange, onTypeChange, onCategoryChange, onThemeChange, onSearchChange]);
 
   return (
-    <div className={`control-panel marker-clustering-control-panel ${isMinimized ? 'minimized' : ''} ${hideMinimizeButton ? 'no-minimize' : ''}`}>
+    <div
+      className={`control-panel marker-clustering-control-panel ${isMinimized ? 'minimized' : ''} ${hideMinimizeButton ? 'no-minimize' : ''}`}
+    >
       <div className="control-panel-header">
         <h3>{title}</h3>
         {!hideMinimizeButton && (
@@ -103,17 +81,13 @@ export const ControlPanel = ({
       </div>
       {!isMinimized && (
         <>
-          {description && (
-            <p>
-              {description}
-            </p>
-          )}
+          {description && <p>{description}</p>}
           <div className="search-control">
             <div className="search-input-wrapper">
               <input
                 type="search"
                 value={searchQuery}
-                onChange={(e) => onSearchChange(e.target.value)}
+                onChange={e => onSearchChange(e.target.value)}
                 placeholder="Search the sounds..."
                 className="search-input"
               />
@@ -125,49 +99,34 @@ export const ControlPanel = ({
             )}
           </div>
           <p className="filter-options">
-          <label> Filter by Decade:</label>{' '}
-            <select value={selectedDecade ?? ''} onChange={handleDecadeChange}>
-              <option value={''}>All sounds</option>
+            <FilterSelect
+              label="Filter by Decade"
+              value={selectedDecade}
+              options={decades}
+              onChange={onDecadeChange}
+              parseValue={parseNumber}
+            />
 
-              {decades.map(decade => (
-                <option key={decade.key} value={decade.key}>
-                  {decade.label} ({decade.count})
-                </option>
-              ))}
-            </select>
+            <FilterSelect
+              label="Filter by Type"
+              value={selectedType}
+              options={types}
+              onChange={onTypeChange}
+            />
 
-            <label> Filter by Type:</label>{' '}
-            <select value={selectedType ?? ''} onChange={handleTypeChange}>
-              <option value={''}>All sounds</option>
+            <FilterSelect
+              label="Filter by Class"
+              value={selectedCategory}
+              options={categories}
+              onChange={onCategoryChange}
+            />
 
-              {types.map(type => (
-                <option key={type.key} value={type.key}>
-                  {type.label} ({type.count})
-                </option>
-              ))}
-            </select>
-
-            <label> Filter by Class:</label>{' '}
-            <select value={selectedCategory ?? ''} onChange={handleCategoryChange}>
-              <option value={''}>All sounds</option>
-
-              {categories.map(category => (
-                <option key={category.key} value={category.key}>
-                  {category.label} ({category.count})
-                </option>
-              ))}
-            </select>
-
-            <label> Filter by Theme:</label>{' '}
-            <select value={selectedTheme ?? ''} onChange={handleThemeChange}>
-              <option value={''}>All sounds</option>
-
-              {themes.map(theme => (
-                <option key={theme.key} value={theme.key}>
-                  {theme.label} ({theme.count})
-                </option>
-              ))}
-            </select>
+            <FilterSelect
+              label="Filter by Theme"
+              value={selectedTheme}
+              options={themes}
+              onChange={onThemeChange}
+            />
           </p>
           {!hideClusteringToggle && (
             <div className="clustering-toggle">
@@ -175,13 +134,15 @@ export const ControlPanel = ({
                 <input
                   type="checkbox"
                   checked={clusteringEnabled}
-                  onChange={(e) => onClusteringToggle(e.target.checked)}
+                  onChange={e => onClusteringToggle(e.target.checked)}
                 />
                 Enable Marker Clustering
               </label>
             </div>
           )}
-          <button id="filter-reset" onClick={handleReset}>Reset</button>
+          <button id="filter-reset" onClick={handleReset}>
+            Reset
+          </button>
         </>
       )}
     </div>

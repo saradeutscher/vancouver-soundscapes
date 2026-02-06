@@ -1,26 +1,16 @@
+import { APIProvider, Map as GoogleMap } from '@vis.gl/react-google-maps';
 import React, { useMemo, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { APIProvider, Map as GoogleMap } from '@vis.gl/react-google-maps';
-import type { Sound } from '../types/Sound';
+
 import { SoundMarker } from '../components/map/SoundMarker';
+import { AudioPlayer } from '../components/sound/AudioPlayer';
 import { ImageGallery } from '../components/sound/ImageGallery';
-import { getDecadeColor } from '../constants/colors';
+import { MetadataBadges } from '../components/sound/MetadataBadges';
+import { getSoundPosition } from '../utils/coordinates';
+
+import type { Sound } from '../types/Sound';
 
 const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-
-// Helper to get {lat, lng} from coordinates string
-function getLatLng(coordsStr: string): { lat: number; lng: number } {
-  const coords = JSON.parse(coordsStr) as [number, number];
-  const [lng, lat] = coords;
-  return { lat, lng };
-}
-
-// Helper to get first point from LineString
-function getFirstPoint(coordsStr: string): { lat: number; lng: number } {
-  const coords = JSON.parse(coordsStr) as [number, number][];
-  const [lng, lat] = coords[0];
-  return { lat, lng };
-}
 
 type SoundDetailPageProps = {
   sounds?: Sound[];
@@ -31,10 +21,7 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
   const navigate = useNavigate();
   const [selectedSoundKey, setSelectedSoundKey] = useState<string | null>(null);
 
-  const sound = useMemo(() =>
-    sounds?.find(s => s.key === id),
-    [sounds, id]
-  );
+  const sound = useMemo(() => sounds?.find(s => s.key === id), [sounds, id]);
 
   const handleBackToMap = useCallback(() => {
     if (sound) {
@@ -53,41 +40,27 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
     );
   }
 
-  const position = sound.geometry.type === "Point"
-    ? getLatLng(sound.geometry.coordinates)
-    : getFirstPoint(sound.geometry.coordinates);
-
-  const decadeColor = getDecadeColor(sound.properties.decade);
+  const position = getSoundPosition(sound);
 
   return (
     <div className="sound-detail-page">
       <div className="sound-detail-header">
         <div style={{ display: 'flex', gap: '10px' }}>
-          <button
-            className="back-button"
-            onClick={() => navigate('/sounds')}
-          >
+          <button className="back-button" onClick={() => navigate('/sounds')}>
             ← Back to List
           </button>
-          <button
-            className="back-button"
-            onClick={handleBackToMap}
-          >
+          <button className="back-button" onClick={handleBackToMap}>
             View on Main Map
           </button>
         </div>
         <h1>{sound.properties.name}</h1>
-        <div className="sound-metadata">
-          <span
-            className="metadata-badge decade-badge"
-            style={{ background: decadeColor }}
-          >
-            {sound.properties.decade}s
-          </span>
-          {sound.properties.class.map(cls => (
-            <span key={cls} className="metadata-badge class-badge">{cls}</span>
-          ))}
-        </div>
+        <MetadataBadges
+          sound={sound}
+          showDecade={true}
+          showClass={true}
+          showTheme={false}
+          showType={false}
+        />
       </div>
 
       <div className="sound-detail-content">
@@ -114,11 +87,7 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
         <div className="sound-detail-info-section">
           <div className="sound-audio-section">
             <h3>Listen</h3>
-            <audio
-              controls
-              preload="metadata"
-              src={`https://object-arbutus.cloud.computecanada.ca/soundscapes-public/${sound.properties.soundfile}`}
-            />
+            <AudioPlayer soundfile={sound.properties.soundfile} />
           </div>
 
           <div className="sound-description-section">
@@ -143,11 +112,13 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
           {sound.properties.theme.length > 0 && (
             <div className="sound-themes-section">
               <h3>Themes</h3>
-              <div className="theme-badges">
-                {sound.properties.theme.map(t => (
-                  <span key={t} className="metadata-badge theme-badge">{t}</span>
-                ))}
-              </div>
+              <MetadataBadges
+                sound={sound}
+                showDecade={false}
+                showClass={false}
+                showTheme={true}
+                showType={false}
+              />
             </div>
           )}
         </div>

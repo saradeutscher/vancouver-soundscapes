@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+
 import { MapLocationPicker } from '../components/map/MapLocationPicker';
 import '../styles/SubmitSound.css';
 
 // Google Apps Script deployment URL
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz8iQTGbrHEXOQn1E_HkeOEugzEzGwBZH_ppf9y3Cb5ALAm33gduFr67Ljm0XycaqX4HA/exec';
+const GOOGLE_SCRIPT_URL =
+  'https://script.google.com/macros/s/AKfycbz8iQTGbrHEXOQn1E_HkeOEugzEzGwBZH_ppf9y3Cb5ALAm33gduFr67Ljm0XycaqX4HA/exec';
 
 type SubmissionData = {
   name: string;
@@ -49,7 +51,7 @@ export const SubmitSound: React.FC = () => {
     notes: '',
     imageLinks: '',
     submitterName: '',
-    submitterEmail: ''
+    submitterEmail: '',
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -74,7 +76,7 @@ export const SubmitSound: React.FC = () => {
     setFormData(prev => ({
       ...prev,
       latitude: lat.toFixed(6),
-      longitude: lng.toFixed(6)
+      longitude: lng.toFixed(6),
     }));
     setIsMapOpen(false);
   };
@@ -150,8 +152,8 @@ export const SubmitSound: React.FC = () => {
           notes: formData.notes,
           imageLinks: formData.imageLinks,
           submitterName: formData.submitterName,
-          submitterEmail: formData.submitterEmail
-        })
+          submitterEmail: formData.submitterEmail,
+        }),
       });
 
       // no-cors mode doesn't allow reading response, but if no error thrown, submission succeeded
@@ -172,12 +174,13 @@ export const SubmitSound: React.FC = () => {
         notes: '',
         imageLinks: '',
         submitterName: '',
-        submitterEmail: ''
+        submitterEmail: '',
       });
-
     } catch (error) {
       console.error('Submission error:', error);
-      alert('There was an error submitting your recording. Please try again or contact us directly.');
+      alert(
+        'There was an error submitting your recording. Please try again or contact us directly.'
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -187,9 +190,7 @@ export const SubmitSound: React.FC = () => {
     <div className="submit-page">
       <div className="submit-header">
         <h1>Submit a Sound Recording</h1>
-        <p>
-          Fill out the form below to submit a recording for review to be added to the map.
-        </p>
+        <p>Fill out the form below to submit a recording for review to be added to the map.</p>
       </div>
 
       <form className="submit-form" onSubmit={handleSubmit}>
@@ -203,7 +204,7 @@ export const SubmitSound: React.FC = () => {
               type="text"
               id="name"
               value={formData.name}
-              onChange={(e) => handleChange('name', e.target.value)}
+              onChange={e => handleChange('name', e.target.value)}
               placeholder="e.g., Stanley Park Railway"
               required
             />
@@ -216,7 +217,7 @@ export const SubmitSound: React.FC = () => {
               type="text"
               id="description"
               value={formData.description}
-              onChange={(e) => handleChange('description', e.target.value)}
+              onChange={e => handleChange('description', e.target.value)}
               placeholder="e.g., February 3, 2026 (Tuesday), 2:30 p.m."
               required
             />
@@ -229,12 +230,13 @@ export const SubmitSound: React.FC = () => {
               type="url"
               id="audioLink"
               value={formData.audioLink}
-              onChange={(e) => handleChange('audioLink', e.target.value)}
+              onChange={e => handleChange('audioLink', e.target.value)}
               placeholder="https://drive.google.com/..."
               required
             />
             <p className="field-hint">
-              Upload your audio file to Google Drive or another service and paste the share link here.
+              Upload your audio file to Google Drive or another service and paste the share link
+              here.
             </p>
             {errors.audioLink && <span className="error">{errors.audioLink}</span>}
           </div>
@@ -245,7 +247,7 @@ export const SubmitSound: React.FC = () => {
               type="number"
               id="decade"
               value={formData.decade}
-              onChange={(e) => handleChange('decade', e.target.value)}
+              onChange={e => handleChange('decade', e.target.value)}
               min="1900"
               max="2020"
               step="10"
@@ -282,7 +284,7 @@ export const SubmitSound: React.FC = () => {
                 type="text"
                 id="latitude"
                 value={formData.latitude}
-                onChange={(e) => handleChange('latitude', e.target.value)}
+                onChange={e => handleChange('latitude', e.target.value)}
                 placeholder="49.2827"
                 required
               />
@@ -295,7 +297,7 @@ export const SubmitSound: React.FC = () => {
                 type="text"
                 id="longitude"
                 value={formData.longitude}
-                onChange={(e) => handleChange('longitude', e.target.value)}
+                onChange={e => handleChange('longitude', e.target.value)}
                 placeholder="-123.1207"
                 required
               />
@@ -310,13 +312,14 @@ export const SubmitSound: React.FC = () => {
             <select
               id="locationType"
               value={formData.locationType}
-              onChange={(e) => handleChange('locationType', e.target.value as 'Point' | 'LineString')}
+              onChange={e => handleChange('locationType', e.target.value as 'Point' | 'LineString')}
             >
               <option value="Point">Point (Single Location)</option>
               <option value="LineString">Soundwalk (Multiple Points)</option>
             </select>
             <p className="field-hint">
-              Select "Point" for a recording at one location, or "Soundwalk" for a recording along a path.
+              Select &quot;Point&quot; for a recording at one location, or &quot;Soundwalk&quot; for
+              a recording along a path.
             </p>
           </div>
         </div>
@@ -325,8 +328,8 @@ export const SubmitSound: React.FC = () => {
         <div className="form-section">
           <h2>Classification (Optional)</h2>
 
-          <div className="form-field">
-            <label>Class</label>
+          <fieldset className="form-field">
+            <legend>Class</legend>
             <div className="checkbox-group">
               {['effects', 'ambience', 'soundwalk', 'events', 'scenes', 'dialogue'].map(cat => (
                 <label key={cat} className="checkbox-label">
@@ -334,7 +337,7 @@ export const SubmitSound: React.FC = () => {
                     type="checkbox"
                     value={cat}
                     checked={formData.categories.includes(cat)}
-                    onChange={(e) => {
+                    onChange={e => {
                       const newCategories = e.target.checked
                         ? [...formData.categories, cat]
                         : formData.categories.filter(c => c !== cat);
@@ -345,18 +348,30 @@ export const SubmitSound: React.FC = () => {
                 </label>
               ))}
             </div>
-          </div>
+          </fieldset>
 
-          <div className="form-field">
-            <label>Themes</label>
+          <fieldset className="form-field">
+            <legend>Themes</legend>
             <div className="checkbox-group">
-              {['nature', 'cityscape', 'transport', 'tourism', 'people', 'festivals', 'events', 'industrial', 'culture', 'commerce', 'sports'].map(theme => (
+              {[
+                'nature',
+                'cityscape',
+                'transport',
+                'tourism',
+                'people',
+                'festivals',
+                'events',
+                'industrial',
+                'culture',
+                'commerce',
+                'sports',
+              ].map(theme => (
                 <label key={theme} className="checkbox-label">
                   <input
                     type="checkbox"
                     value={theme}
                     checked={formData.themes.includes(theme)}
-                    onChange={(e) => {
+                    onChange={e => {
                       const newThemes = e.target.checked
                         ? [...formData.themes, theme]
                         : formData.themes.filter(t => t !== theme);
@@ -367,7 +382,7 @@ export const SubmitSound: React.FC = () => {
                 </label>
               ))}
             </div>
-          </div>
+          </fieldset>
         </div>
 
         {/* Section 4: Additional Details */}
@@ -379,7 +394,7 @@ export const SubmitSound: React.FC = () => {
             <textarea
               id="notes"
               value={formData.notes}
-              onChange={(e) => handleChange('notes', e.target.value)}
+              onChange={e => handleChange('notes', e.target.value)}
               rows={4}
               placeholder="Optionally describe what you hear in the recording, environmental conditions, notable sound events, etc."
             />
@@ -391,7 +406,7 @@ export const SubmitSound: React.FC = () => {
               type="text"
               id="imageLinks"
               value={formData.imageLinks}
-              onChange={(e) => handleChange('imageLinks', e.target.value)}
+              onChange={e => handleChange('imageLinks', e.target.value)}
               placeholder="https://example.com/image1.jpg, https://example.com/image2.jpg"
             />
             <p className="field-hint">
@@ -410,7 +425,7 @@ export const SubmitSound: React.FC = () => {
               type="text"
               id="submitterName"
               value={formData.submitterName}
-              onChange={(e) => handleChange('submitterName', e.target.value)}
+              onChange={e => handleChange('submitterName', e.target.value)}
               placeholder="Optional"
             />
           </div>
@@ -421,12 +436,13 @@ export const SubmitSound: React.FC = () => {
               type="email"
               id="submitterEmail"
               value={formData.submitterEmail}
-              onChange={(e) => handleChange('submitterEmail', e.target.value)}
+              onChange={e => handleChange('submitterEmail', e.target.value)}
               placeholder="your.email@example.com"
             />
             {errors.submitterEmail && <span className="error">{errors.submitterEmail}</span>}
             <p className="field-hint">
-              We'll use this to contact you about your submission if there are any issues or questions.
+              We&apos;ll use this to contact you about your submission if there are any issues or
+              questions.
             </p>
           </div>
         </div>

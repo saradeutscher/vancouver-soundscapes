@@ -1,28 +1,27 @@
-import React, { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import type { Sound } from '../../types/Sound';
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+import { MetadataBadges } from './MetadataBadges';
 import { StaticMapImage } from './StaticMapImage';
-import { getDecadeColor } from '../../constants/colors';
+import { getAssetUrl } from '../../constants/assets';
+
+import type { Sound } from '../../types/Sound';
 
 type SoundCardProps = {
   sound: Sound;
 };
 
 export const SoundCard: React.FC<SoundCardProps> = ({ sound }) => {
-  const navigate = useNavigate();
-
-  const handleClick = useCallback(() => {
-    navigate(`/sounds/${sound.key}`);
-  }, [navigate, sound.key]);
-
-  const decadeColor = getDecadeColor(sound.properties.decade);
-
   return (
-    <div className="sound-card-v2" onClick={handleClick}>
+    <Link
+      to={`/sounds/${sound.key}`}
+      className="sound-card-v2"
+      style={{ textDecoration: 'none', color: 'inherit' }}
+    >
       <div className="sound-card-image-container">
         {sound.properties.images.length > 0 ? (
           <img
-            src={`https://object-arbutus.cloud.computecanada.ca/soundscapes-public/${sound.properties.images[0]}`}
+            src={getAssetUrl(sound.properties.images[0])}
             alt={sound.properties.name}
             className="sound-card-image"
             loading="lazy"
@@ -35,25 +34,20 @@ export const SoundCard: React.FC<SoundCardProps> = ({ sound }) => {
       <div className="sound-card-content">
         <h3 className="sound-card-title">{sound.properties.name}</h3>
 
-        <div className="sound-card-metadata">
-          <span
-            className="metadata-badge decade-badge"
-            style={{ background: decadeColor }}
-          >
-            {sound.properties.decade}s
-          </span>
-          <span className="metadata-badge type-badge">
-            {sound.geometry.type === "LineString" ? "Soundwalk" : "Point"}
-          </span>
-        </div>
+        <MetadataBadges
+          sound={sound}
+          showDecade={true}
+          showClass={false}
+          showTheme={false}
+          showType={true}
+        />
 
         <p className="sound-card-description">
           {sound.properties.description.length > 120
             ? sound.properties.description.substring(0, 120) + '...'
-            : sound.properties.description
-          }
+            : sound.properties.description}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };

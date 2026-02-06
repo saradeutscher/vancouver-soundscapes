@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react';
 import { useMap } from '@vis.gl/react-google-maps';
+import { useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
+
 import type { Sound } from '../../types/Sound';
 
 type MapControllerProps = {
@@ -62,7 +63,7 @@ export const MapController = ({ sounds, selectedSoundKey, onSoundSelect }: MapCo
           top: 100,
           bottom: 50,
           left: 50,
-          right: 50
+          right: 50,
         });
       } else {
         // For Point markers, center and zoom

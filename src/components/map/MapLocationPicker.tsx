@@ -1,5 +1,5 @@
-import React, { useState, useCallback } from 'react';
 import { APIProvider, Map, AdvancedMarker } from '@vis.gl/react-google-maps';
+import React, { useState, useCallback } from 'react';
 
 type MapLocationPickerProps = {
   onLocationSelect: (lat: number, lng: number) => void;
@@ -12,13 +12,14 @@ const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 export const MapLocationPicker: React.FC<MapLocationPickerProps> = ({
   onLocationSelect,
   initialLat = 49.2827, // Vancouver default
-  initialLng = -123.1207
+  initialLng = -123.1207,
 }) => {
-  const [markerPosition, setMarkerPosition] = useState<{lat: number, lng: number}>({
+  const [markerPosition, setMarkerPosition] = useState<{ lat: number; lng: number }>({
     lat: initialLat,
-    lng: initialLng
+    lng: initialLng,
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleMapClick = useCallback((e: any) => {
     if (e.detail && e.detail.latLng) {
       const lat = e.detail.latLng.lat;

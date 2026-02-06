@@ -1,0 +1,58 @@
+/**
+ * Design Tokens
+ * Centralized design values for colors, spacing, typography, etc.
+ */
+
+:root {
+  /* Brand Colors */
+  --color-primary: #008cba;
+  --color-primary-hover: #005f6b;
+
+  /* Text Colors */
+  --color-text-primary: #333;
+  --color-text-secondary: #666;
+  --color-text-tertiary: #999;
+
+  /* Background Colors */
+  --color-background: #fafafa;
+  --color-background-white: #fff;
+
+  /* Border Colors */
+  --color-border: #e5e5e5;
+  --color-border-light: #ddd;
+  --color-border-dark: #ccc;
+
+  /* Spacing Scale */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-round: 20px;
+
+  /* Box Shadows */
+  --shadow-sm: 0 2px 4px rgb(0, 0, 0, 0.1);
+  --shadow-md: 0 2px 8px rgb(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 12px rgb(0, 0, 0, 0.15);
+  --shadow-xl: 0 8px 16px rgb(0, 0, 0, 0.15);
+
+  /* Typography */
+  --font-size-xs: 11px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}

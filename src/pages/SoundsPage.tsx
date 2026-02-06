@@ -1,9 +1,13 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import type { Sound } from '../types/Sound';
-import { SoundCard } from '../components/sound/SoundCard';
-import { ControlPanel } from '../components/map/ControlPanel';
-import { getCategories, getThemes, getDecades, getTypes } from '../services/soundService';
 import lunr from 'lunr';
+import React, { useState, useEffect, useMemo } from 'react';
+
+import { ControlPanel } from '../components/map/ControlPanel';
+import { SoundCard } from '../components/sound/SoundCard';
+import { useDebounce } from '../hooks/useDebounce';
+import { useFilteredSounds } from '../hooks/useFilteredSounds';
+import { getCategories, getThemes, getDecades, getTypes } from '../services/soundService';
+
+import type { Sound } from '../types/Sound';
 
 type SoundsPageProps = {
   sounds?: Sound[];
@@ -18,59 +22,46 @@ export const SoundsPage: React.FC<SoundsPageProps> = ({ sounds, searchIndex }) =
   const [selectedDecade, setSelectedDecade] = useState<number | null>(null);
   const [selectedType, setSelectedType] = useState<string | null>(null);
 
-  // Debounced search effect
+  // Debounce search query
+  const debouncedSearchQuery = useDebounce(searchQuery, 300);
+
+  // Perform search when debounced query changes
   useEffect(() => {
-    if (!searchIndex || !searchQuery.trim()) {
+    if (!searchIndex || !debouncedSearchQuery.trim()) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSearchResults(null);
       return;
     }
 
-    const timeoutId = setTimeout(() => {
-      try {
-        const results = searchIndex.search(searchQuery);
-        const resultKeys = new Set<string>(results.map((r: any) => r.ref as string));
-        setSearchResults(resultKeys);
-      } catch (error) {
-        console.error('Search error:', error);
-        setSearchResults(new Set<string>());
-      }
-    }, 300);
-
-    return () => clearTimeout(timeoutId);
-  }, [searchQuery, searchIndex]);
+    try {
+      const results = searchIndex.search(debouncedSearchQuery);
+      const resultKeys = new Set<string>(results.map(r => r.ref));
+      setSearchResults(resultKeys);
+    } catch (error) {
+      console.error('Search error:', error);
+      setSearchResults(new Set<string>());
+    }
+  }, [debouncedSearchQuery, searchIndex]);
 
   // Filter sounds based on search and all other filters
-  const combinedFilteredSounds = useMemo(() => {
-    if (!sounds) return [];
-
-    return sounds.filter(
-      s => (!searchResults || searchResults.has(s.key)) &&
-           (!selectedDecade || s.properties.decade == selectedDecade) &&
-           (!selectedTheme || s.properties.theme.includes(selectedTheme)) &&
-           (!selectedCategory || s.properties.class.includes(selectedCategory)) &&
-           (!selectedType || s.geometry.type == selectedType)
-    );
-  }, [sounds, searchResults, selectedDecade, selectedCategory, selectedTheme, selectedType]);
+  const combinedFilteredSounds = useFilteredSounds(sounds, searchResults, {
+    decade: selectedDecade,
+    category: selectedCategory,
+    theme: selectedTheme,
+    type: selectedType,
+  });
 
   // Get category options based on current filters
-  const categories = useMemo(() => {
-    return getCategories(combinedFilteredSounds);
-  }, [combinedFilteredSounds]);
+  const categories = useMemo(() => getCategories(combinedFilteredSounds), [combinedFilteredSounds]);
 
   // Get theme options based on current filters
-  const themes = useMemo(() => {
-    return getThemes(combinedFilteredSounds);
-  }, [combinedFilteredSounds]);
+  const themes = useMemo(() => getThemes(combinedFilteredSounds), [combinedFilteredSounds]);
 
   // Get decade options based on current filters
-  const decades = useMemo(() => {
-    return getDecades(combinedFilteredSounds);
-  }, [combinedFilteredSounds]);
+  const decades = useMemo(() => getDecades(combinedFilteredSounds), [combinedFilteredSounds]);
 
   // Get type options based on current filters
-  const types = useMemo(() => {
-    return getTypes(combinedFilteredSounds);
-  }, [combinedFilteredSounds]);
+  const types = useMemo(() => getTypes(combinedFilteredSounds), [combinedFilteredSounds]);
 
   return (
     <div className="sounds-page">
@@ -106,9 +97,7 @@ export const SoundsPage: React.FC<SoundsPageProps> = ({ sounds, searchIndex }) =
         {combinedFilteredSounds.length === 0 ? (
           <p className="no-results">No sounds found matching your filters.</p>
         ) : (
-          combinedFilteredSounds.map(sound => (
-            <SoundCard key={sound.key} sound={sound} />
-          ))
+          combinedFilteredSounds.map(sound => <SoundCard key={sound.key} sound={sound} />)
         )}
       </div>
     </div>

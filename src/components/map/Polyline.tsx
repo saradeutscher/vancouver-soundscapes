@@ -1,5 +1,5 @@
-import {useMap} from '@vis.gl/react-google-maps';
-import {useRef, useEffect, useState} from 'react';
+import { useMap } from '@vis.gl/react-google-maps';
+import { useRef, useEffect, useState } from 'react';
 
 type LatLng = google.maps.LatLngLiteral;
 
@@ -17,7 +17,12 @@ function interpolatePoint(start: LatLng, end: LatLng, fraction: number): LatLng 
   };
 }
 
-export function Polyline({ path, options, animate = false, animationDuration = 1000 }: PolylineProps) {
+export function Polyline({
+  path,
+  options,
+  animate = false,
+  animationDuration = 1000,
+}: PolylineProps) {
   const polylineRef = useRef<google.maps.Polyline | null>(null);
   const [animatedPath, setAnimatedPath] = useState<LatLng[]>(path);
   const animationFrameRef = useRef<number | null>(null);
@@ -27,6 +32,7 @@ export function Polyline({ path, options, animate = false, animationDuration = 1
   // Handle animation
   useEffect(() => {
     if (!animate || path.length === 0) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setAnimatedPath(path);
       return;
     }

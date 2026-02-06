@@ -1,4 +1,5 @@
 import sounds from '../data/sounds.json';
+
 import type { Sound, CategoryData } from '../types/Sound';
 
 for (let i = 0; i < sounds.length; i++) {
@@ -8,91 +9,74 @@ for (let i = 0; i < sounds.length; i++) {
 /**
  * Simulates async loading of the dataset from an external source.
  */
-export async function loadSoundDataset() : Promise<Sound[]> {
+export async function loadSoundDataset(): Promise<Sound[]> {
   // simulate loading the sounds from an external source
   return new Promise(resolve => {
     setTimeout(() => resolve(sounds as Sound[]), 500);
   });
 }
 
-export function getTypes(sounds?: Sound[]) : CategoryData[] {
+/**
+ * Generic function to aggregate sounds by a property and count occurrences
+ * Handles both single values and arrays of values
+ *
+ * @param sounds - Array of sounds to aggregate
+ * @param extractor - Function to extract the property to aggregate by
+ * @param labelFormatter - Optional function to format the label for display
+ * @returns Array of CategoryData with counts
+ */
+function aggregateByProperty<T extends string | number>(
+  sounds: Sound[] | undefined,
+  extractor: (sound: Sound) => T | T[],
+  labelFormatter?: (key: string) => string
+): CategoryData[] {
   if (!sounds) return [];
 
-  const countByType: {[t: string]: number} = {};
-  for (const s of sounds) {
-    if(!countByType[s.geometry.type]) countByType[s.geometry.type] = 0;
-    countByType[s.geometry.type]++;
+  const countByKey: { [key: string]: number } = {};
+
+  for (const sound of sounds) {
+    const extracted = extractor(sound);
+    const values = Array.isArray(extracted) ? extracted : [extracted];
+
+    for (const value of values) {
+      const key = String(value);
+      if (!countByKey[key]) countByKey[key] = 0;
+      countByKey[key]++;
+    }
   }
 
-  return Object.entries(countByType).map(([key, value]) => {
-    const label = (key == "LineString") ? "Soundwalk" : key;
-    return {
-      key: key,
-      label,
-      count: value
-    };
-  });
+  return Object.entries(countByKey).map(([key, count]) => ({
+    key,
+    label: labelFormatter ? labelFormatter(key) : key,
+    count,
+  }));
+}
+
+/**
+ * Capitalize label by replacing underscores with spaces and capitalizing words
+ */
+function capitalizeLabel(key: string): string {
+  return key.replace(/ _/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
+export function getTypes(sounds?: Sound[]): CategoryData[] {
+  return aggregateByProperty(
+    sounds,
+    s => s.geometry.type,
+    key => (key === 'LineString' ? 'Soundwalk' : key)
+  );
 }
 
 export function getCategories(sounds?: Sound[]): CategoryData[] {
-  if (!sounds) return [];
-
-  const countByCategory: {[c: string]: number} = {};
-  for (const s of sounds) {
-    for (const c of s.properties.class) {
-      if (!countByCategory[c]) countByCategory[c] = 0;
-      countByCategory[c]++;
-    }
-  }
-
-  return Object.entries(countByCategory).map(([key, value]) => {
-    const label = key.replace(/ _/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-    return {
-      key: key,
-      label,
-      count: value
-    };
-  });
+  return aggregateByProperty(sounds, s => s.properties.class, capitalizeLabel);
 }
 
 export function getThemes(sounds?: Sound[]): CategoryData[] {
-  if (!sounds) return [];
-
-  const countByTheme: {[t: string]: number} = {};
-  for (const s of sounds) {
-    for (const t of s.properties.theme) {
-      if(!countByTheme[t]) countByTheme[t] = 0;
-      countByTheme[t]++;
-    }
-  }
-
-  return Object.entries(countByTheme).map(([key, value]) => {
-    const label = key.replace(/ _/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-    return {
-      key: key,
-      label,
-      count: value
-    };
-  });
+  return aggregateByProperty(sounds, s => s.properties.theme, capitalizeLabel);
 }
 
 export function getDecades(sounds?: Sound[]): CategoryData[] {
-  if (!sounds) return [];
-
-  const countByDecade: {[d: number]: number} = {};
-  for (const s of sounds) {
-    if(!countByDecade[s.properties.decade]) countByDecade[s.properties.decade] = 0;
-    countByDecade[s.properties.decade]++;
-  }
-
-  return Object.entries(countByDecade).map(([key, value]) => {
-    const label = key
-    return {
-      key: key,
-      label,
-      count: value
-    };
-  });
+  return aggregateByProperty(sounds, s => s.properties.decade);
 }
 
 export default sounds as Sound[];

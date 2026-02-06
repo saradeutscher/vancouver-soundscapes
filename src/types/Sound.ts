@@ -3,7 +3,7 @@ export type Sound = {
   type: string;
   geometry: {
     coordinates: string;
-    type: string
+    type: string;
   };
   properties: {
     name: string;
