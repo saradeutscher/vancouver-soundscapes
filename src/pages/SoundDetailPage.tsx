@@ -97,6 +97,10 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
                 showTheme={true}
                 showType={false}
               />
+            </div>
+          )}
+          {sound.properties.class.length > 0 && (
+            <div className="sound-themes-section">
               <h3>Class</h3>
               <MetadataBadges
                 sound={sound}
