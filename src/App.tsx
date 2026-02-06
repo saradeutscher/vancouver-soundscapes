@@ -6,13 +6,13 @@ import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import './styles/global.css';
 
 import { SoundMap } from './components/map/SoundMap';
+import { About } from './pages/About';
 import { SoundDetailPage } from './pages/SoundDetailPage';
 import { SoundsPage } from './pages/SoundsPage';
 import { SubmitSound } from './pages/SubmitSound';
 import { loadSoundDataset } from './services/soundService';
 
 import type { Sound } from './types/Sound';
-// import { About } from './pages/About';
 
 const App = () => {
   const [sounds, setSounds] = useState<Sound[]>();
@@ -57,7 +57,7 @@ const App = () => {
             <NavLink to="/" end>
               Home
             </NavLink>
-            {/* <NavLink to="/about">About</NavLink> */}
+            <NavLink to="/about">About</NavLink>
             <NavLink to="/request">Submit a Sound</NavLink>
             <NavLink to="/sounds">Sound List</NavLink>
           </div>
@@ -73,7 +73,7 @@ const App = () => {
                 </div>
               }
             />
-            {/* <Route path="/about" element={<About />} /> */}
+            <Route path="/about" element={<About />} />
             <Route path="/request" element={<SubmitSound />} />
             <Route
               path="/sounds"

@@ -189,7 +189,7 @@ export const SubmitSound: React.FC = () => {
     <div className="submit-page">
       <div className="submit-header">
         <h1>Submit a Sound Recording</h1>
-        <p>Fill out the form below to submit a recording for review to be added to the map.</p>
+        <p>Fill out the form below to submit a recording to be added to the map.</p>
       </div>
 
       <form className="submit-form" onSubmit={handleSubmit}>
@@ -440,7 +440,7 @@ export const SubmitSound: React.FC = () => {
             />
             {errors.submitterEmail && <span className="error">{errors.submitterEmail}</span>}
             <p className="field-hint">
-              We&apos;ll use this to contact you about your submission if there are any issues or
+              This will be used to contact you about your submission if there are any issues or
               questions.
             </p>
           </div>

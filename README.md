@@ -139,24 +139,22 @@ src/
 │   │   ├── MapController.tsx      # URL-based sound selection handler
 │   │   └── MapLocationPicker.tsx  # Interactive map for location selection
 │   │
-│   ├── sound/              # Sound-related components
-│   │   ├── SoundCard.tsx          # Sound card for grid display (accessible Link)
-│   │   ├── MetadataBadges.tsx     # Reusable decade/class/theme/type badges
-│   │   ├── AudioPlayer.tsx        # Audio playback component
-│   │   ├── ImageGallery.tsx       # Image gallery with lightbox
-│   │   └── StaticMapImage.tsx     # Static map thumbnail generator
-│   │
-│   └── articles/           # Article-related components
-│       └── ArticleCard.tsx        # Expandable article card
+│   └── sound/              # Sound-related components
+│       ├── SoundCard.tsx          # Sound card for grid display (accessible Link)
+│       ├── MetadataBadges.tsx     # Reusable decade/class/theme/type badges
+│       ├── AudioPlayer.tsx        # Audio playback component
+│       ├── ImageGallery.tsx       # Image gallery with lightbox
+│       └── StaticMapImage.tsx     # Static map thumbnail generator
 │
 ├── pages/                  # Page-level components (routes)
-│   ├── About.tsx                  # /about - About page with article search
+│   ├── About.tsx                  # /about - About page
 │   ├── SubmitSound.tsx            # /request - Sound submission form
 │   ├── SoundsPage.tsx             # /sounds - Sound gallery with filters
 │   └── SoundDetailPage.tsx        # /sounds/:id - Individual sound detail pages
 │
 ├── hooks/                  # Custom React hooks
 │   ├── useDebounce.ts             # Debounce hook for search input (300ms)
+│   ├── useScrollSpy.ts            # Scroll spy to track active section using IntersectionObserver
 │   └── useFilteredSounds.ts       # Combined filtering logic hook
 │
 ├── services/               # Data loading logic
@@ -167,23 +165,18 @@ src/
 │   └── colors.ts                  # Decade color mapping
 │
 ├── types/                  # TypeScript type definitions
-│   ├── Article.ts                 # Article type
 │   ├── Sound.ts                   # Sound and CategoryData types
 │   └── lunr.d.ts                  # Lunr.js type
 │
 ├── utils/                  # Utility functions
-│   ├── articles.ts                # Article loading and formatting utilities
 │   └── coordinates.ts             # Coordinate parsing utilities
 │
 ├── data/                   # Static data files
-│   ├── sounds.json                # Sound dataset (GeoJSON-like)
-│   └── articles.json              # Articles data
+│   └── sounds.json                # Sound dataset (GeoJSON-like)
 │
 ├── styles/                 # CSS stylesheets
 │   ├── tokens.css                 # CSS design tokens (colors, spacing, etc.)
 │   ├── global.css                 # Main app styles (imports tokens.css)
-│   ├── About.css                  # About page styles
-│   ├── SubmitSound.css            # Submit form styles
 │   └── index.css                  # Root styles
 │
 ├── App.tsx                 # Root application component with routing

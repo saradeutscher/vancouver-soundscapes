@@ -57,58 +57,36 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
         <MetadataBadges
           sound={sound}
           showDecade={true}
-          showClass={true}
+          showClass={false}
           showTheme={false}
-          showType={false}
+          showType={true}
         />
+        <div className="sound-description-section">
+          <p>{sound.properties.description}</p>
+        </div>
       </div>
 
       <div className="sound-detail-content">
-        <div className="sound-detail-map-section">
-          <APIProvider apiKey={API_KEY}>
-            <GoogleMap
-              mapId={'54137f32133013763f6a2d7f'}
-              defaultZoom={15}
-              defaultCenter={position}
-              gestureHandling={'greedy'}
-              style={{ width: '100%', height: '400px' }}
-            >
-              <SoundMarker
-                sound={sound}
-                onClick={() => setSelectedSoundKey(sound.key)}
-                setMarkerRef={() => {}}
-                isSelected={selectedSoundKey === sound.key}
-                hoverId={null}
-              />
-            </GoogleMap>
-          </APIProvider>
-        </div>
-
-        <div className="sound-detail-info-section">
-          <div className="sound-audio-section">
-            <h3>Listen</h3>
-            <AudioPlayer soundfile={sound.properties.soundfile} />
+        <div className="sound-detail-col1">
+          <div className="sound-detail-map-section">
+            <APIProvider apiKey={API_KEY}>
+              <GoogleMap
+                mapId={'54137f32133013763f6a2d7f'}
+                defaultZoom={15}
+                defaultCenter={position}
+                gestureHandling={'greedy'}
+                style={{ width: '100%', height: '400px' }}
+              >
+                <SoundMarker
+                  sound={sound}
+                  onClick={() => setSelectedSoundKey(sound.key)}
+                  setMarkerRef={() => {}}
+                  isSelected={selectedSoundKey === sound.key}
+                  hoverId={null}
+                />
+              </GoogleMap>
+            </APIProvider>
           </div>
-
-          <div className="sound-description-section">
-            <h3>Description</h3>
-            <p>{sound.properties.description}</p>
-          </div>
-
-          {sound.properties.images.length > 0 && (
-            <div className="sound-gallery-section">
-              <h3>Images</h3>
-              <ImageGallery images={sound.properties.images} />
-            </div>
-          )}
-
-          {sound.properties.notes && (
-            <div className="sound-notes-section">
-              <h3>Notes</h3>
-              <div className="sound-notes">{sound.properties.notes}</div>
-            </div>
-          )}
-
           {sound.properties.theme.length > 0 && (
             <div className="sound-themes-section">
               <h3>Themes</h3>
@@ -119,8 +97,37 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
                 showTheme={true}
                 showType={false}
               />
+              <h3>Class</h3>
+              <MetadataBadges
+                sound={sound}
+                showDecade={false}
+                showClass={true}
+                showTheme={false}
+                showType={false}
+              />
             </div>
           )}
+        </div>
+
+        <div className="sound-detail-info-section">
+          <div className="sound-audio-section">
+            <h3>Listen</h3>
+            <AudioPlayer soundfile={sound.properties.soundfile} />
+          </div>
+
+          {sound.properties.images.length > 0 && (
+            <div className="sound-gallery-section">
+              <h3>Images</h3>
+              <ImageGallery images={sound.properties.images} />
+            </div>
+          )}
+          {/*
+          {sound.properties.notes && (
+            <div className="sound-notes-section">
+              <h3>Notes</h3>
+              <div className="sound-notes">{sound.properties.notes}</div>
+            </div>
+          )} */}
         </div>
       </div>
     </div>

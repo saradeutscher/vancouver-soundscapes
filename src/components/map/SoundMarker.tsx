@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 
 import { Polyline } from './Polyline';
 import { getDecadeColors, DEFAULT_COLOR } from '../../constants/colors';
-import { type Coordinate, getLatLng, parseLineString } from '../../utils/coordinates';
+import { getLatLng, parseLineString } from '../../utils/coordinates';
 
 import type { Sound } from '../../types/Sound';
 import type { Marker } from '@googlemaps/markerclusterer';
