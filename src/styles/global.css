@@ -1117,6 +1117,17 @@ nav a:hover {
   height: 400px;
 }
 
+.soundwalk-hint {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--color-surface-light);
+  border-left: 3px solid var(--decade-color, var(--color-primary));
+  border-radius: var(--radius-md);
+  color: var(--color-text-medium);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 .sound-detail-info-section,
 .sound-detail-col1 {
   display: flex;

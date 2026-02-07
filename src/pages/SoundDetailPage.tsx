@@ -6,6 +6,7 @@ import { SoundMarker } from '../components/map/SoundMarker';
 import { AudioPlayer } from '../components/sound/AudioPlayer';
 import { ImageGallery } from '../components/sound/ImageGallery';
 import { MetadataBadges } from '../components/sound/MetadataBadges';
+import { getDecadeColor } from '../constants/colors';
 import { getSoundPosition } from '../utils/coordinates';
 
 import type { Sound } from '../types/Sound';
@@ -87,6 +88,18 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
               </GoogleMap>
             </APIProvider>
           </div>
+          {sound.geometry.type === 'LineString' && (
+            <p
+              className="soundwalk-hint"
+              style={
+                {
+                  '--decade-color': getDecadeColor(sound.properties.decade),
+                } as React.CSSProperties
+              }
+            >
+              Click the marker to view the soundwalk path
+            </p>
+          )}
           {sound.properties.theme.length > 0 && (
             <div className="sound-themes-section">
               <h3>Themes</h3>
