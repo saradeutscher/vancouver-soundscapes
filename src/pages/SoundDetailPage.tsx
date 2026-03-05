@@ -135,7 +135,7 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
           {sound.properties.images.length > 0 && (
             <div className="sound-gallery-section">
               <h3>Images</h3>
-              <ImageGallery images={sound.properties.images} />
+              <ImageGallery images={sound.properties.images} enableLightbox />
             </div>
           )}
           {/*

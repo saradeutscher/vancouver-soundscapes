@@ -3,14 +3,21 @@
 
 import { useState, FunctionComponent, MouseEvent } from 'react';
 
+import { ImageLightbox } from './ImageLightbox';
 import { getAssetUrl } from '../../constants/assets';
 
 export type ImageGalleryProps = {
   images: string[];
+  enableLightbox?: boolean;
 };
 
-export const ImageGallery: FunctionComponent<ImageGalleryProps> = ({ images }) => {
+export const ImageGallery: FunctionComponent<ImageGalleryProps> = ({
+  images,
+  enableLightbox = false,
+}) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [lightboxStartIndex, setLightboxStartIndex] = useState(0);
 
   const handleBack = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -26,9 +33,20 @@ export const ImageGallery: FunctionComponent<ImageGalleryProps> = ({ images }) =
     }
   };
 
+  const handleImageClick = () => {
+    setLightboxStartIndex(currentImageIndex);
+    setIsLightboxOpen(true);
+  };
+
   return (
-    <div className="image-gallery">
-      <img src={getAssetUrl(images[currentImageIndex])} alt="Taken at sound location" />
+    <div className={`image-gallery ${enableLightbox ? 'lightbox-enabled' : ''}`}>
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
+      <img
+        src={getAssetUrl(images[currentImageIndex])}
+        alt="Taken at sound location"
+        onClick={enableLightbox ? handleImageClick : undefined}
+        style={{ cursor: enableLightbox ? 'pointer' : 'default' }}
+      />
 
       <div className="gallery-navigation">
         <div className="nav-btns">
@@ -49,6 +67,15 @@ export const ImageGallery: FunctionComponent<ImageGalleryProps> = ({ images }) =
           ))}
         </div>
       </div>
+
+      {enableLightbox && (
+        <ImageLightbox
+          images={images}
+          initialIndex={lightboxStartIndex}
+          isOpen={isLightboxOpen}
+          onClose={() => setIsLightboxOpen(false)}
+        />
+      )}
     </div>
   );
 };

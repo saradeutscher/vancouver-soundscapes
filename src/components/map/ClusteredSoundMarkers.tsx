@@ -226,9 +226,9 @@ export const ClusteredSoundMarkers = ({
                 <ImageGallery images={selectedSound.properties.images} />
               )}
 
-              {selectedSound.properties.notes && (
+              {/* {selectedSound.properties.notes && (
                 <div className="sound-notes">{selectedSound.properties.notes}</div>
-              )}
+              )} */}
 
               <button
                 className="back-button"
