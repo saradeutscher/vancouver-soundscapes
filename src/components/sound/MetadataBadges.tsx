@@ -10,6 +10,7 @@ type MetadataBadgesProps = {
   showClass?: boolean;
   showTheme?: boolean;
   showType?: boolean;
+  showProvenance?: boolean;
 };
 
 /**
@@ -22,6 +23,7 @@ export const MetadataBadges: React.FC<MetadataBadgesProps> = ({
   showClass = true,
   showTheme = false,
   showType = false,
+  showProvenance = true,
 }) => {
   const decadeColor = getDecadeColor(sound.properties.decade);
 
@@ -52,6 +54,10 @@ export const MetadataBadges: React.FC<MetadataBadgesProps> = ({
             {theme}
           </span>
         ))}
+
+      {showProvenance && (
+        <span className="metadata-badge provenance-badge">{sound.properties.source}</span>
+      )}
     </div>
   );
 };

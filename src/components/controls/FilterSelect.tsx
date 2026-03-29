@@ -2,29 +2,29 @@ import React, { useCallback } from 'react';
 
 import type { CategoryData } from '../../types/Sound';
 
-type FilterSelectProps = {
+type FilterSelectProps<T extends string | number> = {
   label: string;
-  value: string | number | null;
+  value: T | null;
   options: CategoryData[];
-  onChange: (value: string | number | null) => void;
-  parseValue?: (value: string) => string | number | null;
+  onChange: (value: T | null) => void;
+  parseValue?: (value: string) => T | null;
 };
 
 /**
  * Reusable select dropdown component for filtering
  * Displays options with counts and handles value parsing
  */
-export const FilterSelect: React.FC<FilterSelectProps> = ({
+export const FilterSelect = <T extends string | number>({
   label,
   value,
   options,
   onChange,
   parseValue,
-}) => {
+}: FilterSelectProps<T>) => {
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
       const rawValue = e.target.value;
-      const parsedValue = parseValue ? parseValue(rawValue) : rawValue || null;
+      const parsedValue = parseValue ? parseValue(rawValue) : ((rawValue || null) as T | null);
       onChange(parsedValue);
     },
     [onChange, parseValue]

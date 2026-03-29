@@ -79,4 +79,8 @@ export function getDecades(sounds?: Sound[]): CategoryData[] {
   return aggregateByProperty(sounds, s => s.properties.decade);
 }
 
+export function getYears(sounds?: Sound[]): CategoryData[] {
+  return aggregateByProperty(sounds, s => s.properties.year);
+}
+
 export default sounds as Sound[];

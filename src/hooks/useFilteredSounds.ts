@@ -4,6 +4,7 @@ import type { Sound } from '../types/Sound';
 
 type FilterOptions = {
   decade: number | null;
+  year: number | null;
   category: string | null;
   theme: string | null;
   type: string | null;
@@ -30,9 +31,18 @@ export function useFilteredSounds(
       s =>
         (!searchResults || searchResults.has(s.key)) &&
         (!filters.decade || s.properties.decade == filters.decade) &&
+        (!filters.year || s.properties.year == filters.year) &&
         (!filters.theme || s.properties.theme.includes(filters.theme)) &&
         (!filters.category || s.properties.class.includes(filters.category)) &&
         (!filters.type || s.geometry.type == filters.type)
     );
-  }, [sounds, searchResults, filters.decade, filters.category, filters.theme, filters.type]);
+  }, [
+    sounds,
+    searchResults,
+    filters.decade,
+    filters.year,
+    filters.category,
+    filters.theme,
+    filters.type,
+  ]);
 }

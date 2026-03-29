@@ -13,7 +13,7 @@ type SubmissionData = {
   latitude: string;
   longitude: string;
   locationType: 'Point' | 'LineString';
-  decade: string;
+  year: number;
   categories: string[];
   themes: string[];
   notes: string;
@@ -44,7 +44,7 @@ export const SubmitSound: React.FC = () => {
     latitude: '',
     longitude: '',
     locationType: 'Point',
-    decade: '2020',
+    year: 2026,
     categories: [],
     themes: [],
     notes: '',
@@ -142,7 +142,7 @@ export const SubmitSound: React.FC = () => {
           name: formData.name,
           description: formData.description,
           audioLink: formData.audioLink,
-          decade: formData.decade,
+          year: formData.year,
           locationType: formData.locationType,
           latitude: formData.latitude,
           longitude: formData.longitude,
@@ -167,7 +167,7 @@ export const SubmitSound: React.FC = () => {
         latitude: '',
         longitude: '',
         locationType: 'Point',
-        decade: new Date().getFullYear().toString(),
+        year: new Date().getFullYear(),
         categories: [],
         themes: [],
         notes: '',
@@ -189,7 +189,9 @@ export const SubmitSound: React.FC = () => {
     <div className="submit-page">
       <div className="submit-header">
         <h1>Submit a Sound Recording</h1>
-        <p>Fill out the form below to submit a recording to be added to the map.</p>
+        <p>
+          Fill out the form below to submit a recording to be considered as an addition to the map.
+        </p>
       </div>
 
       <form className="submit-form" onSubmit={handleSubmit}>
@@ -241,15 +243,15 @@ export const SubmitSound: React.FC = () => {
           </div>
 
           <div className="form-field">
-            <label htmlFor="decade">Decade</label>
+            <label htmlFor="year">Year</label>
             <input
               type="number"
-              id="decade"
-              value={formData.decade}
-              onChange={e => handleChange('decade', e.target.value)}
+              id="year"
+              value={formData.year}
+              onChange={e => handleChange('year', e.target.value)}
               min="1900"
-              max="2020"
-              step="10"
+              max="2030"
+              step="1"
             />
           </div>
         </div>

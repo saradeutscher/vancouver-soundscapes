@@ -40,6 +40,7 @@ export const SoundCard: React.FC<SoundCardProps> = ({ sound }) => {
           showClass={false}
           showTheme={false}
           showType={true}
+          showProvenance={true}
         />
 
         <p className="sound-card-description">

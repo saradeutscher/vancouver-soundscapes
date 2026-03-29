@@ -8,15 +8,18 @@ type ControlPanelProps = {
   categories: Array<CategoryData>;
   themes: Array<CategoryData>;
   decades: Array<CategoryData>;
+  years: Array<CategoryData>;
   types: Array<CategoryData>;
   selectedCategory: string | null;
   selectedTheme: string | null;
   selectedDecade: number | null;
+  selectedYear: number | null;
   selectedType: string | null;
   clusteringEnabled: boolean;
   onCategoryChange: (value: string | null) => void;
   onThemeChange: (value: string | null) => void;
   onDecadeChange: (value: number | null) => void;
+  onYearChange: (value: number | null) => void;
   onTypeChange: (value: string | null) => void;
   onClusteringToggle: (enabled: boolean) => void;
   searchQuery: string;
@@ -32,15 +35,18 @@ export const ControlPanel = ({
   categories,
   themes,
   decades,
+  years,
   types,
   selectedCategory,
   selectedTheme,
   selectedDecade,
+  selectedYear,
   selectedType,
   clusteringEnabled,
   onCategoryChange,
   onThemeChange,
   onDecadeChange,
+  onYearChange,
   onTypeChange,
   onClusteringToggle,
   searchQuery,
@@ -57,11 +63,12 @@ export const ControlPanel = ({
 
   const handleReset = useCallback(() => {
     onDecadeChange(null);
+    onYearChange(null);
     onTypeChange(null);
     onCategoryChange(null);
     onThemeChange(null);
     onSearchChange('');
-  }, [onDecadeChange, onTypeChange, onCategoryChange, onThemeChange, onSearchChange]);
+  }, [onDecadeChange, onYearChange, onTypeChange, onCategoryChange, onThemeChange, onSearchChange]);
 
   return (
     <div
@@ -99,7 +106,7 @@ export const ControlPanel = ({
             )}
           </div>
           <p className="filter-options">
-            <FilterSelect
+            <FilterSelect<number>
               label="Filter by Decade"
               value={selectedDecade}
               options={decades}
@@ -107,21 +114,29 @@ export const ControlPanel = ({
               parseValue={parseNumber}
             />
 
-            <FilterSelect
+            <FilterSelect<number>
+              label="Filter by Year"
+              value={selectedYear}
+              options={years}
+              onChange={onYearChange}
+              parseValue={parseNumber}
+            />
+
+            <FilterSelect<string>
               label="Filter by Type"
               value={selectedType}
               options={types}
               onChange={onTypeChange}
             />
 
-            <FilterSelect
+            <FilterSelect<string>
               label="Filter by Class"
               value={selectedCategory}
               options={categories}
               onChange={onCategoryChange}
             />
 
-            <FilterSelect
+            <FilterSelect<string>
               label="Filter by Theme"
               value={selectedTheme}
               options={themes}

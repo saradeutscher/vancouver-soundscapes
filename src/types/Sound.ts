@@ -8,12 +8,14 @@ export type Sound = {
   properties: {
     name: string;
     decade: number;
+    year: number;
     description: string;
     soundfile: string;
     class: string[];
     theme: string[];
     images: string[];
     notes: string;
+    source: string;
   };
 };
 

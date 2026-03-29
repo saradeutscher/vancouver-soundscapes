@@ -11,6 +11,7 @@ import {
   getCategories,
   getThemes,
   getDecades,
+  getYears,
   loadSoundDataset,
   getTypes,
 } from '../../services/soundService';
@@ -28,6 +29,7 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
   const [selectCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectTheme, setSelectedTheme] = useState<string | null>(null);
   const [selectDecade, setSelectedDecade] = useState<number | null>(null);
+  const [selectYear, setSelectedYear] = useState<number | null>(null);
   const [selectType, setSelectedType] = useState<string | null>(null);
   const [selectedSoundKey, setSelectedSoundKey] = useState<string | null>(null);
   const [clusteringEnabled, setClusteringEnabled] = useState<boolean>(true);
@@ -65,6 +67,7 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
   // combined filtered sounds
   const combinedFilteredSounds = useFilteredSounds(sounds, searchResults, {
     decade: selectDecade,
+    year: selectYear,
     category: selectCategory,
     theme: selectTheme,
     type: selectType,
@@ -81,6 +84,9 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
 
   // get type information for the filter-dropdown
   const types = useMemo(() => getTypes(combinedFilteredSounds), [combinedFilteredSounds]);
+
+  // get year information for the filter-dropdown
+  const years = useMemo(() => getYears(combinedFilteredSounds), [combinedFilteredSounds]);
 
   return (
     <APIProvider solutionChannel="GMP_devsite_samples_v3_rgmbasicmap" apiKey={API_KEY}>
@@ -115,15 +121,18 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
         categories={categories}
         themes={themes}
         decades={decades}
+        years={years}
         types={types}
         selectedCategory={selectCategory}
         selectedTheme={selectTheme}
         selectedDecade={selectDecade}
+        selectedYear={selectYear}
         selectedType={selectType}
         clusteringEnabled={clusteringEnabled}
         onCategoryChange={setSelectedCategory}
         onThemeChange={setSelectedTheme}
         onDecadeChange={setSelectedDecade}
+        onYearChange={setSelectedYear}
         onTypeChange={setSelectedType}
         onClusteringToggle={setClusteringEnabled}
         searchQuery={searchQuery}

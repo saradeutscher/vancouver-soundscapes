@@ -5,7 +5,7 @@ import { ControlPanel } from '../components/map/ControlPanel';
 import { SoundCard } from '../components/sound/SoundCard';
 import { useDebounce } from '../hooks/useDebounce';
 import { useFilteredSounds } from '../hooks/useFilteredSounds';
-import { getCategories, getThemes, getDecades, getTypes } from '../services/soundService';
+import { getCategories, getThemes, getDecades, getYears, getTypes } from '../services/soundService';
 
 import type { Sound } from '../types/Sound';
 
@@ -20,6 +20,7 @@ export const SoundsPage: React.FC<SoundsPageProps> = ({ sounds, searchIndex }) =
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedTheme, setSelectedTheme] = useState<string | null>(null);
   const [selectedDecade, setSelectedDecade] = useState<number | null>(null);
+  const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [selectedType, setSelectedType] = useState<string | null>(null);
 
   // Debounce search query
@@ -46,6 +47,7 @@ export const SoundsPage: React.FC<SoundsPageProps> = ({ sounds, searchIndex }) =
   // Filter sounds based on search and all other filters
   const combinedFilteredSounds = useFilteredSounds(sounds, searchResults, {
     decade: selectedDecade,
+    year: selectedYear,
     category: selectedCategory,
     theme: selectedTheme,
     type: selectedType,
@@ -60,6 +62,9 @@ export const SoundsPage: React.FC<SoundsPageProps> = ({ sounds, searchIndex }) =
   // Get decade options based on current filters
   const decades = useMemo(() => getDecades(combinedFilteredSounds), [combinedFilteredSounds]);
 
+  // Get year options based on current filters
+  const years = useMemo(() => getYears(combinedFilteredSounds), [combinedFilteredSounds]);
+
   // Get type options based on current filters
   const types = useMemo(() => getTypes(combinedFilteredSounds), [combinedFilteredSounds]);
 
@@ -72,15 +77,18 @@ export const SoundsPage: React.FC<SoundsPageProps> = ({ sounds, searchIndex }) =
           categories={categories}
           themes={themes}
           decades={decades}
+          years={years}
           types={types}
           selectedCategory={selectedCategory}
           selectedTheme={selectedTheme}
           selectedDecade={selectedDecade}
+          selectedYear={selectedYear}
           selectedType={selectedType}
           clusteringEnabled={false}
           onCategoryChange={setSelectedCategory}
           onThemeChange={setSelectedTheme}
           onDecadeChange={setSelectedDecade}
+          onYearChange={setSelectedYear}
           onTypeChange={setSelectedType}
           onClusteringToggle={() => {}}
           searchQuery={searchQuery}
