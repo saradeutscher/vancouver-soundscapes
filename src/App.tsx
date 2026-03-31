@@ -34,6 +34,7 @@ const App = () => {
       this.field('name', { boost: 10 });
       this.field('notes', { boost: 5 });
       this.field('description', { boost: 2 });
+      this.field('source');
 
       sounds.forEach(sound => {
         this.add({
@@ -41,6 +42,7 @@ const App = () => {
           name: sound.properties.name,
           notes: sound.properties.notes,
           description: sound.properties.description,
+          source: sound.properties.source || '',
         });
       });
     });

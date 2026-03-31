@@ -124,6 +124,12 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
               />
             </div>
           )}
+          {sound.properties.source && (
+            <div className="sound-themes-section">
+              <h3>Source</h3>
+              <span className="metadata-badge provenance-badge">{sound.properties.source}</span>
+            </div>
+          )}
         </div>
 
         <div className="sound-detail-info-section">

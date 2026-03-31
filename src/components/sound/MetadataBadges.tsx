@@ -55,7 +55,7 @@ export const MetadataBadges: React.FC<MetadataBadgesProps> = ({
           </span>
         ))}
 
-      {showProvenance && (
+      {showProvenance && sound.properties.source && (
         <span className="metadata-badge provenance-badge">{sound.properties.source}</span>
       )}
     </div>
