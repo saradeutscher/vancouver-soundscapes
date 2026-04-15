@@ -601,7 +601,6 @@ export const SubmitSound: React.FC = () => {
                 <ul>
                   <li>Store and preserve your submission</li>
                   <li>Display on the public website</li>
-                  <li>Create derivative works (format conversions, thumbnails)</li>
                   <li>Include in academic research and teaching</li>
                 </ul>
               </li>

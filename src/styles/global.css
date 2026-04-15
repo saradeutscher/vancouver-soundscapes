@@ -1888,7 +1888,7 @@ body:not(.lightbox-open) .image-gallery.lightbox-enabled img:hover {
 }
 
 .agreement-terms > li::before {
-  content: counter(agreement-counter) ".";
+  content: counter(agreement-counter) '.';
   position: absolute;
   left: -24px;
   font-weight: 700;
@@ -1921,7 +1921,7 @@ body:not(.lightbox-open) .image-gallery.lightbox-enabled img:hover {
 }
 
 .agreement-terms ul li::before {
-  content: "•";
+  content: '•';
   position: absolute;
   left: 0;
   color: var(--color-primary);
