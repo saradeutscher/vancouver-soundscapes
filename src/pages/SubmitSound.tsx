@@ -1,6 +1,19 @@
 import React, { useState } from 'react';
 
+import { FileUploadInput } from '../components/form/FileUploadInput';
+import { MultiImageUploadInput } from '../components/form/MultiImageUploadInput';
+import { UploadProgressIndicator } from '../components/form/UploadProgressIndicator';
 import { MapLocationPicker } from '../components/map/MapLocationPicker';
+import {
+  serializePoint,
+  serializePath,
+  deserializePath,
+  isValidCoordinate,
+  getLatLng,
+  type LatLng,
+} from '../utils/coordinates';
+import { fileToBase64 } from '../utils/fileEncoding';
+import { validateAudioFile, validateImageFile } from '../utils/fileValidation';
 
 // Google Apps Script deployment URL
 const GOOGLE_SCRIPT_URL =
@@ -10,8 +23,7 @@ type SubmissionData = {
   name: string;
   description: string;
   audioLink: string;
-  latitude: string;
-  longitude: string;
+  coordinates: string; // JSON string: "[lng,lat]" or "[[lng,lat],...]"
   locationType: 'Point' | 'LineString';
   year: number;
   categories: string[];
@@ -23,15 +35,6 @@ type SubmissionData = {
 };
 
 // Utility functions
-function isValidURL(url: string): boolean {
-  try {
-    new URL(url);
-    return true;
-  } catch {
-    return false;
-  }
-}
-
 function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -39,10 +42,9 @@ function isValidEmail(email: string): boolean {
 export const SubmitSound: React.FC = () => {
   const [formData, setFormData] = useState<SubmissionData>({
     name: '',
-    description: '',
+    description: new Date().toISOString().slice(0, 16),
     audioLink: '',
-    latitude: '',
-    longitude: '',
+    coordinates: '',
     locationType: 'Point',
     year: 2026,
     categories: [],
@@ -53,9 +55,18 @@ export const SubmitSound: React.FC = () => {
     submitterEmail: '',
   });
 
+  const [pathPoints, setPathPoints] = useState<LatLng[]>([]);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isMapOpen, setIsMapOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showLocationTypeModal, setShowLocationTypeModal] = useState(false);
+  const [pendingLocationType, setPendingLocationType] = useState<'Point' | 'LineString'>('Point');
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
+
+  // File upload state
+  const [audioFile, setAudioFile] = useState<File | null>(null);
+  const [imageFiles, setImageFiles] = useState<File[]>([]);
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string>('');
 
   // Handle field changes
   const handleChange = (field: keyof SubmissionData, value: string | string[]) => {
@@ -70,14 +81,53 @@ export const SubmitSound: React.FC = () => {
     }
   };
 
-  // Handle map location selection
+  // Handle map location selection (single point)
   const handleMapLocation = (lat: number, lng: number) => {
+    const coordinates = serializePoint(lat, lng);
     setFormData(prev => ({
       ...prev,
-      latitude: lat.toFixed(6),
-      longitude: lng.toFixed(6),
+      coordinates,
     }));
-    setIsMapOpen(false);
+    setPathPoints([]);
+    // setIsMapOpen(false);
+  };
+
+  // Handle path selection (multiple points)
+  const handlePathSelect = (points: LatLng[]) => {
+    const coordinates = serializePath(points);
+    setFormData(prev => ({
+      ...prev,
+      coordinates,
+    }));
+    setPathPoints(points);
+    // setIsMapOpen(false);
+  };
+
+  // Handle location type change with confirmation
+  const handleLocationTypeChange = (newType: 'Point' | 'LineString') => {
+    if (formData.coordinates && newType !== formData.locationType) {
+      setPendingLocationType(newType);
+      setShowLocationTypeModal(true);
+    } else {
+      setFormData(prev => ({ ...prev, locationType: newType }));
+    }
+  };
+
+  // Confirm location type change and clear data
+  const confirmLocationTypeChange = () => {
+    setFormData(prev => ({
+      ...prev,
+      locationType: pendingLocationType,
+      coordinates: '',
+    }));
+    setPathPoints([]);
+    setShowLocationTypeModal(false);
+  };
+
+  // Handle clearing location
+  const handleClearLocation = () => {
+    setFormData(prev => ({ ...prev, coordinates: '' }));
+    setPathPoints([]);
   };
 
   // Validate form
@@ -88,26 +138,61 @@ export const SubmitSound: React.FC = () => {
       newErrors.name = 'Sound name is required';
     }
 
-    if (!formData.description.trim()) {
-      newErrors.description = 'Description is required';
+    if (!formData.description.trim() || formData.description.length < 10) {
+      newErrors.description = 'Date is required';
     }
 
-    if (!formData.audioLink.trim()) {
-      newErrors.audioLink = 'Audio file link is required';
-    } else if (!isValidURL(formData.audioLink)) {
-      newErrors.audioLink = 'Please enter a valid URL';
+    // Validate audio file
+    if (!audioFile) {
+      newErrors.audioFile = 'Audio recording is required';
     }
 
-    if (!formData.latitude || !formData.longitude) {
+    // Validate audio file if present
+    if (audioFile) {
+      const validation = validateAudioFile(audioFile, 50);
+      if (!validation.valid) {
+        newErrors.audioFile = validation.error || 'Invalid audio file';
+      }
+    }
+
+    // Validate each image file
+    if (imageFiles.length > 0) {
+      for (const file of imageFiles) {
+        const validation = validateImageFile(file, 10);
+        if (!validation.valid) {
+          newErrors.imageFiles = `${file.name}: ${validation.error || 'Invalid image file'}`;
+          break;
+        }
+      }
+    }
+
+    // Validate coordinates
+    if (!formData.coordinates) {
       newErrors.location = 'Location is required';
     } else {
-      const lat = parseFloat(formData.latitude);
-      const lng = parseFloat(formData.longitude);
-      if (isNaN(lat) || lat < -90 || lat > 90) {
-        newErrors.latitude = 'Invalid latitude (-90 to 90)';
-      }
-      if (isNaN(lng) || lng < -180 || lng > 180) {
-        newErrors.longitude = 'Invalid longitude (-180 to 180)';
+      try {
+        if (formData.locationType === 'Point') {
+          const { lat, lng } = getLatLng(formData.coordinates);
+          if (!isValidCoordinate(lat, lng)) {
+            newErrors.location = 'Invalid coordinates';
+          }
+        } else {
+          // LineString validation
+          const points = deserializePath(formData.coordinates);
+          if (points.length < 2) {
+            newErrors.location = 'Path must have at least 2 points';
+          } else if (points.length > 50) {
+            newErrors.location = 'Path cannot exceed 50 points';
+          } else {
+            // Validate each point
+            const invalidPoint = points.find(p => !isValidCoordinate(p.lat, p.lng));
+            if (invalidPoint) {
+              newErrors.location = 'One or more path points have invalid coordinates';
+            }
+          }
+        }
+      } catch {
+        newErrors.location = 'Invalid coordinate format';
       }
     }
 
@@ -115,6 +200,10 @@ export const SubmitSound: React.FC = () => {
       newErrors.submitterEmail = 'Your email is required';
     } else if (!isValidEmail(formData.submitterEmail)) {
       newErrors.submitterEmail = 'Please enter a valid email';
+    }
+
+    if (!agreedToTerms) {
+      newErrors.agreement = 'You must agree to the submission terms';
     }
 
     setErrors(newErrors);
@@ -130,29 +219,55 @@ export const SubmitSound: React.FC = () => {
     }
 
     setIsSubmitting(true);
+    setIsUploading(true);
+    setUploadError('');
 
     try {
+      // Build base payload
+      const payload: Record<string, unknown> = {
+        name: formData.name,
+        description: formData.description,
+        year: formData.year,
+        locationType: formData.locationType,
+        coordinates: formData.coordinates,
+        categories: formData.categories,
+        themes: formData.themes,
+        notes: formData.notes,
+        submitterName: formData.submitterName,
+        submitterEmail: formData.submitterEmail,
+        audioLink: formData.audioLink,
+        imageLinks: formData.imageLinks,
+      };
+
+      // Add audio file data if file is selected
+      if (audioFile) {
+        const base64 = await fileToBase64(audioFile);
+        payload.audioFileData = {
+          fileName: audioFile.name,
+          base64Data: base64,
+          mimeType: audioFile.type,
+          size: audioFile.size,
+        };
+      }
+
+      // Add image files data if files are selected
+      if (imageFiles.length > 0) {
+        const base64Array = await Promise.all(imageFiles.map(f => fileToBase64(f)));
+        payload.imageFilesData = imageFiles.map((file, i) => ({
+          fileName: file.name,
+          base64Data: base64Array[i],
+          mimeType: file.type,
+          size: file.size,
+        }));
+      }
+
       await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors', // Important for Apps Script
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name: formData.name,
-          description: formData.description,
-          audioLink: formData.audioLink,
-          year: formData.year,
-          locationType: formData.locationType,
-          latitude: formData.latitude,
-          longitude: formData.longitude,
-          categories: formData.categories,
-          themes: formData.themes,
-          notes: formData.notes,
-          imageLinks: formData.imageLinks,
-          submitterName: formData.submitterName,
-          submitterEmail: formData.submitterEmail,
-        }),
+        body: JSON.stringify(payload),
       });
 
       // no-cors mode doesn't allow reading response, but if no error thrown, submission succeeded
@@ -164,8 +279,7 @@ export const SubmitSound: React.FC = () => {
         name: '',
         description: '',
         audioLink: '',
-        latitude: '',
-        longitude: '',
+        coordinates: '',
         locationType: 'Point',
         year: new Date().getFullYear(),
         categories: [],
@@ -175,13 +289,19 @@ export const SubmitSound: React.FC = () => {
         submitterName: '',
         submitterEmail: '',
       });
+      setPathPoints([]);
+      setAudioFile(null);
+      setImageFiles([]);
+      setAgreedToTerms(false);
     } catch (error) {
       console.error('Submission error:', error);
-      alert(
-        'There was an error submitting your recording. Please try again or contact us directly.'
-      );
+      const errorMessage =
+        'There was an error submitting your recording. Please try again or contact us directly.';
+      setUploadError(errorMessage);
+      alert(errorMessage);
     } finally {
       setIsSubmitting(false);
+      setIsUploading(false);
     }
   };
 
@@ -213,33 +333,47 @@ export const SubmitSound: React.FC = () => {
           </div>
 
           <div className="form-field">
-            <label htmlFor="description">Date & Time *</label>
+            <label htmlFor="description-date">Date *</label>
             <input
-              type="text"
-              id="description"
-              value={formData.description}
-              onChange={e => handleChange('description', e.target.value)}
-              placeholder="e.g., February 3, 2026 (Tuesday), 2:30 p.m."
+              type="date"
+              id="description-date"
+              value={formData.description.slice(0, 10)}
+              onChange={e => {
+                const date = e.target.value;
+                const time = formData.description.slice(11, 16) || '12:00';
+                handleChange('description', `${date}T${time}`);
+              }}
               required
             />
             {errors.description && <span className="error">{errors.description}</span>}
           </div>
 
           <div className="form-field">
-            <label htmlFor="audioLink">Link to Audio File *</label>
+            <label htmlFor="description-time">Time (Optional)</label>
             <input
-              type="url"
-              id="audioLink"
-              value={formData.audioLink}
-              onChange={e => handleChange('audioLink', e.target.value)}
-              placeholder="https://drive.google.com/..."
-              required
+              type="time"
+              id="description-time"
+              value={formData.description.slice(11, 16) || ''}
+              onChange={e => {
+                const date = formData.description.slice(0, 10);
+                const time = e.target.value || '12:00';
+                handleChange('description', `${date}T${time}`);
+              }}
             />
             <p className="field-hint">
-              Upload your audio file to Google Drive or another service and paste the share link
-              here.
+              Leave blank if you don&apos;t know the exact time of the recording
             </p>
-            {errors.audioLink && <span className="error">{errors.audioLink}</span>}
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="audio-upload">Audio Recording *</label>
+            <FileUploadInput
+              accept=".mp3,.wav,.m4a"
+              maxSize={50}
+              onFileSelect={setAudioFile}
+              error={errors.audioFile}
+              disabled={isUploading}
+            />
           </div>
 
           <div className="form-field">
@@ -250,7 +384,7 @@ export const SubmitSound: React.FC = () => {
               value={formData.year}
               onChange={e => handleChange('year', e.target.value)}
               min="1900"
-              max="2030"
+              max="2050"
               step="1"
             />
           </div>
@@ -260,60 +394,12 @@ export const SubmitSound: React.FC = () => {
         <div className="form-section">
           <h2>Location *</h2>
 
-          <div className="location-input-methods">
-            <button
-              type="button"
-              onClick={() => setIsMapOpen(!isMapOpen)}
-              className="map-toggle-btn"
-            >
-              {isMapOpen ? 'Hide Map' : 'Pick Location on Map'}
-            </button>
-          </div>
-
-          {isMapOpen && (
-            <MapLocationPicker
-              onLocationSelect={handleMapLocation}
-              initialLat={formData.latitude ? parseFloat(formData.latitude) : undefined}
-              initialLng={formData.longitude ? parseFloat(formData.longitude) : undefined}
-            />
-          )}
-
-          <div className="coordinate-inputs">
-            <div className="form-field">
-              <label htmlFor="latitude">Latitude *</label>
-              <input
-                type="text"
-                id="latitude"
-                value={formData.latitude}
-                onChange={e => handleChange('latitude', e.target.value)}
-                placeholder="49.2827"
-                required
-              />
-              {errors.latitude && <span className="error">{errors.latitude}</span>}
-            </div>
-
-            <div className="form-field">
-              <label htmlFor="longitude">Longitude *</label>
-              <input
-                type="text"
-                id="longitude"
-                value={formData.longitude}
-                onChange={e => handleChange('longitude', e.target.value)}
-                placeholder="-123.1207"
-                required
-              />
-              {errors.longitude && <span className="error">{errors.longitude}</span>}
-            </div>
-          </div>
-
-          {errors.location && <span className="error">{errors.location}</span>}
-
           <div className="form-field">
             <label htmlFor="locationType">Recording Type</label>
             <select
               id="locationType"
               value={formData.locationType}
-              onChange={e => handleChange('locationType', e.target.value as 'Point' | 'LineString')}
+              onChange={e => handleLocationTypeChange(e.target.value as 'Point' | 'LineString')}
             >
               <option value="Point">Point (Single Location)</option>
               <option value="LineString">Soundwalk (Multiple Points)</option>
@@ -323,6 +409,59 @@ export const SubmitSound: React.FC = () => {
               a recording along a path.
             </p>
           </div>
+
+          {formData.locationType === 'LineString' && (
+            <div className="path-instructions">
+              Click multiple points on the map to create a walking path. Add at least 2 points to
+              represent your soundwalk route.
+            </div>
+          )}
+
+          {formData.coordinates && (
+            <div className="selected-location">
+              <div className="selected-location-info">
+                {formData.locationType === 'Point' ? (
+                  <>
+                    <strong>Location:</strong>{' '}
+                    {(() => {
+                      const { lat, lng } = getLatLng(formData.coordinates);
+                      return `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+                    })()}
+                  </>
+                ) : (
+                  <>
+                    <strong>Path:</strong> {pathPoints.length} points
+                  </>
+                )}
+              </div>
+              <button type="button" onClick={handleClearLocation} className="clear-location-btn">
+                Clear
+              </button>
+            </div>
+          )}
+
+          <MapLocationPicker
+            mode={formData.locationType === 'Point' ? 'single' : 'path'}
+            onLocationSelect={handleMapLocation}
+            onPathSelect={handlePathSelect}
+            initialLat={
+              formData.coordinates && formData.locationType === 'Point'
+                ? getLatLng(formData.coordinates).lat
+                : undefined
+            }
+            initialLng={
+              formData.coordinates && formData.locationType === 'Point'
+                ? getLatLng(formData.coordinates).lng
+                : undefined
+            }
+            initialPath={
+              formData.coordinates && formData.locationType === 'LineString'
+                ? pathPoints
+                : undefined
+            }
+          />
+
+          {errors.location && <span className="error">{errors.location}</span>}
         </div>
 
         {/* Section 3: Classification */}
@@ -402,17 +541,15 @@ export const SubmitSound: React.FC = () => {
           </div>
 
           <div className="form-field">
-            <label htmlFor="imageLinks">Image Links (comma-separated)</label>
-            <input
-              type="text"
-              id="imageLinks"
-              value={formData.imageLinks}
-              onChange={e => handleChange('imageLinks', e.target.value)}
-              placeholder="https://example.com/image1.jpg, https://example.com/image2.jpg"
+            <label htmlFor="image-upload">Images</label>
+            <MultiImageUploadInput
+              accept=".jpg,.jpeg,.png,.webp"
+              maxSize={10}
+              maxFiles={5}
+              onFilesChange={setImageFiles}
+              error={errors.imageFiles}
+              disabled={isUploading}
             />
-            <p className="field-hint">
-              Optional: Paste links to photos from the recording location, separated by commas.
-            </p>
           </div>
         </div>
 
@@ -448,6 +585,73 @@ export const SubmitSound: React.FC = () => {
           </div>
         </div>
 
+        {/* Section 6: Submission Agreement */}
+        <div className="form-section">
+          <h2>Submission Terms *</h2>
+          <div className="submission-agreement">
+            <p>By submitting audio and images, you agree that:</p>
+            <ol className="agreement-terms">
+              <li>
+                <strong>Ownership:</strong> You are the copyright holder or have permission to share
+                this content.
+              </li>
+              <li>
+                <strong>License Grant:</strong> You grant Vancouver Soundscapes a non-exclusive,
+                perpetual license to:
+                <ul>
+                  <li>Store and preserve your submission</li>
+                  <li>Display on the public website</li>
+                  <li>Create derivative works (format conversions, thumbnails)</li>
+                  <li>Include in academic research and teaching</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Attribution:</strong> Your name will be credited unless you opt out.
+              </li>
+              <li>
+                <strong>Usage:</strong> Content will be shared under{' '}
+                <a
+                  href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  CC BY-NC-SA 4.0 license
+                </a>
+                .
+              </li>
+              <li>
+                <strong>Privacy:</strong> No personally identifiable information will be shared
+                without consent.
+              </li>
+              <li>
+                <strong>Withdrawal:</strong> You may request removal of your submission at any time.
+              </li>
+            </ol>
+
+            <div className="form-field agreement-checkbox">
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={agreedToTerms}
+                  onChange={e => {
+                    setAgreedToTerms(e.target.checked);
+                    if (errors.agreement && e.target.checked) {
+                      setErrors(prev => {
+                        const newErrors = { ...prev };
+                        delete newErrors.agreement;
+                        return newErrors;
+                      });
+                    }
+                  }}
+                  required
+                />
+                <span>I agree to these submission terms</span>
+              </label>
+              {errors.agreement && <span className="error">{errors.agreement}</span>}
+            </div>
+          </div>
+        </div>
+
         {/* Submit Section */}
         <div className="form-actions">
           <button type="submit" className="submit-btn" disabled={isSubmitting}>
@@ -458,6 +662,96 @@ export const SubmitSound: React.FC = () => {
           </p>
         </div>
       </form>
+
+      {/* Upload Progress Indicator */}
+      <UploadProgressIndicator
+        isUploading={isUploading}
+        uploadingFiles={[audioFile?.name, ...imageFiles.map(f => f.name)]}
+        error={uploadError}
+      />
+
+      {/* Location Type Change Confirmation Modal */}
+      {showLocationTypeModal && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+          className="lightbox-overlay"
+          style={{ zIndex: 10000 }}
+        >
+          <button
+            type="button"
+            onClick={() => setShowLocationTypeModal(false)}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'transparent',
+              border: 'none',
+              cursor: 'default',
+            }}
+            aria-label="Close modal"
+          />
+          <div
+            className="modal-content"
+            style={{
+              position: 'relative',
+              zIndex: 1,
+              background: 'white',
+              padding: '32px',
+              borderRadius: '8px',
+              maxWidth: '500px',
+              textAlign: 'center',
+            }}
+          >
+            <h3 id="modal-title" style={{ marginTop: 0, color: 'var(--color-text-primary)' }}>
+              Change Location Type?
+            </h3>
+            <p style={{ color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
+              Changing the recording type will clear your current location selection. Do you want to
+              continue?
+            </p>
+            <div
+              style={{
+                display: 'flex',
+                gap: '12px',
+                justifyContent: 'center',
+                marginTop: '24px',
+              }}
+            >
+              <button
+                type="button"
+                onClick={() => setShowLocationTypeModal(false)}
+                style={{
+                  padding: '10px 24px',
+                  background: 'transparent',
+                  border: '1px solid var(--color-border-dark)',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                }}
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={confirmLocationTypeChange}
+                style={{
+                  padding: '10px 24px',
+                  background: 'var(--color-primary)',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                }}
+              >
+                Continue
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
