@@ -8,6 +8,7 @@ type FilterOptions = {
   category: string | null;
   theme: string | null;
   type: string | null;
+  source: string | null;
 };
 
 /**
@@ -34,7 +35,8 @@ export function useFilteredSounds(
         (!filters.year || s.properties.year == filters.year) &&
         (!filters.theme || s.properties.theme.includes(filters.theme)) &&
         (!filters.category || s.properties.class.includes(filters.category)) &&
-        (!filters.type || s.geometry.type == filters.type)
+        (!filters.type || s.geometry.type == filters.type) &&
+        (!filters.source || s.properties.source == filters.source)
     );
   }, [
     sounds,
@@ -44,5 +46,6 @@ export function useFilteredSounds(
     filters.category,
     filters.theme,
     filters.type,
+    filters.source,
   ]);
 }

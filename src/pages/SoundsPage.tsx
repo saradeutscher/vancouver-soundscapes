@@ -5,7 +5,14 @@ import { ControlPanel } from '../components/map/ControlPanel';
 import { SoundCard } from '../components/sound/SoundCard';
 import { useDebounce } from '../hooks/useDebounce';
 import { useFilteredSounds } from '../hooks/useFilteredSounds';
-import { getCategories, getThemes, getDecades, getYears, getTypes } from '../services/soundService';
+import {
+  getCategories,
+  getThemes,
+  getDecades,
+  getYears,
+  getTypes,
+  getSources,
+} from '../services/soundService';
 
 import type { Sound } from '../types/Sound';
 
@@ -22,6 +29,7 @@ export const SoundsPage: React.FC<SoundsPageProps> = ({ sounds, searchIndex }) =
   const [selectedDecade, setSelectedDecade] = useState<number | null>(null);
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [selectedType, setSelectedType] = useState<string | null>(null);
+  const [selectedSource, setSelectedSource] = useState<string | null>(null);
 
   // Debounce search query
   const debouncedSearchQuery = useDebounce(searchQuery, 300);
@@ -51,6 +59,7 @@ export const SoundsPage: React.FC<SoundsPageProps> = ({ sounds, searchIndex }) =
     category: selectedCategory,
     theme: selectedTheme,
     type: selectedType,
+    source: selectedSource,
   });
 
   // Get category options based on current filters
@@ -68,6 +77,9 @@ export const SoundsPage: React.FC<SoundsPageProps> = ({ sounds, searchIndex }) =
   // Get type options based on current filters
   const types = useMemo(() => getTypes(combinedFilteredSounds), [combinedFilteredSounds]);
 
+  // Get source options based on current filters
+  const sources = useMemo(() => getSources(combinedFilteredSounds), [combinedFilteredSounds]);
+
   return (
     <div className="sounds-page">
       <div className="sounds-page-header">
@@ -79,17 +91,20 @@ export const SoundsPage: React.FC<SoundsPageProps> = ({ sounds, searchIndex }) =
           decades={decades}
           years={years}
           types={types}
+          sources={sources}
           selectedCategory={selectedCategory}
           selectedTheme={selectedTheme}
           selectedDecade={selectedDecade}
           selectedYear={selectedYear}
           selectedType={selectedType}
+          selectedSource={selectedSource}
           clusteringEnabled={false}
           onCategoryChange={setSelectedCategory}
           onThemeChange={setSelectedTheme}
           onDecadeChange={setSelectedDecade}
           onYearChange={setSelectedYear}
           onTypeChange={setSelectedType}
+          onSourceChange={setSelectedSource}
           onClusteringToggle={() => {}}
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}

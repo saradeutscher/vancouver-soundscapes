@@ -232,7 +232,8 @@
       "type": "Point"
     },
     "properties": {
-      "images": [],
+      "images": [
+      ],
       "class": [
         "ambience"
       ],
@@ -3028,28 +3029,8 @@
       "decade": 1990,
       "year": 1993,
       "description": "September 10, 1993 (Friday)",
-      "soundfile": "Vdat6.9",
+      "soundfile": "Vdat6.9.aif",
       "source": "World Soundscapes Project",
-      "notes": ""
-    }
-  },
-  {
-    "key": "",
-    "type": "Feature",
-    "geometry": {
-      "coordinates": "[-123.25041838647958, 49.267695119427195]",
-      "type": "Point"
-    },
-    "properties": {
-      "images": [],
-      "class": [],
-      "theme": [],
-      "name": "Student Union Building",
-      "decade": 2010,
-      "year": 2011,
-      "description": "August 26, 2011 (Friday), 2:19 p.m.",
-      "soundfile": "VFile4.6",
-      "source": "SFU Sonic Research Studio",
       "notes": ""
     }
   },
@@ -3068,29 +3049,9 @@
       "decade": 1970,
       "year": 1973,
       "description": "February 26, 1973 (Monday)",
-      "soundfile": "Van20B",
+      "soundfile": "Van20B2.aif",
       "source": "World Soundscapes Project",
       "notes": "Soundwalk in and around the Mechanical Engineering Building on Applied Science Lane/East Mall"
-    }
-  },
-  {
-    "key": "",
-    "type": "Feature",
-    "geometry": {
-      "coordinates": "[-123.25357477438463, 49.26886845030076]",
-      "type": "Point"
-    },
-    "properties": {
-      "images": [],
-      "class": [],
-      "theme": [],
-      "name": "Soundwalk: Buchanan Tower",
-      "decade": 2010,
-      "year": 2011,
-      "description": "August 26, 2011 (Friday), 3:50 p.m.",
-      "soundfile": "VFile4.8",
-      "source": "SFU Sonic Research Studio",
-      "notes": ""
     }
   },
   {
@@ -3108,7 +3069,7 @@
       "decade": 1970,
       "year": 1973,
       "description": "February 6, 1973 (Tuesday)",
-      "soundfile": "Van19B; Van20A",
+      "soundfile": "Van19B2.aif",
       "source": "World Soundscapes Project",
       "notes": ""
     }
@@ -3128,7 +3089,7 @@
       "decade": 1970,
       "year": 1973,
       "description": "February 16, 1973 (Friday)",
-      "soundfile": "Van19A",
+      "soundfile": "Van19A1.aif",
       "source": "World Soundscapes Project",
       "notes": ""
     }
@@ -3148,28 +3109,8 @@
       "decade": 1990,
       "year": 1993,
       "description": "September 10, 1993 (Friday)",
-      "soundfile": "Vdat6.6",
+      "soundfile": "Vdat6.6.aif",
       "source": "World Soundscapes Project",
-      "notes": ""
-    }
-  },
-  {
-    "key": "",
-    "type": "Feature",
-    "geometry": {
-      "coordinates": "[-123.2551165824851, 49.266769708373936]",
-      "type": "Point"
-    },
-    "properties": {
-      "images": [],
-      "class": [],
-      "theme": [],
-      "name": "Koerner Library Basement",
-      "decade": 2010,
-      "year": 2011,
-      "description": "August 26, 2011 (Friday)",
-      "soundfile": "VFile4.9",
-      "source": "SFU Sonic Research Studio",
       "notes": ""
     }
   },
@@ -3184,32 +3125,12 @@
       "images": [],
       "class": [],
       "theme": [],
-      "name": "Soundwalk: Shoreline Tour (UBC to False Creek)",
+      "name": "UBC Tower Beach",
       "decade": 1970,
       "year": 1973,
       "description": "March 21, 1973 (Wednesday)",
-      "soundfile": "Van71A",
+      "soundfile": "Van71A1.aif",
       "source": "World Soundscapes Project",
-      "notes": ""
-    }
-  },
-  {
-    "key": "",
-    "type": "Feature",
-    "geometry": {
-      "coordinates": "[-123.261457, 49.271228]",
-      "type": "Point"
-    },
-    "properties": {
-      "images": [],
-      "class": [],
-      "theme": [],
-      "name": "UBC Wreck Beach",
-      "decade": 2010,
-      "year": 2010,
-      "description": "July 15, 2010 (Thursday)",
-      "soundfile": "VFile4.5",
-      "source": "SFU Sonic Research Studio",
       "notes": ""
     }
   },
@@ -3228,28 +3149,8 @@
       "decade": 1990,
       "year": 1993,
       "description": "September 10, 1993 (Friday), 2:29 p.m.",
-      "soundfile": "Vdat6.3",
+      "soundfile": "Vdat6.3.aif",
       "source": "World Soundscapes Project",
-      "notes": ""
-    }
-  },
-  {
-    "key": "",
-    "type": "Feature",
-    "geometry": {
-      "coordinates": "[-123.259189, 49.269262]",
-      "type": "Point"
-    },
-    "properties": {
-      "images": [],
-      "class": [],
-      "theme": [],
-      "name": "UBC Museum of Anthropology Interior",
-      "decade": 2010,
-      "year": 2010,
-      "description": "July 15, 2010 (Thursday)",
-      "soundfile": "VFile4.4",
-      "source": "SFU Sonic Research Studio",
       "notes": ""
     }
   },
@@ -3268,7 +3169,7 @@
       "decade": 1970,
       "year": 1973,
       "description": "March 21, 1973 (Wednesday)",
-      "soundfile": "Van70F",
+      "soundfile": "Van70F10.aif",
       "source": "World Soundscapes Project",
       "notes": ""
     }
@@ -3288,28 +3189,8 @@
       "decade": 1990,
       "year": 1993,
       "description": "September 10, 1993 (Friday), 4:30 p.m.",
-      "soundfile": "Vdat6.10",
+      "soundfile": "Vdat6.10.aif",
       "source": "World Soundscapes Project",
-      "notes": ""
-    }
-  },
-  {
-    "key": "",
-    "type": "Feature",
-    "geometry": {
-      "coordinates": "[-123.259629, 49.266439]",
-      "type": "Point"
-    },
-    "properties": {
-      "images": [],
-      "class": [],
-      "theme": [],
-      "name": "Nitobe Memorial Garden",
-      "decade": 2010,
-      "year": 2011,
-      "description": "August 26, 2011 (Friday)",
-      "soundfile": "VFile4.11",
-      "source": "SFU Sonic Research Studio",
       "notes": ""
     }
   },
@@ -3328,7 +3209,7 @@
       "decade": 1990,
       "year": 1993,
       "description": "September 9, 1993 (Thursday), 5:30 p.m.",
-      "soundfile": "Vdat5.26",
+      "soundfile": "Vdat5.26.aif",
       "source": "World Soundscapes Project",
       "notes": ""
     }
@@ -3348,7 +3229,7 @@
       "decade": 1990,
       "year": 1993,
       "description": "September 9, 1993 (Thursday), 5:03 p.m.",
-      "soundfile": "Vdat5.25",
+      "soundfile": "Vdat5.25.aif",
       "source": "World Soundscapes Project",
       "notes": "On the beach, halfway between the walkway and the water, facing the water"
     }
@@ -3368,7 +3249,7 @@
       "decade": 1990,
       "year": 1993,
       "description": "September 9, 1993 (Thursday), 4:54 p.m.",
-      "soundfile": "Vdat5.24",
+      "soundfile": "Vdat5.24.aif",
       "source": "World Soundscapes Project",
       "notes": ""
     }
@@ -3388,7 +3269,7 @@
       "decade": 1990,
       "year": 1993,
       "description": "September 10, 1993 (Friday), 2:55 p.m.",
-      "soundfile": "Vdat6.5",
+      "soundfile": "Vdat6.5.aif",
       "source": "World Soundscapes Project",
       "notes": ""
     }

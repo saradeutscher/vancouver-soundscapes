@@ -4,6 +4,7 @@ import { useEffect, useState, useMemo } from 'react';
 
 import { ClusteredSoundMarkers } from './ClusteredSoundMarkers';
 import { ControlPanel } from './ControlPanel';
+import { DecadeLegend } from './DecadeLegend';
 import { MapController } from './MapController';
 import { useDebounce } from '../../hooks/useDebounce';
 import { useFilteredSounds } from '../../hooks/useFilteredSounds';
@@ -14,6 +15,7 @@ import {
   getYears,
   loadSoundDataset,
   getTypes,
+  getSources,
 } from '../../services/soundService';
 
 import type { Sound } from '../../types/Sound';
@@ -31,6 +33,7 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
   const [selectDecade, setSelectedDecade] = useState<number | null>(null);
   const [selectYear, setSelectedYear] = useState<number | null>(null);
   const [selectType, setSelectedType] = useState<string | null>(null);
+  const [selectedSource, setSelectedSource] = useState<string | null>(null);
   const [selectedSoundKey, setSelectedSoundKey] = useState<string | null>(null);
   const [clusteringEnabled, setClusteringEnabled] = useState<boolean>(true);
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -71,6 +74,7 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
     category: selectCategory,
     theme: selectTheme,
     type: selectType,
+    source: selectedSource,
   });
 
   // get category information for the filter-dropdown
@@ -87,6 +91,9 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
 
   // get year information for the filter-dropdown
   const years = useMemo(() => getYears(combinedFilteredSounds), [combinedFilteredSounds]);
+
+  // get source information for the filter-dropdown
+  const sources = useMemo(() => getSources(combinedFilteredSounds), [combinedFilteredSounds]);
 
   return (
     <APIProvider solutionChannel="GMP_devsite_samples_v3_rgmbasicmap" apiKey={API_KEY}>
@@ -123,22 +130,27 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
         decades={decades}
         years={years}
         types={types}
+        sources={sources}
         selectedCategory={selectCategory}
         selectedTheme={selectTheme}
         selectedDecade={selectDecade}
         selectedYear={selectYear}
         selectedType={selectType}
+        selectedSource={selectedSource}
         clusteringEnabled={clusteringEnabled}
         onCategoryChange={setSelectedCategory}
         onThemeChange={setSelectedTheme}
         onDecadeChange={setSelectedDecade}
         onYearChange={setSelectedYear}
         onTypeChange={setSelectedType}
+        onSourceChange={setSelectedSource}
         onClusteringToggle={setClusteringEnabled}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         searchResultCount={combinedFilteredSounds?.length}
       />
+
+      <DecadeLegend />
     </APIProvider>
   );
 };

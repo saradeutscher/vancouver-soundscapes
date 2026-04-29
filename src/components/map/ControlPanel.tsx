@@ -10,17 +10,20 @@ type ControlPanelProps = {
   decades: Array<CategoryData>;
   years: Array<CategoryData>;
   types: Array<CategoryData>;
+  sources: Array<CategoryData>;
   selectedCategory: string | null;
   selectedTheme: string | null;
   selectedDecade: number | null;
   selectedYear: number | null;
   selectedType: string | null;
+  selectedSource: string | null;
   clusteringEnabled: boolean;
   onCategoryChange: (value: string | null) => void;
   onThemeChange: (value: string | null) => void;
   onDecadeChange: (value: number | null) => void;
   onYearChange: (value: number | null) => void;
   onTypeChange: (value: string | null) => void;
+  onSourceChange: (value: string | null) => void;
   onClusteringToggle: (enabled: boolean) => void;
   searchQuery: string;
   onSearchChange: (value: string) => void;
@@ -37,17 +40,20 @@ export const ControlPanel = ({
   decades,
   years,
   types,
+  sources,
   selectedCategory,
   selectedTheme,
   selectedDecade,
   selectedYear,
   selectedType,
+  selectedSource,
   clusteringEnabled,
   onCategoryChange,
   onThemeChange,
   onDecadeChange,
   onYearChange,
   onTypeChange,
+  onSourceChange,
   onClusteringToggle,
   searchQuery,
   onSearchChange,
@@ -67,8 +73,17 @@ export const ControlPanel = ({
     onTypeChange(null);
     onCategoryChange(null);
     onThemeChange(null);
+    onSourceChange(null);
     onSearchChange('');
-  }, [onDecadeChange, onYearChange, onTypeChange, onCategoryChange, onThemeChange, onSearchChange]);
+  }, [
+    onDecadeChange,
+    onYearChange,
+    onTypeChange,
+    onCategoryChange,
+    onThemeChange,
+    onSourceChange,
+    onSearchChange,
+  ]);
 
   return (
     <div
@@ -141,6 +156,13 @@ export const ControlPanel = ({
               value={selectedTheme}
               options={themes}
               onChange={onThemeChange}
+            />
+
+            <FilterSelect<string>
+              label="Filter by Source"
+              value={selectedSource}
+              options={sources}
+              onChange={onSourceChange}
             />
           </p>
           {!hideClusteringToggle && (
