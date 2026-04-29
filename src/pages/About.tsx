@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useCallback } from 'react';
 
+import { UnderConstructionBanner } from '../components/sound/UnderConstructionBanner';
 import { useScrollSpy } from '../hooks/useScrollSpy';
 
 // Section structure configuration
@@ -10,7 +11,6 @@ const ABOUT_SECTIONS = [
     subsections: [
       { id: 'overview', title: 'Overview' },
       { id: 'history', title: 'History' },
-      { id: 'goals', title: 'Goals' },
     ],
   },
   {
@@ -158,16 +158,6 @@ const MainContent: React.FC = () => {
             .
           </p>
         </div>
-
-        <div id="goals" className="about-subsection">
-          <h3>Goals</h3>
-          <p>Add info about the goals of the project here</p>
-          <ul>
-            <li>info</li>
-            <li>more info</li>
-            <li>even more info</li>
-          </ul>
-        </div>
       </section>
 
       {/* Section: Project Team */}
@@ -176,7 +166,12 @@ const MainContent: React.FC = () => {
 
         <div id="team-members" className="about-subsection">
           <h3>Team Members</h3>
-          <p> add info here </p>
+          <p>
+            <strong>Michele Koppes</strong>
+          </p>
+          <p>
+            <strong>Siobhán Wittig McPhee</strong>
+          </p>
           {/* <p>
             <strong>Sara Deutscher</strong> - Website developer
             <br />
@@ -326,6 +321,7 @@ export const About: React.FC = () => {
   return (
     <div className="about-page-new">
       <HeroBanner />
+      <UnderConstructionBanner />
       <div className="about-container">
         <Sidebar
           sections={ABOUT_SECTIONS}

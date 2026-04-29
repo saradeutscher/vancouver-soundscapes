@@ -4,6 +4,7 @@ import { FileUploadInput } from '../components/form/FileUploadInput';
 import { MultiImageUploadInput } from '../components/form/MultiImageUploadInput';
 import { UploadProgressIndicator } from '../components/form/UploadProgressIndicator';
 import { MapLocationPicker } from '../components/map/MapLocationPicker';
+import { UnderConstructionBanner } from '../components/sound/UnderConstructionBanner';
 import {
   serializePoint,
   serializePath,
@@ -18,6 +19,9 @@ import { validateAudioFile, validateImageFile } from '../utils/fileValidation';
 // Google Apps Script deployment URL
 const GOOGLE_SCRIPT_URL =
   'https://script.google.com/macros/s/AKfycbz8iQTGbrHEXOQn1E_HkeOEugzEzGwBZH_ppf9y3Cb5ALAm33gduFr67Ljm0XycaqX4HA/exec';
+
+// Temporarily disable submissions
+const SUBMISSIONS_ENABLED = false;
 
 type SubmissionData = {
   name: string;
@@ -214,6 +218,12 @@ export const SubmitSound: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Block submission if disabled
+    if (!SUBMISSIONS_ENABLED) {
+      alert('Sound submissions are temporarily disabled. Please check back later.');
+      return;
+    }
+
     if (!validate()) {
       return;
     }
@@ -314,6 +324,51 @@ export const SubmitSound: React.FC = () => {
         </p>
       </div>
 
+      <UnderConstructionBanner />
+
+      {!SUBMISSIONS_ENABLED && (
+        <div
+          className="submissions-disabled-notice"
+          role="alert"
+          style={{
+            background: 'linear-gradient(135deg, #ffe5e5 0%, #fff0f0 100%)',
+            border: '2px solid #dc3545',
+            borderLeft: '6px solid #c82333',
+            borderRadius: 'var(--radius-md)',
+            margin: 'var(--spacing-xl) auto',
+            maxWidth: '1200px',
+            padding: 'var(--spacing-lg) var(--spacing-xl)',
+            boxShadow: '0 2px 8px rgba(220, 53, 69, 0.15)',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'var(--spacing-md)',
+            }}
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ color: '#dc3545', flexShrink: 0 }}
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
+              <path d="M12 8v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              <circle cx="12" cy="16" r="0.5" fill="currentColor" />
+            </svg>
+            <div style={{ color: '#721c24', fontWeight: 500 }}>
+              <strong>Submissions Temporarily Disabled:</strong> We are not currently accepting new
+              sound submissions. Please check back later or contact us for more information.
+            </div>
+          </div>
+        </div>
+      )}
+
       <form className="submit-form" onSubmit={handleSubmit}>
         {/* Section 1: Sound Information */}
         <div className="form-section">
@@ -375,7 +430,7 @@ export const SubmitSound: React.FC = () => {
               disabled={isUploading}
             />
           </div>
-
+          {/*
           <div className="form-field">
             <label htmlFor="year">Year</label>
             <input
@@ -387,7 +442,7 @@ export const SubmitSound: React.FC = () => {
               max="2050"
               step="1"
             />
-          </div>
+          </div> */}
         </div>
 
         {/* Section 2: Location */}
@@ -653,8 +708,16 @@ export const SubmitSound: React.FC = () => {
 
         {/* Submit Section */}
         <div className="form-actions">
-          <button type="submit" className="submit-btn" disabled={isSubmitting}>
-            {isSubmitting ? 'Submitting...' : 'Submit Sound Recording'}
+          <button
+            type="submit"
+            className="submit-btn"
+            disabled={!SUBMISSIONS_ENABLED || isSubmitting}
+          >
+            {isSubmitting
+              ? 'Submitting...'
+              : SUBMISSIONS_ENABLED
+                ? 'Submit Sound Recording'
+                : 'Submissions Disabled'}
           </button>
           <p className="submit-note">
             * Required fields. Your submission will be reviewed before being added to the map.
