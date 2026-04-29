@@ -526,7 +526,7 @@ export const SubmitSound: React.FC = () => {
           <fieldset className="form-field">
             <legend>Class</legend>
             <div className="checkbox-group">
-              {['effects', 'ambience', 'soundwalk', 'events', 'scenes', 'dialogue'].map(cat => (
+              {['features', 'ambience', 'soundwalk', 'events', 'scenes', 'dialogue'].map(cat => (
                 <label key={cat} className="checkbox-label">
                   <input
                     type="checkbox"

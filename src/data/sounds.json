@@ -9,7 +9,7 @@
     "properties": {
       "images": [],
       "class": [
-        "effects",
+        "features",
         "ambience"
       ],
       "theme": [
@@ -79,7 +79,7 @@
     "properties": {
       "images": [],
       "class": [
-        "effects",
+        "features",
         "ambience"
       ],
       "theme": [
@@ -106,7 +106,7 @@
     "properties": {
       "images": [],
       "class": [
-        "effects",
+        "features",
         "ambience"
       ],
       "theme": [
@@ -337,7 +337,7 @@
     "properties": {
       "images": [],
       "class": [
-        "effects",
+        "features",
         "ambience"
       ],
       "theme": [
@@ -516,7 +516,7 @@
     "properties": {
       "images": [],
       "class": [
-        "effects",
+        "features",
         "ambience"
       ],
       "theme": [
@@ -694,7 +694,7 @@
     "properties": {
       "images": [],
       "class": [
-        "effects",
+        "features",
         "ambience",
         "soundwalk"
       ],
@@ -795,7 +795,7 @@
     "properties": {
       "images": [],
       "class": [
-        "effects",
+        "features",
         "ambience"
       ],
       "theme": [
@@ -956,7 +956,7 @@
     "properties": {
       "images": [],
       "class": [
-        "effects",
+        "features",
         "ambience"
       ],
       "theme": [
@@ -1113,7 +1113,7 @@
       "images": [],
       "class": [
         "ambience",
-        "effects"
+        "features"
       ],
       "theme": [
         "cityscape",
@@ -1301,7 +1301,7 @@
       ],
       "class": [
         "ambience",
-        "effects"
+        "features"
       ],
       "theme": [
         "nature",
@@ -1726,7 +1726,7 @@
       ],
       "class": [
         "ambience",
-        "effects"
+        "features"
       ],
       "theme": [
         "cityscape",
@@ -1864,7 +1864,7 @@
       "images": [],
       "class": [
         "ambience",
-        "effects"
+        "features"
       ],
       "theme": [
         "nature",
@@ -1891,7 +1891,7 @@
       "images": [],
       "class": [
         "ambience",
-        "effects"
+        "features"
       ],
       "theme": [
         "nature",
@@ -1917,7 +1917,7 @@
       "images": [],
       "class": [
         "ambience",
-        "effects"
+        "features"
       ],
       "theme": [
         "nature",
@@ -1943,7 +1943,7 @@
       "images": [],
       "class": [
         "ambience",
-        "effects"
+        "features"
       ],
       "theme": [
         "industrial"
@@ -1968,7 +1968,7 @@
       "images": [],
       "class": [
         "ambience",
-        "effects"
+        "features"
       ],
       "theme": [
         "nature"
