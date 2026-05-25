@@ -18,10 +18,9 @@ import { validateAudioFile, validateImageFile } from '../utils/fileValidation';
 
 // Google Apps Script deployment URL
 const GOOGLE_SCRIPT_URL =
-  'https://script.google.com/macros/s/AKfycbz8iQTGbrHEXOQn1E_HkeOEugzEzGwBZH_ppf9y3Cb5ALAm33gduFr67Ljm0XycaqX4HA/exec';
+  'https://script.google.com/macros/s/AKfycbw0_cAgstqCab5zZ_qp4V5jUcagZtfIj2Kx4dN4vsAtmZNYlKnFkb1jZoxGF4h94_vt1Q/exec';
 
-// Temporarily disable submissions
-const SUBMISSIONS_ENABLED = false;
+const SUBMISSIONS_ENABLED = true;
 
 type SubmissionData = {
   name: string;
@@ -200,9 +199,7 @@ export const SubmitSound: React.FC = () => {
       }
     }
 
-    if (!formData.submitterEmail.trim()) {
-      newErrors.submitterEmail = 'Your email is required';
-    } else if (!isValidEmail(formData.submitterEmail)) {
+    if (formData.submitterEmail.trim() && !isValidEmail(formData.submitterEmail)) {
       newErrors.submitterEmail = 'Please enter a valid email';
     }
 
