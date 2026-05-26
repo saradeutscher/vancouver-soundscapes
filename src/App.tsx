@@ -90,10 +90,6 @@ const App = () => {
 };
 
 const root = createRoot(document.getElementById('root')!);
-root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-); // Only use StrictMode for development
+root.render(<App />); // Only use StrictMode for development
 
 export default App;
