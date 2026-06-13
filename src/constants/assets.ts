@@ -1,7 +1,9 @@
 /**
  * Base URL for external assets (audio, images)
  */
-export const ASSETS_BASE_URL = 'https://object-arbutus.cloud.computecanada.ca/soundscapes-public/';
+//export const ASSETS_BASE_URL = 'https://object-arbutus.cloud.computecanada.ca/soundscapes-public/';
+export const ASSETS_BASE_URL =
+  'https://object-arbutus.alliancecan.ca/swift/v1/418c8f4c33c84f6986d8507e5a625413/soundscapes-public/';
 
 /**
  * Construct full URL for an asset
