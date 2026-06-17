@@ -1,7 +1,7 @@
 import lunr from 'lunr';
-import { useState, useEffect, StrictMode } from 'react';
+import { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, NavLink, useLocation } from 'react-router-dom';
 
 import './styles/global.css';
 
@@ -13,6 +13,39 @@ import { SubmitSound } from './pages/SubmitSound';
 import { loadSoundDataset } from './services/soundService';
 
 import type { Sound } from './types/Sound';
+
+const Nav = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+
+  // Close menu on navigation
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location]);
+
+  return (
+    <nav aria-label="Main navigation">
+      <h1 className="title">Vancouver Soundscapes</h1>
+      <button
+        className="nav-hamburger"
+        onClick={() => setMenuOpen(prev => !prev)}
+        aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={menuOpen}
+        aria-controls="nav-options"
+      >
+        {menuOpen ? '✕' : '☰'}
+      </button>
+      <div id="nav-options" className={`nav-options${menuOpen ? ' open' : ''}`}>
+        <NavLink to="/" end>
+          Home
+        </NavLink>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/request">Submit a Sound</NavLink>
+        <NavLink to="/sounds">Sound List</NavLink>
+      </div>
+    </nav>
+  );
+};
 
 const App = () => {
   const [sounds, setSounds] = useState<Sound[]>();
@@ -53,17 +86,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="site">
-        <nav className="nav" aria-label="Main navigation">
-          <h1 className="title"> Vancouver Soundscapes </h1>
-          <div className="nav-options">
-            <NavLink to="/" end>
-              Home
-            </NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/request">Submit a Sound</NavLink>
-            <NavLink to="/sounds">Sound List</NavLink>
-          </div>
-        </nav>
+        <Nav />
 
         <main className="content">
           <Routes>

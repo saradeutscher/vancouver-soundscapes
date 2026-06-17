@@ -32,6 +32,10 @@ type ControlPanelProps = {
   title?: string;
   description?: string;
   hideMinimizeButton?: boolean;
+  /** Mobile sheet mode: whether the sheet is currently open */
+  isSheetOpen?: boolean;
+  /** Mobile sheet mode: callback to close the sheet */
+  onClose?: () => void;
 };
 
 export const ControlPanel = ({
@@ -62,8 +66,14 @@ export const ControlPanel = ({
   title = 'Filter the Map',
   description = 'Use the controls below to filter the sounds shown on the map.',
   hideMinimizeButton = false,
+  isSheetOpen,
+  onClose,
 }: ControlPanelProps) => {
   const [isMinimized, setIsMinimized] = useState(false);
+
+  // When onClose is provided the panel is rendered as a mobile bottom sheet.
+  // Sheet visibility is controlled externally via isSheetOpen / onClose.
+  const isMobileSheet = !!onClose;
 
   const parseNumber = useCallback((value: string) => Number(value) || null, []);
 
@@ -85,23 +95,42 @@ export const ControlPanel = ({
     onSearchChange,
   ]);
 
+  // In sheet mode content is always shown; in desktop mode respect isMinimized
+  const showContent = isMobileSheet || !isMinimized;
+
   return (
     <div
-      className={`control-panel marker-clustering-control-panel ${isMinimized ? 'minimized' : ''} ${hideMinimizeButton ? 'no-minimize' : ''}`}
+      className={[
+        'control-panel',
+        'marker-clustering-control-panel',
+        !isMobileSheet && isMinimized ? 'minimized' : '',
+        hideMinimizeButton ? 'no-minimize' : '',
+        isMobileSheet ? 'mobile-sheet' : '',
+        isMobileSheet && isSheetOpen ? 'sheet-open' : '',
+      ]
+        .filter(Boolean)
+        .join(' ')}
     >
+      {isMobileSheet && <div className="sheet-drag-handle" aria-hidden="true" />}
       <div className="control-panel-header">
         <h3>{title}</h3>
-        {!hideMinimizeButton && (
-          <button
-            className="minimize-button"
-            onClick={() => setIsMinimized(!isMinimized)}
-            aria-label={isMinimized ? 'Expand panel' : 'Minimize panel'}
-          >
-            {isMinimized ? '+' : '-'}
+        {isMobileSheet ? (
+          <button className="sheet-close-button" onClick={onClose} aria-label="Close filter panel">
+            ✕
           </button>
+        ) : (
+          !hideMinimizeButton && (
+            <button
+              className="minimize-button"
+              onClick={() => setIsMinimized(!isMinimized)}
+              aria-label={isMinimized ? 'Expand panel' : 'Minimize panel'}
+            >
+              {isMinimized ? '+' : '-'}
+            </button>
+          )
         )}
       </div>
-      {!isMinimized && (
+      {showContent && (
         <>
           {description && <p>{description}</p>}
           <div className="search-control">

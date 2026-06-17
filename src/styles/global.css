@@ -73,13 +73,14 @@ a {
 
 .homepage {
   position: relative;
-  height: calc(100vh - 90px);
+  height: 100%;
   width: 100%;
 }
 
 .content {
   background-color: var(--color-background);
-  height: calc(100vh - 90px);
+  flex: 1;
+  min-height: 0;
 }
 
 /* Consolidated page content styles */
@@ -94,6 +95,7 @@ a {
 .site {
   display: flex;
   flex-direction: column;
+  height: 100dvh;
 }
 
 .overlay {
@@ -684,6 +686,235 @@ nav a:hover {
 /* Ensure proper contrast */
 .nav-options a {
   color: var(--color-text-dark);
+}
+
+/* Hamburger button — hidden on desktop */
+.nav-hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--color-text-primary);
+  font-size: 1.5rem;
+  padding: 4px 8px;
+  cursor: pointer;
+  line-height: 1;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.nav-hamburger:hover {
+  background-color: var(--color-surface-light);
+}
+
+/* Mobile nav */
+@media (width <= 768px) {
+  nav {
+    padding: 12px 16px;
+    gap: 0;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 1.25rem;
+    flex: 1;
+  }
+
+  .nav-hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-options {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 0;
+    gap: 0;
+    border-top: 1px solid var(--color-border);
+    margin-top: 8px;
+  }
+
+  .nav-options.open {
+    display: flex;
+  }
+
+  .nav-options a {
+    padding: 14px 8px;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+  }
+
+  .nav-options a:last-child {
+    border-bottom: none;
+  }
+
+  /* Keep underline indicator working on mobile */
+  nav a::after {
+    bottom: 12px;
+    left: 8px;
+    right: 8px;
+  }
+}
+
+/* ============================================
+   MOBILE FILTER SHEET
+   ============================================ */
+
+/* FAB — hidden on desktop, shown on mobile via media query below */
+.filter-fab {
+  display: none;
+}
+
+/* Sheet drag handle — hidden on desktop */
+.sheet-drag-handle {
+  display: none;
+}
+
+/* Sheet close button — hidden on desktop */
+.sheet-close-button {
+  display: none;
+}
+
+@media (width <= 768px) {
+  /* ---- FAB ---- */
+  .filter-fab {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: absolute;
+    bottom: 80px; /* above the legend button */
+    left: var(--spacing-xl);
+    z-index: 100;
+    padding: 10px 16px;
+    background: var(--color-background-white);
+    color: var(--color-text-primary);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-round);
+    box-shadow: var(--shadow-lg);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .filter-fab:hover {
+    background: var(--color-surface-light);
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-2px);
+  }
+
+  .filter-fab-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  /* ---- Backdrop ---- */
+  .filter-sheet-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 199;
+    animation: fadeIn 0.2s ease;
+  }
+
+  /* ---- Bottom sheet ---- */
+  .control-panel.mobile-sheet {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    max-height: 75vh;
+    overflow-y: auto;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -4px 32px rgba(0, 0, 0, 0.2);
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+    z-index: 200;
+    padding-bottom: env(safe-area-inset-bottom); /* iPhone home bar */
+  }
+
+  .control-panel.mobile-sheet.sheet-open {
+    transform: translateY(0);
+  }
+
+  /* ---- Drag handle ---- */
+  .sheet-drag-handle {
+    display: block;
+    width: 40px;
+    height: 4px;
+    background: var(--color-border-dark);
+    border-radius: 2px;
+    margin: 12px auto 4px;
+    flex-shrink: 0;
+  }
+
+  /* ---- Close button ---- */
+  .sheet-close-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    padding: 0;
+  }
+
+  .sheet-close-button:hover {
+    background: var(--color-surface-light);
+    color: var(--color-text-primary);
+  }
+
+  /* ---- Sheet internals ---- */
+  .control-panel.mobile-sheet .control-panel-header {
+    padding: 4px 16px 12px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .control-panel.mobile-sheet .control-panel-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .control-panel.mobile-sheet p,
+  .control-panel.mobile-sheet .search-control,
+  .control-panel.mobile-sheet .filter-options,
+  .control-panel.mobile-sheet .clustering-toggle,
+  .control-panel.mobile-sheet #filter-reset {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .control-panel.mobile-sheet select {
+    max-width: 100%;
+    min-width: 100%;
+  }
+
+  .control-panel.mobile-sheet #filter-reset {
+    margin: 12px 16px 16px;
+    width: calc(100% - 32px);
+  }
 }
 
 /* image gallery styling */

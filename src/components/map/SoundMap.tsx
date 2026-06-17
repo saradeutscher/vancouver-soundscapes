@@ -38,6 +38,7 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
   const [clusteringEnabled, setClusteringEnabled] = useState<boolean>(true);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [searchResults, setSearchResults] = useState<Set<string> | null>(null);
+  const [filterSheetOpen, setFilterSheetOpen] = useState(false);
 
   // load data asynchronously
   useEffect(() => {
@@ -95,6 +96,17 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
   // get source information for the filter-dropdown
   const sources = useMemo(() => getSources(combinedFilteredSounds), [combinedFilteredSounds]);
 
+  // count active filters for the FAB badge
+  const activeFilterCount = [
+    selectDecade,
+    selectYear,
+    selectType,
+    selectCategory,
+    selectTheme,
+    selectedSource,
+    searchQuery,
+  ].filter(Boolean).length;
+
   return (
     <APIProvider solutionChannel="GMP_devsite_samples_v3_rgmbasicmap" apiKey={API_KEY}>
       <Map
@@ -124,6 +136,43 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
         />
       </Map>
 
+      {/* Mobile backdrop — closes the sheet when tapped */}
+      {filterSheetOpen && (
+        <div
+          className="filter-sheet-backdrop"
+          onClick={() => setFilterSheetOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile FAB — opens the filter sheet */}
+      <button
+        className="filter-fab"
+        onClick={() => setFilterSheetOpen(true)}
+        aria-label={`Filter sounds${activeFilterCount > 0 ? ` (${activeFilterCount} active)` : ''}`}
+        aria-haspopup="dialog"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          aria-hidden="true"
+        >
+          <line x1="4" y1="6" x2="20" y2="6" />
+          <line x1="8" y1="12" x2="16" y2="12" />
+          <line x1="11" y1="18" x2="13" y2="18" />
+        </svg>
+        Filters
+        {activeFilterCount > 0 && (
+          <span className="filter-fab-badge" aria-label={`${activeFilterCount} active`}>
+            {activeFilterCount}
+          </span>
+        )}
+      </button>
+
       <ControlPanel
         categories={categories}
         themes={themes}
@@ -148,6 +197,8 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         searchResultCount={combinedFilteredSounds?.length}
+        isSheetOpen={filterSheetOpen}
+        onClose={() => setFilterSheetOpen(false)}
       />
 
       <DecadeLegend />

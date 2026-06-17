@@ -4,7 +4,6 @@ import { FileUploadInput } from '../components/form/FileUploadInput';
 import { MultiImageUploadInput } from '../components/form/MultiImageUploadInput';
 import { UploadProgressIndicator } from '../components/form/UploadProgressIndicator';
 import { MapLocationPicker } from '../components/map/MapLocationPicker';
-import { UnderConstructionBanner } from '../components/sound/UnderConstructionBanner';
 import {
   serializePoint,
   serializePath,
@@ -321,7 +320,6 @@ export const SubmitSound: React.FC = () => {
         </p>
       </div>
 
-      <UnderConstructionBanner />
 
       {!SUBMISSIONS_ENABLED && (
         <div
