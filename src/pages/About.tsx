@@ -10,7 +10,10 @@ const ABOUT_SECTIONS = [
     title: 'About the Project',
     subsections: [
       { id: 'overview', title: 'Overview' },
-      { id: 'history', title: 'History' },
+      { id: 'questions', title: 'Research Questions' },
+      { id: 'approach', title: 'Approach' },
+      { id: 'outputs', title: 'Project outputs' },
+      { id: 'teaching', title: 'Teaching' },
     ],
   },
   {
@@ -18,6 +21,7 @@ const ABOUT_SECTIONS = [
     title: 'Project Team',
     subsections: [
       { id: 'team-members', title: 'Team Members' },
+      { id: 'funding', title: 'Partners and Funding' },
       { id: 'contact', title: 'Contact' },
     ],
   },
@@ -125,18 +129,35 @@ const MainContent: React.FC = () => {
         <div id="overview" className="about-subsection">
           <h3>Overview</h3>
           <p>
-            Vancouver Soundscapes is an interactive map application of sound recordings from
-            different locations and time periods across Vancouver.
+            The Vancouver Soundscapes Project is a research and teaching initiative based in the
+            Department of Geography at the University of British Columbia. It uses sound recordings
+            to study how Vancouver has changed over the past fifty years.
           </p>
           <p>
-            The application provides an intuitive interface for exploring Vancouver&apos;s acoustic
-            history, allowing users to explore sounds by location, time period, and thematic
-            categories.
+            The project builds on the work of the World Soundscape Project, which recorded
+            Vancouver's acoustic environment at Simon Fraser University in the 1970s. We are making
+            new recordings at the same location and comparing them with the historical archive.
+            Alongside this, we look at records of rezoning, land values, housing and ecological
+            changes at those sites. The aim is to understand how processes such as development,
+            gentrification and environmental change show up in the city's soundscape, and how
+            residents experience these changes.
           </p>
         </div>
 
-        <div id="history" className="about-subsection">
-          <h3>History</h3>
+        <div id="questions" className="about-subsection">
+          <h3>Research Questions</h3>
+          <ul>
+            <li>What sounds characterize a rapidly changing city?</li>
+            <li>
+              What can changes in a city's soundscape tell us about its economic, social and
+              ecological conditions?
+            </li>
+            <li>How has Vancouver's soundscape changed since the 1970s?</li>
+            <li>
+              What do students and members of the public learn about a place by listening to it?
+            </li>
+          </ul>
+          {/*
           <p>
             The project was inspired by the{' '}
             <a href="https://www.sfu.ca/~truax/wsp.html" target="_blank" rel="noopener noreferrer">
@@ -157,6 +178,52 @@ const MainContent: React.FC = () => {
             </a>
             .
           </p>
+          */}
+        </div>
+
+        <div id="approach" className="about-subsection">
+          <h3>Approach</h3>
+          <p>
+            The project treats listening as a research method in geography. Our work draws on
+            critical Indigenous sound studies, and we aim to follow culturally appropriate protocols
+            when recording and sharing sound. We also design project outputs to be accessible,
+            including for people who engage non-visually.
+          </p>
+        </div>
+
+        <div id="outputs" className="about-subsection">
+          <h3>Project Outputs</h3>
+          <ul>
+            <li>
+              <strong>Interactive sound map</strong> of historical and contemporary recordings and
+              archival soundwalks.
+            </li>
+            <li>
+              <strong>Geo-located soundwalks</strong> using the Echoes app, which play recordings at
+              specific sites across Vancouver.
+            </li>
+            <li>
+              <strong>Museum of Vancouver listening space</strong>, a sound installation developed
+              with the museum.
+            </li>
+            <li>
+              <strong>Public listening sessions</strong> hosted with community partners.
+            </li>
+            <li>
+              <strong>Teaching resources</strong> and scholarly publications.
+            </li>
+          </ul>
+        </div>
+
+        <div id="teaching" className="about-subsection">
+          <h3>Teaching</h3>
+          <p>
+            Materials from the project are used in UBC Geography and Urban Studies courses. Students
+            use the sound map, complete soundwalks, make their own recordings and write reflections
+            connecting what they hear to course concepts on urban change. A related project, Voices
+            of the Unseen, shares audio recordings of UBC custodial staff describing their work and
+            experiences on campus.
+          </p>
         </div>
       </section>
 
@@ -165,18 +232,46 @@ const MainContent: React.FC = () => {
         <h2 className="about-section-header">Project Team</h2>
 
         <div id="team-members" className="about-subsection">
-          <h3>Team Members</h3>
+          <h3>Team members</h3>
           <p>
-            <strong>Michele Koppes</strong>
+            <strong>Dr. Siobhán Wittig McPhee - </strong>
+            Associate Professor of Teaching, Geography, UBC (co-lead)
           </p>
           <p>
-            <strong>Siobhán Wittig McPhee</strong>
+            <strong>Dr. Michele Koppes - </strong>
+            Professor, Geography, UBC (co-lead)
           </p>
-          {/* <p>
-            <strong>Sara Deutscher</strong> - Website developer
+          <p>
+            <strong>Dr. Dylan Robinson - </strong>
+            Professor, Music, UBC
+          </p>
+          <p>
+            <strong>Dr. Milena Droumeva - </strong>
+            Associate Professor, Communication, SFU
+          </p>
+          <p>
+            <strong>Dr. Viviane Gosselin - </strong>
+            Director of Collections & Exhibitions, Museum of Vancouver
+          </p>
+          <p>
+            <strong>Carmen Papalia - </strong>
+            Artist and Accessibility Advisor, Museum of Vancouver
+          </p>
+          <p>
+            <strong>Graduate and undergraduate research assistants: </strong>
             <br />
-            Responsible for application development, user interface design, and data visualization.
-          </p> */}
+            Sara Deutscher, Kendyll Carr, Azélie Blanchette, Amanda Bradshaw
+          </p>
+        </div>
+
+        <div id="funding" className="about-subsection">
+          <h3>Partners and Funding</h3>
+          <ul>
+            <li>Museum of Vancouver</li>
+            <li>SFU Sonic Research Studio</li>
+            <li>UBC Public Humanities Hub</li>
+            <li>UBC Department of Geography</li>
+          </ul>
         </div>
 
         <div id="contact" className="about-subsection">
