@@ -77,6 +77,22 @@ a {
   width: 100%;
 }
 
+/* Flex row that splits the homepage into sidebar + map columns */
+.soundmap-layout {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+/* Map column — fills all remaining horizontal space */
+.soundmap-map-area {
+  flex: 1;
+  position: relative; /* keeps ControlPanel/FAB/Legend anchored inside */
+  min-width: 0; /* prevents flex child overflowing its container */
+  overflow: hidden;
+}
+
 .content {
   background-color: var(--color-background);
   flex: 1;
@@ -191,13 +207,13 @@ button:hover {
 }
 
 .control-panel {
-  font-size: 14px;
-  line-height: 18px;
-  width: 284px;
+  font-size: 12px;
+  line-height: 16px;
+  width: 220px;
   background: var(--color-background-white);
   box-shadow: 0 0 4px rgb(0, 0, 0, 0.15);
-  margin: 24px;
-  padding: 12px 24px;
+  margin: 16px;
+  padding: 12px 14px;
   position: absolute;
   top: 0;
   right: 0;
@@ -214,8 +230,8 @@ button:hover {
 }
 
 .control-panel h3 {
-  font-size: 1.2em;
-  font-weight: 500;
+  font-size: 1.4em;
+  font-weight: 600;
   margin: 8px 0;
 }
 
@@ -267,7 +283,6 @@ select {
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  font-size: 14px;
 }
 
 .clustering-toggle input[type='checkbox'] {
@@ -1699,7 +1714,7 @@ body:not(.lightbox-open) .image-gallery.lightbox-enabled img:hover {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('https://object-arbutus.cloud.computecanada.ca/soundscapes-public/WSP%20JPEGs/Photo%2019-07-2024,%2016%2047%2026.jpg');
+  background-image: url('https://object-arbutus.alliancecan.ca/swift/v1/418c8f4c33c84f6986d8507e5a625413/soundscapes-public/WSP%20JPEGs/Photo%2019-07-2024,%2016%2047%2026.jpg');
   background-size: cover;
   background-position: center;
   opacity: 0.5;
@@ -2942,147 +2957,6 @@ body:not(.lightbox-open) .image-gallery.lightbox-enabled img:hover {
 }
 
 /* ============================================
-   Temporal Navigation
-   ============================================ */
-
-/* Temporal Navigation Container */
-.temporal-navigation {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-xl);
-  padding: var(--spacing-xl) var(--spacing-2xl);
-  margin: var(--spacing-2xl) 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-radius: 16px;
-  border: 1px solid #dee2e6;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-/* Arrow Buttons */
-.temporal-nav-arrow {
-  background: white;
-  border: 2px solid #dee2e6;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 28px;
-  color: #495057;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-
-.temporal-nav-arrow:hover:not(:disabled) {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: white;
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 140, 186, 0.3);
-}
-
-.temporal-nav-arrow:disabled {
-  opacity: 0.25;
-  cursor: not-allowed;
-  background: #f8f9fa;
-  border-color: #e9ecef;
-  box-shadow: none;
-}
-
-/* Decade Pills Container */
-.decade-pills {
-  display: flex;
-  gap: var(--spacing-md);
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Individual Decade Pill */
-.decade-pill {
-  padding: 12px 24px;
-  border-radius: 24px;
-  border: 3px solid transparent;
-  font-weight: 600;
-  font-size: 15px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  position: relative;
-  overflow: hidden;
-}
-
-.decade-pill::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
-.decade-pill:hover:not(:disabled)::before {
-  opacity: 1;
-}
-
-.decade-pill:hover:not(:disabled) {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-}
-
-.decade-pill.active {
-  border-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 0 0 4px rgba(255, 255, 255, 0.2);
-  transform: scale(1.08);
-}
-
-.decade-pill:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-  background: #adb5bd !important;
-  color: #6c757d;
-  text-shadow: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-/* Decade-specific backgrounds */
-.decade-pill[data-decade='1970'] {
-  background: linear-gradient(135deg, #c422ff 0%, #a01dd6 100%); /* purple */
-}
-
-.decade-pill[data-decade='1990'] {
-  background: linear-gradient(135deg, #22ccff 0%, #0099cc 100%); /* cyan */
-}
-
-.decade-pill[data-decade='2010'] {
-  background: linear-gradient(135deg, #85d134 0%, #6ab02a 100%); /* green */
-}
-
-.decade-pill[data-decade='2020'] {
-  background: linear-gradient(135deg, #f7314b 0%, #d4263d 100%); /* red */
-}
-
-/* Mobile responsiveness */
-@media (max-width: 600px) {
-  .temporal-navigation {
-    flex-direction: column;
-    gap: var(--spacing-md);
-  }
-
-  .decade-pills {
-    order: -1; /* Pills above arrows on mobile */
-  }
-}
-
-/* ============================================
    Under Construction Banner
    ============================================ */
 
@@ -3284,6 +3158,98 @@ body:not(.lightbox-open) .image-gallery.lightbox-enabled img:hover {
   color: var(--color-text-primary);
 }
 
+/* Featured Sounds Sidebar */
+.featured-sounds-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  background: var(--color-background-white);
+  border-right: 1px solid var(--color-border);
+  overflow-y: auto;
+  height: 100%;
+}
+
+.featured-sounds-header {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.featured-sounds-header h3 {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-dark);
+  margin: 0;
+}
+
+.featured-sound-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-left: 3px solid transparent;
+  border-bottom: 1px solid var(--color-border);
+  background: none;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.featured-sound-card:hover {
+  background: var(--color-background);
+}
+
+.featured-sound-card.active {
+  border-left-color: var(--decade-color);
+  background: color-mix(in srgb, var(--decade-color) 8%, transparent);
+}
+
+.featured-sound-card-title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.featured-sound-card-summary {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.featured-sound-card-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-xs);
+}
+
+/* Skeleton loading state */
+.featured-sound-card-skeleton {
+  height: 80px;
+  background: linear-gradient(
+    90deg,
+    var(--color-background) 25%,
+    #e8e8e8 50%,
+    var(--color-background) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 /* Mobile responsiveness */
 @media (max-width: 600px) {
   .decade-legend-button {
@@ -3309,5 +3275,48 @@ body:not(.lightbox-open) .image-gallery.lightbox-enabled img:hover {
 
   .decade-legend-content {
     padding: var(--spacing-md);
+  }
+
+  .soundmap-layout {
+    flex-direction: column;
+  }
+
+  .soundmap-map-area {
+    flex: 1;
+    min-height: 0; /* allows map to shrink to fill remaining vertical space */
+  }
+
+  .featured-sounds-sidebar {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    overflow-y: hidden;
+    overflow-x: auto;
+    flex-shrink: 0;
+  }
+
+  .featured-sounds-list {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .featured-sound-card {
+    min-width: 180px;
+    flex-shrink: 0;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    border-right: 1px solid var(--color-border);
+    scroll-snap-align: start;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .featured-sound-card.active {
+    border-bottom-color: var(--decade-color);
+    border-left-color: transparent;
   }
 }

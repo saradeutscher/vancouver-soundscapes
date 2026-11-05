@@ -8,9 +8,17 @@ type MapControllerProps = {
   sounds: Sound[] | undefined;
   selectedSoundKey: string | null;
   onSoundSelect: (key: string | null) => void;
+  centerSoundKey?: string | null;
+  onCenterComplete?: () => void;
 };
 
-export const MapController = ({ sounds, selectedSoundKey, onSoundSelect }: MapControllerProps) => {
+export const MapController = ({
+  sounds,
+  selectedSoundKey,
+  onSoundSelect,
+  centerSoundKey,
+  onCenterComplete,
+}: MapControllerProps) => {
   const map = useMap();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -101,6 +109,31 @@ export const MapController = ({ sounds, selectedSoundKey, onSoundSelect }: MapCo
       }
     }
   }, [selectedSoundKey, searchParams, setSearchParams, sounds]);
+
+  // Handles centering of sound triggered by FeaturedSoundsSidebar
+  useEffect(() => {
+    if (!centerSoundKey || !sounds || !map) return;
+
+    const sound = sounds.find(s => s.key === centerSoundKey);
+    if (!sound) return;
+
+    if (sound.geometry.type === 'LineString') {
+      // For soundwalks, make the entire path fit within the map bounds
+      const coordinates = JSON.parse(sound.geometry.coordinates) as [number, number][];
+      const bounds = new google.maps.LatLngBounds();
+      coordinates.forEach(([lng, lat]) => bounds.extend({ lat, lng }));
+      map.fitBounds(bounds, { top: 100, bottom: 50, left: 50, right: 50 });
+    } else {
+      // For points, zoom in closer to the marker
+      const [lng, lat] = JSON.parse(sound.geometry.coordinates) as [number, number];
+      map.panTo({ lat, lng });
+      map.setZoom(17);
+    }
+
+    // Reset centerSoundKey to null (prevents the effect from re-running if the
+    // map or sound re-renders)
+    onCenterComplete?.();
+  }, [centerSoundKey, sounds, map, onCenterComplete]);
 
   return null; // This component doesn't render anything
 };

@@ -32,6 +32,10 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
     }
   }, [navigate, sound]);
 
+  if (!sounds) {
+    return <div className="sound-detail-loading">Loading...</div>;
+  }
+
   if (!sound) {
     return (
       <div className="sound-detail-error">
@@ -109,6 +113,7 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
                 showClass={false}
                 showTheme={true}
                 showType={false}
+                showProvenance={false}
               />
             </div>
           )}
@@ -121,13 +126,8 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
                 showClass={true}
                 showTheme={false}
                 showType={false}
+                showProvenance={false}
               />
-            </div>
-          )}
-          {sound.properties.source && (
-            <div className="sound-themes-section">
-              <h3>Source</h3>
-              <span className="metadata-badge provenance-badge">{sound.properties.source}</span>
             </div>
           )}
         </div>
@@ -144,13 +144,6 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
               <ImageGallery images={sound.properties.images} enableLightbox />
             </div>
           )}
-          {/*
-          {sound.properties.notes && (
-            <div className="sound-notes-section">
-              <h3>Notes</h3>
-              <div className="sound-notes">{sound.properties.notes}</div>
-            </div>
-          )} */}
         </div>
       </div>
     </div>

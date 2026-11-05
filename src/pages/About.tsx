@@ -1,6 +1,5 @@
 import React, { useState, useMemo, useCallback } from 'react';
 
-import { UnderConstructionBanner } from '../components/sound/UnderConstructionBanner';
 import { useScrollSpy } from '../hooks/useScrollSpy';
 
 // Section structure configuration
@@ -416,7 +415,6 @@ export const About: React.FC = () => {
   return (
     <div className="about-page-new">
       <HeroBanner />
-      <UnderConstructionBanner />
       <div className="about-container">
         <Sidebar
           sections={ABOUT_SECTIONS}

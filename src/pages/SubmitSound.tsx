@@ -320,7 +320,6 @@ export const SubmitSound: React.FC = () => {
         </p>
       </div>
 
-
       {!SUBMISSIONS_ENABLED && (
         <div
           className="submissions-disabled-notice"

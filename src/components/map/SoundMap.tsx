@@ -1,10 +1,11 @@
 import { APIProvider, Map } from '@vis.gl/react-google-maps';
 import lunr from 'lunr';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 
 import { ClusteredSoundMarkers } from './ClusteredSoundMarkers';
 import { ControlPanel } from './ControlPanel';
 import { DecadeLegend } from './DecadeLegend';
+import { FeaturedSoundsSidebar } from './FeaturedSoundsSidebar';
 import { MapController } from './MapController';
 import { useDebounce } from '../../hooks/useDebounce';
 import { useFilteredSounds } from '../../hooks/useFilteredSounds';
@@ -35,6 +36,7 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
   const [selectType, setSelectedType] = useState<string | null>(null);
   const [selectedSource, setSelectedSource] = useState<string | null>(null);
   const [selectedSoundKey, setSelectedSoundKey] = useState<string | null>(null);
+  const [centerSoundKey, setCenterSoundKey] = useState<string | null>(null);
   const [clusteringEnabled, setClusteringEnabled] = useState<boolean>(true);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [searchResults, setSearchResults] = useState<Set<string> | null>(null);
@@ -107,101 +109,131 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
     searchQuery,
   ].filter(Boolean).length;
 
+  // Called by FeaturedSoundsSidebar when a featured sound card is clicked
+  const handleFeaturedSoundSelect = useCallback((key: string) => {
+    setSelectedSoundKey(key);
+    setCenterSoundKey(key);
+  }, []);
+
+  // If user has filters active that exclude a featured sound, ensure that sound is
+  // rendered regardless if featured sound card is clicked on
+  const soundsForMarkers = useMemo(() => {
+    if (!selectedSoundKey || !sounds) return combinedFilteredSounds;
+
+    const alreadyIncluded = combinedFilteredSounds.some(s => s.key === selectedSoundKey);
+    if (alreadyIncluded) return combinedFilteredSounds;
+
+    const selectedSound = sounds.find(s => s.key === selectedSoundKey);
+    return selectedSound ? [...combinedFilteredSounds, selectedSound] : combinedFilteredSounds;
+  }, [combinedFilteredSounds, selectedSoundKey, sounds]);
+
   return (
-    <APIProvider solutionChannel="GMP_devsite_samples_v3_rgmbasicmap" apiKey={API_KEY}>
-      <Map
-        mapId={'54137f32133013763f6a2d7f'}
-        zoomControl={true}
-        mapTypeControl={true}
-        defaultZoom={12}
-        defaultCenter={{ lat: 49.28, lng: -123.12 }}
-        // mapTypeId={'satellite'}
-        gestureHandling={'greedy'}
-        disableDefaultUI
-        onClick={() => setSelectedSoundKey(null)}
-      >
-        {combinedFilteredSounds && (
-          <ClusteredSoundMarkers
-            sounds={combinedFilteredSounds}
-            selectedSoundKey={selectedSoundKey}
-            onSoundSelect={setSelectedSoundKey}
+    <div className="soundmap-layout">
+      {/* <FeaturedSoundsSidebar
+        sounds={sounds}
+        selectedSoundKey={selectedSoundKey}
+        onSoundSelect={handleFeaturedSoundSelect}
+      /> */}
+      <div className="soundmap-map-area">
+        <APIProvider solutionChannel="GMP_devsite_samples_v3_rgmbasicmap" apiKey={API_KEY}>
+          <Map
+            mapId={'54137f32133013763f6a2d7f'}
+            zoomControl={true}
+            mapTypeControl={true}
+            defaultZoom={12}
+            defaultCenter={{ lat: 49.28, lng: -123.12 }}
+            // mapTypeId={'satellite'}
+            gestureHandling={'greedy'}
+            disableDefaultUI
+            onClick={() => setSelectedSoundKey(null)}
+          >
+            {sounds && (
+              <ClusteredSoundMarkers
+                sounds={soundsForMarkers}
+                selectedSoundKey={selectedSoundKey}
+                onSoundSelect={setSelectedSoundKey}
+                clusteringEnabled={clusteringEnabled}
+              />
+            )}
+
+            <MapController
+              sounds={sounds}
+              selectedSoundKey={selectedSoundKey}
+              onSoundSelect={setSelectedSoundKey}
+              centerSoundKey={centerSoundKey}
+              onCenterComplete={() => setCenterSoundKey(null)}
+            />
+          </Map>
+
+          {/* Mobile backdrop — closes the sheet when tapped */}
+          {filterSheetOpen && (
+            <div
+              className="filter-sheet-backdrop"
+              onClick={() => setFilterSheetOpen(false)}
+              aria-hidden="true"
+            />
+          )}
+
+          {/* Mobile FAB — opens the filter sheet */}
+          <button
+            className="filter-fab"
+            onClick={() => setFilterSheetOpen(true)}
+            aria-label={`Filter sounds${activeFilterCount > 0 ? ` (${activeFilterCount} active)` : ''}`}
+            aria-haspopup="dialog"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              aria-hidden="true"
+            >
+              <line x1="4" y1="6" x2="20" y2="6" />
+              <line x1="8" y1="12" x2="16" y2="12" />
+              <line x1="11" y1="18" x2="13" y2="18" />
+            </svg>
+            Filters
+            {activeFilterCount > 0 && (
+              <span className="filter-fab-badge" aria-label={`${activeFilterCount} active`}>
+                {activeFilterCount}
+              </span>
+            )}
+          </button>
+
+          <ControlPanel
+            categories={categories}
+            themes={themes}
+            decades={decades}
+            years={years}
+            types={types}
+            sources={sources}
+            selectedCategory={selectCategory}
+            selectedTheme={selectTheme}
+            selectedDecade={selectDecade}
+            selectedYear={selectYear}
+            selectedType={selectType}
+            selectedSource={selectedSource}
             clusteringEnabled={clusteringEnabled}
+            onCategoryChange={setSelectedCategory}
+            onThemeChange={setSelectedTheme}
+            onDecadeChange={setSelectedDecade}
+            onYearChange={setSelectedYear}
+            onTypeChange={setSelectedType}
+            onSourceChange={setSelectedSource}
+            onClusteringToggle={setClusteringEnabled}
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+            searchResultCount={combinedFilteredSounds?.length}
+            isMobileSheet={false}
+            isSheetOpen={filterSheetOpen}
+            onClose={() => setFilterSheetOpen(false)}
           />
-        )}
 
-        <MapController
-          sounds={sounds}
-          selectedSoundKey={selectedSoundKey}
-          onSoundSelect={setSelectedSoundKey}
-        />
-      </Map>
-
-      {/* Mobile backdrop — closes the sheet when tapped */}
-      {filterSheetOpen && (
-        <div
-          className="filter-sheet-backdrop"
-          onClick={() => setFilterSheetOpen(false)}
-          aria-hidden="true"
-        />
-      )}
-
-      {/* Mobile FAB — opens the filter sheet */}
-      <button
-        className="filter-fab"
-        onClick={() => setFilterSheetOpen(true)}
-        aria-label={`Filter sounds${activeFilterCount > 0 ? ` (${activeFilterCount} active)` : ''}`}
-        aria-haspopup="dialog"
-      >
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          aria-hidden="true"
-        >
-          <line x1="4" y1="6" x2="20" y2="6" />
-          <line x1="8" y1="12" x2="16" y2="12" />
-          <line x1="11" y1="18" x2="13" y2="18" />
-        </svg>
-        Filters
-        {activeFilterCount > 0 && (
-          <span className="filter-fab-badge" aria-label={`${activeFilterCount} active`}>
-            {activeFilterCount}
-          </span>
-        )}
-      </button>
-
-      <ControlPanel
-        categories={categories}
-        themes={themes}
-        decades={decades}
-        years={years}
-        types={types}
-        sources={sources}
-        selectedCategory={selectCategory}
-        selectedTheme={selectTheme}
-        selectedDecade={selectDecade}
-        selectedYear={selectYear}
-        selectedType={selectType}
-        selectedSource={selectedSource}
-        clusteringEnabled={clusteringEnabled}
-        onCategoryChange={setSelectedCategory}
-        onThemeChange={setSelectedTheme}
-        onDecadeChange={setSelectedDecade}
-        onYearChange={setSelectedYear}
-        onTypeChange={setSelectedType}
-        onSourceChange={setSelectedSource}
-        onClusteringToggle={setClusteringEnabled}
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
-        searchResultCount={combinedFilteredSounds?.length}
-        isSheetOpen={filterSheetOpen}
-        onClose={() => setFilterSheetOpen(false)}
-      />
-
-      <DecadeLegend />
-    </APIProvider>
+          <DecadeLegend />
+        </APIProvider>
+      </div>
+    </div>
   );
 };

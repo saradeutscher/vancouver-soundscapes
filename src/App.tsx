@@ -13,6 +13,7 @@ import { SubmitSound } from './pages/SubmitSound';
 import { loadSoundDataset } from './services/soundService';
 
 import type { Sound } from './types/Sound';
+import { IdleRedirect } from './components/IdleRedirect';
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -85,6 +86,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
+      {/* <IdleRedirect /> */}
       <div className="site">
         <Nav />
 

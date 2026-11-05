@@ -32,6 +32,8 @@ type ControlPanelProps = {
   title?: string;
   description?: string;
   hideMinimizeButton?: boolean;
+  /** Whether the panel is being used as a mobile bottom sheet */
+  isMobileSheet?: boolean;
   /** Mobile sheet mode: whether the sheet is currently open */
   isSheetOpen?: boolean;
   /** Mobile sheet mode: callback to close the sheet */
@@ -66,14 +68,11 @@ export const ControlPanel = ({
   title = 'Filter the Map',
   description = 'Use the controls below to filter the sounds shown on the map.',
   hideMinimizeButton = false,
+  isMobileSheet = false,
   isSheetOpen,
   onClose,
 }: ControlPanelProps) => {
   const [isMinimized, setIsMinimized] = useState(false);
-
-  // When onClose is provided the panel is rendered as a mobile bottom sheet.
-  // Sheet visibility is controlled externally via isSheetOpen / onClose.
-  const isMobileSheet = !!onClose;
 
   const parseNumber = useCallback((value: string) => Number(value) || null, []);
 
