@@ -86,7 +86,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      {/* <IdleRedirect /> */}
+      <IdleRedirect />
       <div className="site">
         <Nav />
 
