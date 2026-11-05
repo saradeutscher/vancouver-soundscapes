@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-const IDLE_TIMEOUT_MS = 5000; // 2 * 60 * 1000; // 2 minutes
+const IDLE_TIMEOUT_MS = 2 * 60 * 1000; // 2 minutes
 
 // Events that will count as user activity on an iPad
 const ACTIVITY_EVENTS = ['touchstart', 'touchend', 'touchmove', 'keydown', 'pointerdown', 'pointermove', 'scroll'] as const;
