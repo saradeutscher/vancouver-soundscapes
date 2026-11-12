@@ -20,7 +20,7 @@ const ABOUT_SECTIONS = [
     title: 'Project Team',
     subsections: [
       { id: 'team-members', title: 'Team Members' },
-      { id: 'funding', title: 'Partners and Funding' },
+      { id: 'funding', title: 'Funding' },
       { id: 'contact', title: 'Contact' },
     ],
   },
@@ -133,28 +133,26 @@ const MainContent: React.FC = () => {
             to study how Vancouver has changed over the past fifty years.
           </p>
           <p>
-            The project builds on the work of the World Soundscape Project, which recorded
-            Vancouver's acoustic environment at Simon Fraser University in the 1970s. We are making
-            new recordings at the same location and comparing them with the historical archive.
-            Alongside this, we look at records of rezoning, land values, housing and ecological
-            changes at those sites. The aim is to understand how processes such as development,
-            gentrification and environmental change show up in the city's soundscape, and how
-            residents experience these changes.
+            The project builds on the work of the World Soundscape Project, a research collective at
+            Simon Fraser University that started recording Vancouver's acoustic environment in the
+            1970s. We are updating these recordings at some of the same locations, and comparing
+            them with the historical archive. Alongside, we look at records of urban development,
+            land values, housing and ecological changes at those sites. The aim is to understand how
+            processes such as development, gentrification and environmental change show up in the
+            city's soundscape, and how residents experience these changes.
           </p>
         </div>
 
         <div id="questions" className="about-subsection">
           <h3>Research Questions</h3>
           <ul>
-            <li>What sounds characterize a rapidly changing city?</li>
+            <li>What sounds characterize a rapidly transforming city?</li>
             <li>
               What can changes in a city's soundscape tell us about its economic, social and
               ecological conditions?
             </li>
-            <li>How has Vancouver's soundscape changed since the 1970s?</li>
-            <li>
-              What do students and members of the public learn about a place by listening to it?
-            </li>
+            <li>How has Vancouver's soundscape evolved over the last fifty years?</li>
+            <li>What do we learn about a place by actively listening to it?</li>
           </ul>
           {/*
           <p>
@@ -183,10 +181,10 @@ const MainContent: React.FC = () => {
         <div id="approach" className="about-subsection">
           <h3>Approach</h3>
           <p>
-            The project treats listening as a research method in geography. Our work draws on
-            critical Indigenous sound studies, and we aim to follow culturally appropriate protocols
-            when recording and sharing sound. We also design project outputs to be accessible,
-            including for people who engage non-visually.
+            The project treats active listening as a research method in geography. Our work draws on
+            critical and Indigenous sound studies, and we aim to follow culturally appropriate
+            protocols when recording and sharing sounds. We also design project outputs to be
+            accessible, including for people who engage non-visually.
           </p>
         </div>
 
@@ -194,12 +192,12 @@ const MainContent: React.FC = () => {
           <h3>Project Outputs</h3>
           <ul>
             <li>
-              <strong>Interactive sound map</strong> of historical and contemporary recordings and
-              archival soundwalks.
+              <strong>Interactive sound map</strong> of contemporary recordings and archival
+              soundwalks and soundscapes.
             </li>
             <li>
-              <strong>Geo-located soundwalks</strong> using the Echoes app, which play recordings at
-              specific sites across Vancouver.
+              <strong>Geo-located soundwalks</strong> using the Echoes app, which access historical
+              recordings at specific sites across Vancouver.
             </li>
             <li>
               <strong>Museum of Vancouver listening space</strong>, a sound installation developed
@@ -209,7 +207,7 @@ const MainContent: React.FC = () => {
               <strong>Public listening sessions</strong> hosted with community partners.
             </li>
             <li>
-              <strong>Teaching resources</strong> and scholarly publications.
+              <strong>Teaching resources</strong>
             </li>
           </ul>
         </div>
@@ -217,11 +215,10 @@ const MainContent: React.FC = () => {
         <div id="teaching" className="about-subsection">
           <h3>Teaching</h3>
           <p>
-            Materials from the project are used in UBC Geography and Urban Studies courses. Students
-            use the sound map, complete soundwalks, make their own recordings and write reflections
-            connecting what they hear to course concepts on urban change. A related project, Voices
-            of the Unseen, shares audio recordings of UBC custodial staff describing their work and
-            experiences on campus.
+            Materials from the project are being used in UBC Geography, Urban Studies and Media
+            Studies courses. Students use the sound map, complete soundwalks, make their own
+            recordings and write reflections connecting what they hear to concepts of urban change
+            and situated listening.
           </p>
         </div>
       </section>
@@ -233,20 +230,30 @@ const MainContent: React.FC = () => {
         <div id="team-members" className="about-subsection">
           <h3>Team members</h3>
           <p>
+            <strong>Dr. Michele Koppes - </strong>
+            Professor, Geography, UBC (co-lead)
+          </p>
+          <p>
             <strong>Dr. Siobhán Wittig McPhee - </strong>
             Associate Professor of Teaching, Geography, UBC (co-lead)
           </p>
           <p>
-            <strong>Dr. Michele Koppes - </strong>
-            Professor, Geography, UBC (co-lead)
+            <strong>Graduate and undergraduate research assistants: </strong>
+            <br />
+            Piotr Wieczorek, Sara Deutscher, Kendyll Carr, Anna Klein, Azélie Blanchette, Amanda Bradshaw
           </p>
+          <h3>Partners</h3>
           <p>
             <strong>Dr. Dylan Robinson - </strong>
             Professor, Music, UBC
           </p>
           <p>
             <strong>Dr. Milena Droumeva - </strong>
-            Associate Professor, Communication, SFU
+            Associate Professor and Director, Sonic Research Studio, Communication, SFU
+          </p>
+          <p>
+            <strong>Dr. Barry Truax - </strong>
+            Emeritus Professor, Communication, SFU
           </p>
           <p>
             <strong>Dr. Viviane Gosselin - </strong>
@@ -256,18 +263,13 @@ const MainContent: React.FC = () => {
             <strong>Carmen Papalia - </strong>
             Artist and Accessibility Advisor, Museum of Vancouver
           </p>
-          <p>
-            <strong>Graduate and undergraduate research assistants: </strong>
-            <br />
-            Sara Deutscher, Kendyll Carr, Azélie Blanchette, Amanda Bradshaw
-          </p>
         </div>
 
         <div id="funding" className="about-subsection">
-          <h3>Partners and Funding</h3>
+          <h3>Funding</h3>
           <ul>
-            <li>Museum of Vancouver</li>
-            <li>SFU Sonic Research Studio</li>
+            <li>Soical Science and Humanities Research Council</li>
+            <li>UBC Faculty of Arts</li>
             <li>UBC Public Humanities Hub</li>
             <li>UBC Department of Geography</li>
           </ul>
