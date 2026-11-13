@@ -1,6 +1,6 @@
 export type FeaturedSoundConfig = {
   name: string; // must match sound.properties.name
-  decade: number; // important if same location has multi-decade recordings
+  decade?: number; // omit if the sound spans multiple decades
   displayTitle: string; // Title for the featured sound
   summary: string; // short description of the featured sound that is shown in the sidebar
 };
@@ -8,27 +8,15 @@ export type FeaturedSoundConfig = {
 // Add the current featured sounds here
 export const FEATURED_SOUNDS: FeaturedSoundConfig[] = [
   {
-    name: "Carmen's Sound Walk",
-    decade: 2020,
-    displayTitle: "Carmen's Sound Walk in East Vancouver",
-    summary: 'add short summary here',
+    name: 'Under the Burrard Bridge Through the Decades',
+    displayTitle: 'Under the Burrard Bridge',
+    summary:
+      'This composition highlights the changing soundscapes around the Burrard Bridge (known as the Kitsilano Tresle Bridge in the 1970s) from the 1970s to this year.',
   },
   {
-    name: "Harmonie's Sound Walk",
-    decade: 2020,
-    displayTitle: "Harmonie's Sound Walk",
-    summary: 'add short summary here',
-  },
-  {
-    name: 'Soundwalk: East Van rectangle (2nd, Victoria, 4th, Commercial)',
-    decade: 1970,
-    displayTitle: 'Around the Museum',
-    summary: 'add short summary here',
-  },
-  {
-    name: 'Totem Poles',
-    decade: 2020,
-    displayTitle: 'Under the Burrard Bridge Over the Years',
-    summary: 'add short summary here',
+    name: 'Vanier Park Through the Decades',
+    displayTitle: 'Vanier Park',
+    summary:
+      'In this composition, sound recordings taken in 1993, 2024, and 2026 around Vanier Park next to the museum are blended together.',
   },
 ];

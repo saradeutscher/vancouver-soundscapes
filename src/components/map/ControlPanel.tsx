@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useId, useState } from 'react';
 
 import { FilterSelect } from '../controls/FilterSelect';
 
@@ -73,6 +73,7 @@ export const ControlPanel = ({
   onClose,
 }: ControlPanelProps) => {
   const [isMinimized, setIsMinimized] = useState(false);
+  const searchInputId = useId();
 
   const parseNumber = useCallback((value: string) => Number(value) || null, []);
 
@@ -134,7 +135,11 @@ export const ControlPanel = ({
           {description && <p>{description}</p>}
           <div className="search-control">
             <div className="search-input-wrapper">
+              <label htmlFor={searchInputId} className="sr-only">
+                Search the sounds
+              </label>
               <input
+                id={searchInputId}
                 type="search"
                 value={searchQuery}
                 onChange={e => onSearchChange(e.target.value)}
@@ -143,7 +148,7 @@ export const ControlPanel = ({
               />
             </div>
             {searchResultCount !== undefined && searchQuery && (
-              <div className="search-result-count">
+              <div className="search-result-count" aria-live="polite">
                 ({searchResultCount} result{searchResultCount !== 1 ? 's' : ''})
               </div>
             )}

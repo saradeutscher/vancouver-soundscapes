@@ -154,28 +154,6 @@ const MainContent: React.FC = () => {
             <li>How has Vancouver's soundscape evolved over the last fifty years?</li>
             <li>What do we learn about a place by actively listening to it?</li>
           </ul>
-          {/*
-          <p>
-            The project was inspired by the{' '}
-            <a href="https://www.sfu.ca/~truax/wsp.html" target="_blank" rel="noopener noreferrer">
-              World Soundscapes Project
-            </a>
-            , led by R. Murray Schafer and Barry Truax at Simon Fraser University. Many of the
-            sounds present on the map come from this original project.
-          </p>
-          <p>
-            An interview with Barry Truax about the World Soundscapes Project was conducted by CBC
-            Radio&apos;s &quot;On the Coast&quot; with Gloria Macarenko.{' '}
-            <a
-              href="https://www.cbc.ca/player/play/audio/9.7035933"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Listen to the interview on CBC
-            </a>
-            .
-          </p>
-          */}
         </div>
 
         <div id="approach" className="about-subsection">
@@ -240,7 +218,8 @@ const MainContent: React.FC = () => {
           <p>
             <strong>Graduate and undergraduate research assistants: </strong>
             <br />
-            Piotr Wieczorek, Sara Deutscher, Kendyll Carr, Anna Klein, Azélie Blanchette, Amanda Bradshaw
+            Piotr Wieczorek, Sara Deutscher, Kendyll Carr, Anna Klein, Azélie Blanchette, Amanda
+            Bradshaw
           </p>
           <h3>Partners</h3>
           <p>
@@ -279,7 +258,7 @@ const MainContent: React.FC = () => {
           <h3>Contact</h3>
           <p>Problems with the website? Let us know.</p>
           <p>
-            <strong>Email:</strong> <a href="mailto:saradeu@outlook.com">saradeu@outlook.com</a>
+            <strong>Email:</strong> saradeu@outlook.com
           </p>
           <p>Interested in contributing to the project?</p>
           <p>
@@ -307,15 +286,8 @@ const MainContent: React.FC = () => {
           </p>
           <p>
             For detailed technical documentation, including data flow, component structure, and
-            development guidelines, visit the{' '}
-            <a
-              href="https://github.com/saradeutscher/vancouver-soundscapes/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub page for the project
-            </a>
-            .
+            development guidelines, visit the GitHub page for the project at
+            github.com/saradeutscher/vancouver-soundscapes.
           </p>
         </div>
 

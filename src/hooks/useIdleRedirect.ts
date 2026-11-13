@@ -3,8 +3,20 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 const IDLE_TIMEOUT_MS = 2 * 60 * 1000; // 2 minutes
 
-// Events that will count as user activity on an iPad
-const ACTIVITY_EVENTS = ['touchstart', 'touchend', 'touchmove', 'keydown', 'pointerdown', 'pointermove', 'scroll'] as const;
+// Events that will count as user activity on an iPad, plus VoiceOver-driven
+// activity: `click` from double-tap-to-activate and `focusin` from VoiceOver
+// moving focus to a natively-focusable element during swipe navigation.
+const ACTIVITY_EVENTS = [
+  'touchstart',
+  'touchend',
+  'touchmove',
+  'keydown',
+  'pointerdown',
+  'pointermove',
+  'scroll',
+  'click',
+  'focusin',
+] as const;
 
 // Check if an <audio> element is currently playing
 const isAudioPlaying = () => {

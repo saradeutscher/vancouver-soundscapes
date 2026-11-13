@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { getDecadeColor } from '../../constants/colors';
+import { getDecadeColor, MULTI_DECADE_COLORS } from '../../constants/colors';
 
 import type { Sound } from '../../types/Sound';
 
@@ -30,9 +30,36 @@ export const MetadataBadges: React.FC<MetadataBadgesProps> = ({
   return (
     <div className="sound-metadata">
       {showDecade && (
-        <span className="metadata-badge decade-badge" style={{ background: decadeColor }}>
-          {sound.properties.decade}s
-        </span>
+        <>
+          {sound.properties.decades?.length ? (
+            sound.properties.decades.map(d => (
+              <span
+                key={d}
+                className="metadata-badge decade-badge"
+                style={{
+                  background: getDecadeColor(d),
+                }}
+              >
+                {d}s
+              </span>
+            ))
+          ) : (
+            <span className="metadata-badge decade-badge" style={{ background: decadeColor }}>
+              {sound.properties.decade}s
+            </span>
+          )}
+          {sound.properties.isComposition && (
+            <span
+              className="metadata-badge composition-badge"
+              style={{
+                background: MULTI_DECADE_COLORS.background,
+                color: MULTI_DECADE_COLORS.border,
+              }}
+            >
+              Composition
+            </span>
+          )}
+        </>
       )}
 
       {showType && (

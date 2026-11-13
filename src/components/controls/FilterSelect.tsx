@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useId } from 'react';
 
 import type { CategoryData } from '../../types/Sound';
 
@@ -21,6 +21,8 @@ export const FilterSelect = <T extends string | number>({
   onChange,
   parseValue,
 }: FilterSelectProps<T>) => {
+  const selectId = useId();
+
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
       const rawValue = e.target.value;
@@ -32,8 +34,8 @@ export const FilterSelect = <T extends string | number>({
 
   return (
     <>
-      <label> {label}:</label>{' '}
-      <select value={value ?? ''} onChange={handleChange}>
+      <label htmlFor={selectId}> {label}:</label>{' '}
+      <select id={selectId} value={value ?? ''} onChange={handleChange}>
         <option value={''}>All sounds</option>
         {options.map(option => (
           <option key={option.key} value={option.key}>

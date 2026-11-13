@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { FileUploadInput } from '../components/form/FileUploadInput';
 import { MultiImageUploadInput } from '../components/form/MultiImageUploadInput';
 import { UploadProgressIndicator } from '../components/form/UploadProgressIndicator';
 import { MapLocationPicker } from '../components/map/MapLocationPicker';
+import { useFocusTrap } from '../hooks/useFocusTrap';
 import {
   serializePoint,
   serializePath,
@@ -63,6 +64,9 @@ export const SubmitSound: React.FC = () => {
   const [showLocationTypeModal, setShowLocationTypeModal] = useState(false);
   const [pendingLocationType, setPendingLocationType] = useState<'Point' | 'LineString'>('Point');
   const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const locationTypeModalRef = useRef<HTMLDivElement | null>(null);
+
+  useFocusTrap(locationTypeModalRef, showLocationTypeModal);
 
   // File upload state
   const [audioFile, setAudioFile] = useState<File | null>(null);
@@ -657,15 +661,7 @@ export const SubmitSound: React.FC = () => {
                 <strong>Attribution:</strong> Your name will be credited unless you opt out.
               </li>
               <li>
-                <strong>Usage:</strong> Content will be shared under{' '}
-                <a
-                  href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  CC BY-NC-SA 4.0 license
-                </a>
-                .
+                <strong>Usage:</strong> Content will be shared under CC BY-NC-SA 4.0 license.
               </li>
               <li>
                 <strong>Privacy:</strong> No personally identifiable information will be shared
@@ -751,6 +747,7 @@ export const SubmitSound: React.FC = () => {
             aria-label="Close modal"
           />
           <div
+            ref={locationTypeModalRef}
             className="modal-content"
             style={{
               position: 'relative',
@@ -787,6 +784,7 @@ export const SubmitSound: React.FC = () => {
                   borderRadius: '6px',
                   cursor: 'pointer',
                 }}
+                data-autofocus
               >
                 Cancel
               </button>

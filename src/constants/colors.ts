@@ -15,6 +15,12 @@ export const DECADE_COLORS = new Map<number, DecadeColors>([
   [2020, { background: '#F7314B', border: '#45020B', glyph: '#710413' }], // Red
 ]);
 
+export const MULTI_DECADE_COLORS: DecadeColors = {
+  background: '#F2B705',
+  border: '#5C4400',
+  glyph: '#6B4F00',
+};
+
 /**
  * Default fallback color when decade is not found
  */

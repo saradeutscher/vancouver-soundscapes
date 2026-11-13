@@ -80,6 +80,16 @@ export const SoundDetailPage: React.FC<SoundDetailPageProps> = ({ sounds }) => {
                 defaultZoom={15}
                 defaultCenter={position}
                 gestureHandling={'greedy'}
+                clickableIcons={false}
+                restriction={{
+                  latLngBounds: {
+                    north: 49.58,
+                    south: 48.98,
+                    west: -123.6,
+                    east: -122.6,
+                  },
+                  strictBounds: true,
+                }}
                 style={{ width: '100%', height: '400px' }}
               >
                 <SoundMarker

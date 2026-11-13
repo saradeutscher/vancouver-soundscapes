@@ -31,8 +31,14 @@ export function useFilteredSounds(
     return sounds.filter(
       s =>
         (!searchResults || searchResults.has(s.key)) &&
-        (!filters.decade || s.properties.decade == filters.decade) &&
-        (!filters.year || s.properties.year == filters.year) &&
+        (!filters.decade ||
+          (s.properties.decades
+            ? s.properties.decades.includes(filters.decade)
+            : s.properties.decade == filters.decade)) &&
+        (!filters.year ||
+          (s.properties.years
+            ? s.properties.years.includes(filters.year)
+            : s.properties.year == filters.year)) &&
         (!filters.theme || s.properties.theme.includes(filters.theme)) &&
         (!filters.category || s.properties.class.includes(filters.category)) &&
         (!filters.type || s.geometry.type == filters.type) &&

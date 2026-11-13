@@ -9,6 +9,9 @@ export type Sound = {
     name: string;
     decade: number;
     year: number;
+    decades?: number[]; // present only for sounds spanning multiple decades
+    years?: number[]; // present only for sounds spanning multiple years
+    isComposition?: boolean; // true for composed sounds
     description: string;
     soundfile: string;
     class: string[];

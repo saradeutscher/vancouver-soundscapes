@@ -2,7 +2,7 @@ import { AdvancedMarker, Pin } from '@vis.gl/react-google-maps';
 import { useCallback } from 'react';
 
 import { Polyline } from './Polyline';
-import { getDecadeColors, DEFAULT_COLOR } from '../../constants/colors';
+import { getDecadeColors, DEFAULT_COLOR, MULTI_DECADE_COLORS } from '../../constants/colors';
 import { getLatLng, parseLineString } from '../../utils/coordinates';
 
 import type { Sound } from '../../types/Sound';
@@ -29,8 +29,14 @@ export const SoundMarker = (props: SoundMarkerProps) => {
   const handleMouseLeave = useCallback(() => onMouseLeave?.(), [onMouseLeave]);
 
   const ref = useCallback(
-    (marker: google.maps.marker.AdvancedMarkerElement) => setMarkerRef(marker, sound.key),
-    [setMarkerRef, sound.key]
+    (marker: google.maps.marker.AdvancedMarkerElement | null) => {
+      if (marker) {
+        marker.setAttribute('aria-label', sound.properties.name || 'Sound location');
+        marker.setAttribute('role', 'button');
+      }
+      setMarkerRef(marker, sound.key);
+    },
+    [setMarkerRef, sound.key, sound.properties.name]
   );
 
   // Handle both Point and LineString geometries
@@ -48,7 +54,9 @@ export const SoundMarker = (props: SoundMarkerProps) => {
   // Calculate z-index based on state: selected > hovered > normal
   const zIndex = isSelected ? 200 : hoverId === sound.key ? 100 : 1;
 
-  const colors = getDecadeColors(sound.properties.decade);
+  const colors = sound.properties.decades?.length
+    ? MULTI_DECADE_COLORS
+    : getDecadeColors(sound.properties.decade);
   const background = colors?.background || DEFAULT_COLOR;
   const borderColor = colors?.border || '#340047';
   const glyphColor = colors?.glyph || '#560075';
@@ -58,6 +66,7 @@ export const SoundMarker = (props: SoundMarkerProps) => {
       <AdvancedMarker
         position={point}
         ref={ref}
+        title={sound.properties.name}
         onClick={handleClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}

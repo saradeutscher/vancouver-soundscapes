@@ -35,6 +35,19 @@ optgroup {
   text-align: center;
 }
 
+/* Visually hidden but still announced by screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 html,
 body {
   height: 100%;
@@ -3183,6 +3196,8 @@ body:not(.lightbox-open) .image-gallery.lightbox-enabled img:hover {
 }
 
 .featured-sound-card {
+  position: relative; /* anchor for the select-btn's stretched hit-area below */
+  text-align: left;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
@@ -3190,14 +3205,14 @@ body:not(.lightbox-open) .image-gallery.lightbox-enabled img:hover {
   border-left: 3px solid transparent;
   border-bottom: 1px solid var(--color-border);
   background: none;
-  text-align: left;
-  width: 100%;
-  cursor: pointer;
-  transition: background var(--transition-fast);
+  transition:
+    background var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 
 .featured-sound-card:hover {
   background: var(--color-background);
+  box-shadow: var(--shadow-md);
 }
 
 .featured-sound-card.active {
@@ -3205,8 +3220,35 @@ body:not(.lightbox-open) .image-gallery.lightbox-enabled img:hover {
   background: color-mix(in srgb, var(--decade-color) 8%, transparent);
 }
 
+.featured-sound-select-btn {
+  background: none;
+  border: none;
+  text-align: left;
+  width: 100%;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.featured-sound-select-btn:hover,
+.featured-sound-select-btn:focus,
+.featured-sound-select-btn:active {
+  background: none;
+}
+
+.featured-sound-select-btn:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.featured-sound-select-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
 .featured-sound-card-title {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
   font-weight: 600;
   color: var(--color-text-primary);
 }
@@ -3219,6 +3261,38 @@ body:not(.lightbox-open) .image-gallery.lightbox-enabled img:hover {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.featured-sound-card-summary.expanded {
+  display: block;
+  overflow: visible;
+}
+
+.featured-sound-show-more {
+  position: relative;
+  z-index: 1; /* sits above the select-btn's stretched ::after, stays independently clickable */
+  align-self: flex-start;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+  text-decoration: underline;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.featured-sound-show-more:hover,
+.featured-sound-show-more:focus,
+.featured-sound-show-more:active {
+  background: none;
+  color: var(--color-primary-hover);
+}
+
+.featured-sound-show-more:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .featured-sound-card-meta {

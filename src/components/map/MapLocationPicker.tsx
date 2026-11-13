@@ -86,6 +86,16 @@ export const MapLocationPicker: React.FC<MapLocationPickerProps> = ({
           defaultCenter={mode === 'path' && pathPoints.length > 0 ? pathPoints[0] : markerPosition}
           defaultZoom={12}
           gestureHandling="greedy"
+          clickableIcons={false}
+          restriction={{
+            latLngBounds: {
+              north: 49.58,
+              south: 48.98,
+              west: -123.6,
+              east: -122.6,
+            },
+            strictBounds: true,
+          }}
           disableDefaultUI={false}
           onClick={handleMapClick}
         >

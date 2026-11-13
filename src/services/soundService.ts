@@ -76,11 +76,11 @@ export function getThemes(sounds?: Sound[]): CategoryData[] {
 }
 
 export function getDecades(sounds?: Sound[]): CategoryData[] {
-  return aggregateByProperty(sounds, s => s.properties.decade);
+  return aggregateByProperty(sounds, s => s.properties.decades ?? s.properties.decade);
 }
 
 export function getYears(sounds?: Sound[]): CategoryData[] {
-  return aggregateByProperty(sounds, s => s.properties.year);
+  return aggregateByProperty(sounds, s => s.properties.year ?? s.properties.year);
 }
 
 export function getSources(sounds?: Sound[]): CategoryData[] {

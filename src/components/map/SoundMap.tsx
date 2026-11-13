@@ -129,11 +129,11 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
 
   return (
     <div className="soundmap-layout">
-      {/* <FeaturedSoundsSidebar
+      <FeaturedSoundsSidebar
         sounds={sounds}
         selectedSoundKey={selectedSoundKey}
         onSoundSelect={handleFeaturedSoundSelect}
-      /> */}
+      />
       <div className="soundmap-map-area">
         <APIProvider solutionChannel="GMP_devsite_samples_v3_rgmbasicmap" apiKey={API_KEY}>
           <Map
@@ -141,8 +141,20 @@ export const SoundMap = ({ searchIndex }: SoundMapProps) => {
             zoomControl={true}
             mapTypeControl={true}
             defaultZoom={12}
+            minZoom={9}
+            maxZoom={20}
             defaultCenter={{ lat: 49.28, lng: -123.12 }}
+            restriction={{
+              latLngBounds: {
+                north: 49.58,
+                south: 48.98,
+                west: -123.6,
+                east: -122.6,
+              },
+              strictBounds: true,
+            }}
             // mapTypeId={'satellite'}
+            clickableIcons={false}
             gestureHandling={'greedy'}
             disableDefaultUI
             onClick={() => setSelectedSoundKey(null)}

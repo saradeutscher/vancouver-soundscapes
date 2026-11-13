@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { SoundMarker } from './SoundMarker';
 import { getAssetUrl } from '../../constants/assets';
-import { getDecadeColor } from '../../constants/colors';
+import { getDecadeColor, MULTI_DECADE_COLORS } from '../../constants/colors';
 import { AudioPlayer } from '../sound/AudioPlayer';
 import { ImageGallery } from '../sound/ImageGallery';
 import { MetadataBadges } from '../sound/MetadataBadges';
@@ -199,10 +199,16 @@ export const ClusteredSoundMarkers = ({
         <InfoWindow anchor={markers[selectedSoundKey]} onCloseClick={handleInfoWindowClose}>
           <div
             className="sound-info"
-            data-decade-color={getDecadeColor(selectedSound.properties.decade)}
+            data-decade-color={
+              selectedSound.properties.decades?.length
+                ? MULTI_DECADE_COLORS.background
+                : getDecadeColor(selectedSound.properties.decade)
+            }
             style={
               {
-                '--decade-color': getDecadeColor(selectedSound.properties.decade),
+                '--decade-color': selectedSound.properties.decades?.length
+                  ? MULTI_DECADE_COLORS.background
+                  : getDecadeColor(selectedSound.properties.decade),
               } as React.CSSProperties
             }
           >

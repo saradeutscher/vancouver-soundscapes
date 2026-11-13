@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
+
+import { useFocusTrap } from '../../hooks/useFocusTrap';
 
 type UploadProgressIndicatorProps = {
   isUploading: boolean;
@@ -11,6 +13,10 @@ export const UploadProgressIndicator: React.FC<UploadProgressIndicatorProps> = (
   uploadingFiles,
   error,
 }) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useFocusTrap(containerRef, isUploading);
+
   if (!isUploading) return null;
 
   const fileNames = uploadingFiles.filter((name): name is string => Boolean(name));
@@ -22,7 +28,7 @@ export const UploadProgressIndicator: React.FC<UploadProgressIndicatorProps> = (
       aria-modal="true"
       aria-labelledby="upload-progress-title"
     >
-      <div className="upload-progress-content">
+      <div ref={containerRef} className="upload-progress-content" tabIndex={-1} data-autofocus>
         {!error ? (
           <>
             <div className="upload-spinner" aria-label="Uploading files" />

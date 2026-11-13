@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 
 import { getAssetUrl } from '../../constants/assets';
+import { useFocusTrap } from '../../hooks/useFocusTrap';
 
 type ImageLightboxProps = {
   images: string[];
@@ -18,6 +19,9 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [isLoading, setIsLoading] = useState(true);
   const touchStartRef = useRef<number | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useFocusTrap(containerRef, isOpen);
 
   // Navigation functions
   const navigateToPrevious = useCallback(() => {
@@ -113,6 +117,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
       aria-label="Image gallery lightbox"
     >
       <div
+        ref={containerRef}
         className="lightbox-container"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
@@ -129,6 +134,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
           onClick={onClose}
           aria-label="Close lightbox"
           type="button"
+          data-autofocus
         >
           ×
         </button>

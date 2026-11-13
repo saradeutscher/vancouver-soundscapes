@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
-import { DECADE_COLORS } from '../../constants/colors';
+import { DECADE_COLORS, MULTI_DECADE_COLORS } from '../../constants/colors';
+import { useFocusTrap } from '../../hooks/useFocusTrap';
 
 export const DecadeLegend: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useFocusTrap(containerRef, isOpen);
 
   const decades = Array.from(DECADE_COLORS.entries()).sort((a, b) => a[0] - b[0]);
 
@@ -40,13 +44,18 @@ export const DecadeLegend: React.FC = () => {
           aria-modal="true"
           aria-labelledby="legend-title"
         >
-          <div className="decade-legend-modal" onClick={e => e.stopPropagation()}>
+          <div
+            ref={containerRef}
+            className="decade-legend-modal"
+            onClick={e => e.stopPropagation()}
+          >
             <div className="decade-legend-header">
               <h3 id="legend-title">Decade Color Legend</h3>
               <button
                 className="decade-legend-close"
                 onClick={() => setIsOpen(false)}
                 aria-label="Close legend"
+                data-autofocus
               >
                 ✕
               </button>
@@ -70,6 +79,16 @@ export const DecadeLegend: React.FC = () => {
                     <span className="decade-legend-label">{decade}s</span>
                   </div>
                 ))}
+                <div className="decade-legend-item">
+                  <div
+                    className="decade-legend-marker"
+                    style={{
+                      background: MULTI_DECADE_COLORS.background,
+                      borderColor: MULTI_DECADE_COLORS.border,
+                    }}
+                  />
+                  <span className="decade-legend-label">Multi-decade composition</span>
+                </div>{' '}
               </div>
             </div>
           </div>

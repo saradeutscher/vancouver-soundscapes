@@ -43,22 +43,40 @@ export const ImageGallery: FunctionComponent<ImageGalleryProps> = ({
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
       <img
         src={getAssetUrl(images[currentImageIndex])}
-        alt="Taken at sound location"
+        alt={`${currentImageIndex + 1} of ${images.length}, taken at sound location`}
         onClick={enableLightbox ? handleImageClick : undefined}
         style={{ cursor: enableLightbox ? 'pointer' : 'default' }}
       />
 
       <div className="gallery-navigation">
         <div className="nav-btns">
-          <button onClick={handleBack} disabled={currentImageIndex === 0}>
-            <span className="material-symbols-outlined"> &lsaquo; </span>
+          <button
+            onClick={handleBack}
+            disabled={currentImageIndex === 0}
+            aria-label="Previous image"
+          >
+            <span className="material-symbols-outlined" aria-hidden="true">
+              {' '}
+              &lsaquo;{' '}
+            </span>
           </button>
-          <button onClick={handleNext} disabled={currentImageIndex === images.length - 1}>
-            <span className="material-symbols=outlined"> &rsaquo; </span>
+          <button
+            onClick={handleNext}
+            disabled={currentImageIndex === images.length - 1}
+            aria-label="Next image"
+          >
+            <span className="material-symbols-outlined" aria-hidden="true">
+              {' '}
+              &rsaquo;{' '}
+            </span>
           </button>
         </div>
 
-        <div className="indicators">
+        <div className="gallery-counter sr-only" aria-live="polite">
+          {currentImageIndex + 1} / {images.length}
+        </div>
+
+        <div className="indicators" aria-hidden="true">
           {images.map((_, index) => (
             <span
               key={index}
