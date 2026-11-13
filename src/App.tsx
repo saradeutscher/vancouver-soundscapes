@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, NavLink, useLocation } from 'react-router
 
 import './styles/global.css';
 
+import { IdleRedirect } from './components/IdleRedirect';
 import { SoundMap } from './components/map/SoundMap';
 import { About } from './pages/About';
 import { SoundDetailPage } from './pages/SoundDetailPage';
@@ -13,7 +14,6 @@ import { SubmitSound } from './pages/SubmitSound';
 import { loadSoundDataset } from './services/soundService';
 
 import type { Sound } from './types/Sound';
-import { IdleRedirect } from './components/IdleRedirect';
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -40,9 +40,9 @@ const Nav = () => {
         <NavLink to="/" end>
           Home
         </NavLink>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/request">Submit a Sound</NavLink>
         <NavLink to="/sounds">Sound List</NavLink>
+        <NavLink to="/request">Submit a Sound</NavLink>
+        <NavLink to="/about">About</NavLink>
       </div>
     </nav>
   );
@@ -100,13 +100,13 @@ const App = () => {
                 </div>
               }
             />
-            <Route path="/about" element={<About />} />
-            <Route path="/request" element={<SubmitSound />} />
             <Route
               path="/sounds"
               element={<SoundsPage sounds={sounds} searchIndex={searchIndex} />}
             />
             <Route path="/sounds/:id" element={<SoundDetailPage sounds={sounds} />} />
+            <Route path="/request" element={<SubmitSound />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </main>
       </div>

@@ -3285,11 +3285,9 @@
       "images": [],
       "class": [],
       "theme": [],
-      "name": "Vanier Park Through the Decades",
+      "name": "Vanier Park Composition",
       "decade": 2020,
       "year": 2026,
-      "decades": [1990, 2020],
-      "years": [1993, 2024, 2026],
       "isComposition": true,
       "description": "",
       "soundfile": "VanierParkSoundscape.mp3",
@@ -3316,6 +3314,48 @@
       "isComposition": true,
       "description": "",
       "soundfile": "BurrardBridgeSoundscape.mp3",
+      "source": "UBC Dept. of Geography ",
+      "notes": ""
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[[-123.16865462459019, 49.271305130417126], [-123.16932550078573, 49.27197090641233], [-123.16891312443752,  49.27226069223765], [-123.16903530672398, 49.27118184313151], [-123.16895898662452, 49.27105657787161], [-123.16925252752097, 49.27100244981209], [-123.16963221628922, 49.27072764490144], [-123.16962264430343, 49.27040079161311], [-123.16945992054563, 49.270190521792486], [-123.16965950380968, 49.27003193772061], [-123.16965950380968, 49.27003193772061], [-123.1697061542355,  49.26934197856854], [-123.17098515335046, 49.26934451519639], [-123.17099678714057, 49.26852136050803], [-123.16847124027665, 49.26847956448363], [-123.16835812554415, 49.27095411876796], [-123.1683817763605, 49.27110843600605], [-123.16863405173518, 49.27130904769392]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "Harmanie Rose's Soundwalk",
+      "decade": 2020,
+      "year": 2026,
+      "isComposition": true,
+      "description": "July 28, 2026 (Tuesday), 3 p.m.",
+      "soundfile": "HarmonieSoundWalk.mp3",
+      "source": "UBC Dept. of Geography ",
+      "notes": ""
+    }
+  },
+  {
+    "key": "",
+    "type": "Feature",
+    "geometry": {
+      "coordinates": "[ [-123.06123987399583, 49.282081244060315], [-123.06157036405466, 49.285625391212086], [-123.06210285420715, 49.28578830133974], [-123.05928477596596, 49.28930782152208], [-123.05666488689398, 49.2906812190088], [-123.05654686655701, 49.29105015831658]]",
+      "type": "LineString"
+    },
+    "properties": {
+      "images": [],
+      "class": [],
+      "theme": [],
+      "name": "Carmen's Soundwalk",
+      "decade": 2020,
+      "year": 2026,
+      "isComposition": true,
+      "description": "May 21, 2026 (Thursday), Late Morning",
+      "soundfile": "Carmen Sound Walk.mp3",
       "source": "UBC Dept. of Geography ",
       "notes": ""
     }
