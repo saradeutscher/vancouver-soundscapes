@@ -8,10 +8,10 @@ export type FeaturedSoundConfig = {
 // Add the current featured sounds here
 export const FEATURED_SOUNDS: FeaturedSoundConfig[] = [
   {
-    name: 'Under the Burrard Bridge Through the Decades',
-    displayTitle: 'Under the Burrard Bridge',
+    name: 'Senakw Through the Decades',
+    displayTitle: 'Senakw Through the Decades',
     summary:
-      'This composition highlights the changing soundscapes around the Burrard Bridge (known as the Kitsilano Tresle Bridge in the 1970s) from the 1970s to this year.',
+      'This composition highlights the changing soundscapes around the Senakw area/Burrard Bridge from the 1970s to this year.',
   },
   {
     name: 'Vanier Park Through the Decades',
