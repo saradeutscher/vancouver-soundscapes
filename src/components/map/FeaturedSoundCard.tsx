@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import { getAssetUrl } from '../../constants/assets';
 import { getDecadeColor, MULTI_DECADE_COLORS } from '../../constants/colors';
 
 import type { FeaturedSoundConfig } from '../../data/featuredSounds';
@@ -10,6 +11,8 @@ type FeaturedSoundCardProps = {
   sound: Sound;
   isActive: boolean;
   onSelect: (key: string) => void;
+  isPlaying: boolean;
+  onPlayToggle: () => void;
 };
 
 export const FeaturedSoundCard: React.FC<FeaturedSoundCardProps> = ({
@@ -17,8 +20,11 @@ export const FeaturedSoundCard: React.FC<FeaturedSoundCardProps> = ({
   sound,
   isActive,
   onSelect,
+  isPlaying,
+  onPlayToggle,
 }) => {
   const summaryRef = useRef<HTMLParagraphElement | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isTruncated, setIsTruncated] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -39,6 +45,19 @@ export const FeaturedSoundCard: React.FC<FeaturedSoundCardProps> = ({
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const el = audioRef.current;
+    if (!el) return;
+
+    if (isPlaying) {
+      el.play().catch(() => {
+        onPlayToggle();
+      });
+    } else {
+      el.pause();
+    }
+  }, [isPlaying, onPlayToggle]);
+
   return (
     <div
       className={`featured-sound-card ${isActive ? 'active' : ''}`}
@@ -56,7 +75,6 @@ export const FeaturedSoundCard: React.FC<FeaturedSoundCardProps> = ({
           <span className="featured-sound-card-title">{featured.displayTitle}</span>
         </div>
       </button>
-
       {/* Short summary of the featured sound */}
       <p ref={summaryRef} className={`featured-sound-card-summary${isExpanded ? ' expanded' : ''}`}>
         {featured.summary}
@@ -66,6 +84,26 @@ export const FeaturedSoundCard: React.FC<FeaturedSoundCardProps> = ({
           {isExpanded ? 'Show less' : 'Show more'}
         </button>
       )}
+
+      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+      <audio
+        ref={audioRef}
+        src={getAssetUrl(sound.properties.soundfile)}
+        onEnded={onPlayToggle}
+        preload="none"
+      />
+
+      <button
+        className="featured-sound-play-btn"
+        onClick={() => {
+          onPlayToggle();
+          onSelect(sound.key);
+        }}
+        aria-label={isPlaying ? `Pause ${featured.displayTitle}` : `Play ${featured.displayTitle}`}
+        aria-pressed={isPlaying}
+      >
+        <span aria-hidden="true">{isPlaying ? '⏸' : '▶'}</span>
+      </button>
     </div>
   );
 };

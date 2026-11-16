@@ -11,7 +11,7 @@ export const FEATURED_SOUNDS: FeaturedSoundConfig[] = [
     name: 'Senakw Through the Decades',
     displayTitle: 'Senakw Through the Decades',
     summary:
-      'Journey through time around Senakw, under the Burrard Bridge. This composition, moving through from recordings in the 1970s, the 1990s, and ending  in the present, marks the changes to Senakw over time.',
+      'Journey through time around Senakw, under the Burrard Bridge. This composition, moving through recordings from the 1970s, the 1990s, and ending in the present, highlight changes to the soundscape of Senakw over time.',
   },
   {
     name: 'Vanier Park Composition',
@@ -27,7 +27,7 @@ export const FEATURED_SOUNDS: FeaturedSoundConfig[] = [
   },
   {
     name: "Harmanie Rose's Soundwalk",
-    displayTitle: "Harmanie Roses's Soundwalk",
+    displayTitle: "Harmanie Rose's Soundwalk",
     summary:
       'Follow dance artist Harmanie Rose as she navigates public parks and sidewalks in the Kitsilano neighbourhood in her motorized wheelchair.',
   },

@@ -3302,6 +3302,38 @@ body:not(.lightbox-open) .image-gallery.lightbox-enabled img:hover {
   margin-top: var(--spacing-xs);
 }
 
+.featured-sound-play-btn {
+  position: relative;
+  z-index: 1; /* sits above the select-btn's stretched ::after, stays independently clickable */
+  align-self: flex-end;
+  flex-shrink: 0;
+  margin-top: var(--spacing-xs);
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  font-size: var(--font-size-xs);
+  border-radius: 50%;
+  border: none;
+  background: var(--color-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background var(--transition-fast);
+}
+
+.featured-sound-play-btn:hover,
+.featured-sound-play-btn:focus {
+  background: var(--color-primary-hover);
+}
+
+.featured-sound-play-btn:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 /* Skeleton loading state */
 .featured-sound-card-skeleton {
   height: 80px;

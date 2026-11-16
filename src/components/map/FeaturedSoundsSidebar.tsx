@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
 import { FeaturedSoundCard } from './FeaturedSoundCard';
 import { FEATURED_SOUNDS } from '../../data/featuredSounds';
@@ -25,6 +25,12 @@ export const FeaturedSoundsSidebar: React.FC<FeaturedSoundsSidebarProps> = ({
     }));
   }, [sounds]);
 
+  const [cardPlaying, setCardPlaying] = useState<string | null>(null);
+
+  const handlePlayToggle = useCallback((key: string) => {
+    setCardPlaying(prev => (prev === key ? null : key));
+  }, []);
+
   return (
     <div className="featured-sounds-sidebar">
       <div className="featured-sounds-header">
@@ -45,6 +51,8 @@ export const FeaturedSoundsSidebar: React.FC<FeaturedSoundsSidebarProps> = ({
               sound={sound}
               isActive={sound.key === selectedSoundKey}
               onSelect={onSoundSelect}
+              isPlaying={cardPlaying === sound.key}
+              onPlayToggle={() => handlePlayToggle(sound.key)}
             />
           );
         })}
