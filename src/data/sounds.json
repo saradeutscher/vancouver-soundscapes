@@ -3290,7 +3290,7 @@
       "year": 2026,
       "isComposition": true,
       "description": "",
-      "soundfile": "VanierParkSoundscape.mp3",
+      "soundfile": "VanierParkSoundscapeFinal.wav",
       "source": "UBC Dept. of Geography ",
       "notes": ""
     }
@@ -3306,14 +3306,14 @@
       "images": [],
       "class": [],
       "theme": [],
-      "name": "Senakw Through the Decades",
+      "name": "Sen̓áḵw through the decades",
       "decade": 2020,
       "year": 2026,
       "decades": [1970, 1990, 2020],
       "years": [1973, 1993, 2024, 2026],
       "isComposition": true,
       "description": "",
-      "soundfile": "BurrardBridgeSoundscape.mp3",
+      "soundfile": "SenakwThroughTheDecades.wav",
       "source": "UBC Dept. of Geography ",
       "notes": ""
     }
@@ -3334,7 +3334,7 @@
       "year": 2026,
       "isComposition": true,
       "description": "July 28, 2026 (Tuesday), 3 p.m.",
-      "soundfile": "HarmonieSoundWalk.mp3",
+      "soundfile": "HarmonieSoundWalk_WithIntro.wav",
       "source": "UBC Dept. of Geography ",
       "notes": ""
     }
@@ -3355,7 +3355,7 @@
       "year": 2026,
       "isComposition": true,
       "description": "May 21, 2026 (Thursday), Late Morning",
-      "soundfile": "Carmen Sound Walk.mp3",
+      "soundfile": "Carmen Sound Walk.wav",
       "source": "UBC Dept. of Geography ",
       "notes": ""
     }

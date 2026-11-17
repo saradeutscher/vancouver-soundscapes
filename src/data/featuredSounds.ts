@@ -8,10 +8,10 @@ export type FeaturedSoundConfig = {
 // Add the current featured sounds here
 export const FEATURED_SOUNDS: FeaturedSoundConfig[] = [
   {
-    name: 'Senakw Through the Decades',
-    displayTitle: 'Senakw Through the Decades',
+    name: 'Sen̓áḵw through the decades',
+    displayTitle: 'Sen̓áḵw/sən̓aʔqʷ through the decades',
     summary:
-      'Journey through time around Senakw, under the Burrard Bridge. This composition, moving through recordings from the 1970s, the 1990s, and ending in the present, highlight changes to the soundscape of Senakw over time.',
+      'Journey through time around Sen̓áḵw, under the Burrard Bridge. This composition, moving through recordings from the 1970s, the 1990s, and ending in the present, highlight changes to the soundscape of Sen̓áḵw over time.',
   },
   {
     name: 'Vanier Park Composition',
