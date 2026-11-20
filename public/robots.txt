@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vancouver-soundscapes.netlify.app/sitemap.xml
